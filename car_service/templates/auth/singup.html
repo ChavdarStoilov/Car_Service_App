@@ -1,0 +1,12 @@
+{% extends 'auth/base_auth.html' %}
+
+{% block title %}SingUp Page{% endblock  %}
+
+{% block contant %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <input type="submit" value="Create" />
+    </form>
+{% endblock %}

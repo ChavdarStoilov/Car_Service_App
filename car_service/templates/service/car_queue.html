@@ -1,0 +1,38 @@
+{% extends 'service/base.html' %}
+
+{% block main %}
+    <h1>Car Queue</h1>
+    <section class="container-table">
+        <form id="form" method='POST' action="{% url 'car queue' %}">
+            {% csrf_token %}
+            <table class="cars">
+                <tr>
+                    <th>Model</th>
+                    <th>Registration Number</th>
+                    <th>Status</th>
+                    <th>Assigne</th>
+                </tr>
+                {% for car in queue %}
+                    <tr id="{{ car.pk }}">
+                        <td>{{ car.car_id.model }}</td>
+                        <td>{{ car.car_id.registration_number }}</td>
+                        <td>
+                            <select id='choice'>
+                                {% for choice in car.get_choices %}
+                                    {% if choice != car.status %}
+                                        <option value="{{ choice }}">{{ choice }}</option>
+                                    {% else %}
+                                        <option value="{{ choice }}" selected>{{ choice }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </td>
+                        <td>{{ car.mechanic_id.user_id }}</td>
+                    </tr>
+                    
+                {% endfor %}
+            </table>
+            <input type="hidden" value="" name="submitter"  id="submitter"></input>
+        </form>
+    </section>
+{% endblock  %}

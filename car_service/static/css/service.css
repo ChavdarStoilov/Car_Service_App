@@ -1,0 +1,107 @@
+/* .main-section {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.car-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    margin-top: 20px;
+    padding: 50px;
+    margin-left: 50px;
+    background-position: right 35% bottom 45%;
+    box-sizing: border-box;
+    border-radius: 15px;
+    float: left;
+    height: auto;
+}
+
+.details-buttons{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.details-btn{
+    color: #fff;
+    border: none;
+    margin: 20px;
+    padding: 20px 30px;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: 0.5s;
+    transition-property: box-shadow;
+}
+
+.details-btn{
+    background: #3387C7;
+    box-shadow: 0 0 25px white;
+}
+
+.details-btn:hover{
+    box-shadow: 0 0 10px rgb(21, 18, 18);
+}
+.car-card>h1 {
+    font-family: "Agency FB", serif;
+    font-size: 42px;
+    line-height: normal;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all 0.5s ease-out;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+.car-card>h3,
+.car-card>h1{
+    color: #000000;
+    text-align: center;
+}
+
+.car-card>h3{
+    font-size: 15px;
+} */
+.container-table{
+  /* width: 60%; */
+  /* height: 100vh; */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 33px 30px;
+}
+
+.cars {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+.cars td, .cars th {
+    padding: 16px;
+
+}
+  
+.cars tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+.cars tr:hover {
+    background-color: #ddd;
+}
+
+.cars th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #36304a;
+  color: white;
+}

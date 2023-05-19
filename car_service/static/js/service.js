@@ -1,0 +1,12 @@
+
+function updateStatus(){
+    var mySelect = document.getElementById('choice');
+    mySelect.onchange = (event) => {
+        var pk = event.target.parentNode.parentNode;
+        subbmiter = document.getElementById('submitter');
+        subbmiter.value = [pk.id, event.target.value]
+        document.getElementById("form").submit(); 
+    } 
+};
+
+updateStatus()

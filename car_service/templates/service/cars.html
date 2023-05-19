@@ -1,0 +1,31 @@
+{% extends 'service/base.html' %}
+
+{% block main %}
+    <h1>Car Queue</h1>
+    <section class="container-table">
+        <div class="btn__add_car">
+            <a {% comment "url for add car" %}href="{% url 'car detail' car.pk %}"{% endcomment %}>Add car</a>
+        </div>
+            <table class="cars">
+                <tr>
+                    <th>Model</th>
+                    <th>Registration Number</th>
+                    <th>VIN</th>
+                    <th></th>
+                </tr>
+                {% for car in cars %}
+                    <tr id="{{ car.pk }}">
+                        <td>{{ car.model }}</td>
+                        <td>{{ car.registration_number }}</td>
+                        <td>{{ car.VIN }}</td>
+                        <td>
+                            <a {% comment "url for detail" %}href="{% url 'car detail' car.pk %}"{% endcomment %}>Detail</a>
+                            <a {% comment "url for delete" %}href="{% url 'car detail' car.pk %}"{% endcomment %}>Delete</a>
+                        </td>
+
+                    </tr>
+                    
+                {% endfor %}
+            </table>
+    </section>
+{% endblock  %}

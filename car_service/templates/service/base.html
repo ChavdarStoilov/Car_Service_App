@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"  href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet"  href="{% static 'css/base.css' %}">
+    <link rel="stylesheet"  href="{% static 'css/service.css' %}">
+
+</head>
+<body>
+    <header class="header">
+        <img src="" alt="Logo" class='header__logo'>
+
+        <div class="auth_system">
+            <ul>
+                {% if user.authentication %}
+                    <li><a href="{% url 'singin page' %}">Sing In</a></li>
+                {% else %}
+                    <li><img src="{% static 'images/user.png' %}" alt="user img" class="navigation__icons"></li>
+                {% endif %}
+            </ul>
+        </div>
+    </header>
+
+    <div class="sidenav">
+        <nav class="navitaion" >
+            <ul>
+                {% if user.position == 'Reciver' %}
+                    <li><a href="{% url 'car queue' %}"><img src="{% static 'images/car_queue.png' %}" alt="car_queue img" class="navigation__icons"></a></li>
+                    <li><a href="{% url 'cars' %}"><img src="{% static 'images/cars.png' %}" alt="cars img" class="navigation__icons"></a></li>
+                    <li><a href="/"><img src="{% static 'images/customers.png' %}" alt="customer img" class="navigation__icons"></a></li>
+                {% else %}
+                    <li><a href="{% url 'car queue' %}"><img src="{% static 'images/car_queue.png' %}" alt="car_queue img" class="navigation__icons"></a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+   
+    <main class="main">
+        {% block main %}
+        {% endblock  %}
+    </main>
+    <script src="{% static 'js/service.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% extends 'auth/base_auth.html' %}
+
+{% block title %}Sing In Page{% endblock  %}
+
+{% block contant %}
+    <form method="POST" action = "{% url 'singin page' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <input type="submit" value="Login" />
+    </form>
+{% endblock %}
