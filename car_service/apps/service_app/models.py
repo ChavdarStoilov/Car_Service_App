@@ -51,9 +51,8 @@ class Cars(models.Model):
         null=True,
         blank=True,
     )
-    user_id = models.OneToOneField(
+    user_id = models.ForeignKey(
         CustomerProfile,
-        primary_key=True,
         on_delete=models.CASCADE,
 
     )

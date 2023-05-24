@@ -30,6 +30,7 @@
     <div class="sidenav">
         <nav class="navitaion" >
             <ul>
+                
                 {% if user.position == 'Reciver' %}
                     <li><a href="{% url 'car queue' %}"><img src="{% static 'images/car_queue.png' %}" alt="car_queue img" class="navigation__icons"></a></li>
                     <li><a href="{% url 'cars' %}"><img src="{% static 'images/cars.png' %}" alt="cars img" class="navigation__icons"></a></li>
