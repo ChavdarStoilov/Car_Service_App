@@ -1,0 +1,9 @@
+{% extends 'service/base.html' %}
+
+{% block main %}
+    <form method="POST" action="{% url 'add customer page' %}">
+        {{customer_form.as_p}}
+        {% csrf_token %}
+        <button>Add customer</button>
+    </form>
+{% endblock  %}

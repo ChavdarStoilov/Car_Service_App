@@ -31,11 +31,10 @@ class SingInView(auth_views.LoginView):
     
     
     def get_success_url(self):
-        print(self.request.user.is_customer)
         if not self.request.user.is_customer:
-            SingInView.success_url = '/service/'
+            SingInView.success_url = reverse_lazy('service home page')
         else:
-            SingInView.success_url = reverse_lazy('/')
+            SingInView.success_url = reverse_lazy('home page')
             
         if self.success_url:
             return self.success_url

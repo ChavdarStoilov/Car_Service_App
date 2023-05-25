@@ -1,5 +1,6 @@
 from django.db import models
 from ..auth_app.models import AppUsers
+
 # from ..service_app.models import Cars
 
 # class CustomerProfile(models.Model):
@@ -51,3 +52,7 @@ class CustomerProfile(models.Model):
         primary_key=True,
         on_delete=models.CASCADE,
     )
+    
+    
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'

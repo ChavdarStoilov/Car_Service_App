@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Service</title>
+
+    <link rel="stylesheet"  href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/customer/base.css' %}">
+</head>
+<body>
+    <header>
+        <div class="header__logo">
+            <img src="{% static 'images/logo.jpg' %}" alt="Logo img">
+        </div>
+        <nav class="navigation">
+            <ul>
+                <li><a href="{% url 'home page' %}" class="navigation__links">Home</a></li>
+                <li><a href="" class="navigation__links">Gallery</a></li>
+                <li><a href="" class="navigation__links">Contacts</a></li>
+            </ul>
+        </nav>
+
+        <section class="auth_system">
+            <ul>
+                {% if not user.is_authenticated %}
+                    <li><a href="{% url 'singin page' %}" class="auth_system__links">Sing in</a></li>
+                    <li><a href="{% url 'singup page' %}" class="auth_system__links">Sing up</a></li>
+                {% else %}
+                    <li><a href="" class="auth_system__links">Garage</a></li>
+                    <li><a href="" class="auth_system__links">Profile</a></li>
+                {% endif %}
+            </ul>
+        </section>
+    </header>
+    {% block content %}
+    {% endblock  %}
+</body>
+</html>

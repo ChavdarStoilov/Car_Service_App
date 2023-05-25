@@ -35,8 +35,8 @@ body {
 
 
 
-.header__logo {
-    margin-left: 10px;
+.header > img {
+    width: 120px;
 }
 
 .auth_system > ul > li {
