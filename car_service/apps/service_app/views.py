@@ -1,8 +1,6 @@
-from typing import Any, Dict
-from django.db import models
 from django.shortcuts import render, redirect
 from .models import PersonalProfile, Cars, CarQueue, CustomerProfile
-from django.views.generic import DetailView, TemplateView
+from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .forms import AddCarFrom, AddCustomerFrom
@@ -90,3 +88,4 @@ class AddCustomerView(IndexView):
             form.save()
         
         return redirect(reverse_lazy('customers page'))
+    

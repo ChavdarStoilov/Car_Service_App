@@ -1,14 +1,38 @@
 {% extends 'customer/base.html' %}
 {% load static %}
 {% block content %}
-    <main class="main__content">
-        <section class="main__content__image">   
-            <img src="{% static 'images/home_service_img.jpg' %}" alt="home service img">
-        </section>
 
-        <section class="main__content__about_us">
-            <h2>About us:</h2>
-            
-        </section>
-    </main>
+    <section class="main__content__image">   
+        <img src="{% static 'images/home_service_img.jpg' %}" alt="home service img">
+    </section>
+    <section class="main__content__details__rows">
+        <div class="main__content__work__time">
+            <i class="icon far fa-calendar-alt"></i>
+            <div class="main__content__work__time__datails">
+                <p>
+                    Monday - Friday
+                </p>
+                <p>
+                    8:00 AM - 18:00 PM
+                </p>
+            </div>
+        </div>
+        <div class="main__content__contacts">
+            <i class="icon far fa-address-book"></i>
+            <div class="main__content__contacts__details">
+                <p>
+                    <i class="fas fa-phone-alt"> + 359 999 222 333</i>
+                </p>
+                <p>
+                    <i class="fas fa-envelope"> service_auto@gmail.com</i>
+                </p>
+            </div>
+        </div>
+        <div class="main__content__location">
+            <i class="icon fas fa-map-marked-alt"></i>
+            <p>
+                гр. София, ж.к Стрелбище № 27
+            </p>
+        </div>
+    </section>
 {% endblock  %}

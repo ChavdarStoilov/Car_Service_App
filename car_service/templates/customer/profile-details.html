@@ -1,0 +1,9 @@
+{% extends 'customer/base.html' %}
+
+{% block content %}
+    <form method="POST" action="{% url 'profile' %}">
+        {{form_profile.as_p}}
+        {% csrf_token %}
+        <button>Save</button>
+    </form>
+{% endblock  %}

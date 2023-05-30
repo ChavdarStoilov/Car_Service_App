@@ -12,10 +12,16 @@ header {
 }
 
 
-.header__logo >img {
+.header__logo > img {
     width: 120px;
 }
+
+.navigation {
+    margin-left: 7.5%;
+}
+
 .navigation > ul{
+    
     padding-left: 10px;
 
 }
@@ -30,9 +36,54 @@ header {
 .auth_system{
     margin-right: 10px;
 }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown > li {
+    list-style: none;
+}
+.dropdown__content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: rgba(105,105,95, 0.8);
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.dropdown__content a {
+    color: rgb(255, 255, 255);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown__content > a:hover{
+    color: rgb(231, 79, 79);
+    background-color: rgba(105,105,100, 1);
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.dropdown:hover .dropdown__content {
+    margin-top: 1px;
+    display: block;
+  
+}
+
+.auth_system__menu {
+    display: flex;
+    gap: 18px;
+    text-align: end;
+}
 .auth_system > ul > li {
     list-style: none;
-    display: inline;
+    cursor: pointer;
 
 }
 
@@ -51,20 +102,21 @@ header {
 .auth_system__links {
     text-decoration: none;
     color: black;
-    border: 2px solid #b5b3b3;
-    padding: 10px 20px;
-    text-align: center;
-    border-radius: 10px;
 }
 
+.nav__icons {
+    font-size: 25px;
+    cursor: pointer;
+    margin-right: 10px;
+}
 .auth_system__links:hover {
-    background-color: rgb(214, 71, 95);
+    color: rgb(214, 71, 95);
 }
 
-.main__content {
-    
-    margin: 20px 0px 0px 0px;
-}
+
+
+/* Home page styles */
+
 .main__content__image {
     position: relative;
     width: 100%;
@@ -73,12 +125,47 @@ header {
 
 .main__content__image > img {
     margin-top: 20px;
-    position: absolute;
-    width: 100%;
+    width: 99%;
     height: 100%;
     object-fit: cover;
+
 }
 
-.main__content__about_us{
+.main__content__details__rows {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  margin-top: 70px;
+}
+
+.icon{
+    font-size: 40px;
+}
+
+
+
+/* Garage page styles */
+
+.garage__page__image {
+
+}
+.title__content__title {
     text-align: center;
+}
+
+.garage__page {
+    margin-top: 40px;
+}
+
+.title__content {
+    padding: 10px;
+    border-bottom: 2px solid black;
+    border-radius: 10px;
+}
+
+.garage__page__cars {
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
 }

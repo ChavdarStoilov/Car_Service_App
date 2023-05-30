@@ -1,0 +1,27 @@
+{% extends 'customer/base.html' %}
+{% load static %}
+
+{% block content %}
+    
+    <div class="garage__page">
+
+        <section class="title__content">
+            <h1 class="title__content__title">Your Garage</h1>
+            <a {% comment "url to add car" %}{% url '/' %}{% endcomment %}><i class="fas fa-plus"> Add Car</i></a>
+        </section>
+
+        <section class="garage__page__cars">
+            {% if not cars %}
+                <h3>There not have cars</h3>
+            {% else %}
+                {% for car in cars %}
+                    <div>
+                        <h5>{{ car.model }}<h5>
+                        <a>Details</a>
+                        <a>Delete</a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </section>
+    </div>
+{% endblock  %}

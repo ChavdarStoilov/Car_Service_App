@@ -3,6 +3,12 @@ from .forms import CustomerUserCreation, PersonalUserCreation
 from django.contrib.auth import views as auth_views, mixins as auth_mixins
 from django.views import generic as views
 from django.urls import reverse_lazy
+from django.contrib.auth import logout
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('home page')
 
 class SingUpView(views.CreateView):
     template_name ='auth/singup.html'
