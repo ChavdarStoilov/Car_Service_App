@@ -1,6 +1,6 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, CreateView
 from django.shortcuts import render, redirect
-from .forms import ProfileForm
+from .forms import ProfileForm, AddCarFrom
 from . models import CustomerProfile
 from django.urls import reverse_lazy
 from ..service_app.models import Cars
@@ -20,7 +20,6 @@ class ProfileView(TemplateView):
 
     def post(self, request):
         user = CustomerProfile.objects.get(user_id = self.request.user.pk)
-        # print(user)
         form = ProfileForm(request.POST, instance=user)
         if form.is_valid():
             form.save()
@@ -35,3 +34,23 @@ class GarageView(TemplateView):
         context = super().get_context_data(*args, **kwargs)
         context['cars'] = Cars.objects.filter(user_id = self.request.user.pk)
         return context
+    
+    
+class AddCar(TemplateView):
+    template_name = 'customer/garage-add-car.html'
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['form'] = AddCarFrom()
+        return context
+    
+    
+    def post(self, request):
+        car_form = AddCarFrom(request.POST)
+        user_pk = request.user.pk
+        if car_form.is_valid():
+            car_form.save(user_pk)
+            return redirect(reverse_lazy('garage'))
+        else:
+            return render(request, self.template_name, {'form': car_form })
+    

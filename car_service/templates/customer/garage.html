@@ -7,7 +7,7 @@
 
         <section class="title__content">
             <h1 class="title__content__title">Your Garage</h1>
-            <a {% comment "url to add car" %}{% url '/' %}{% endcomment %}><i class="fas fa-plus"> Add Car</i></a>
+            <a href="{% url 'customer add car page' %}"><i class="fas fa-plus"> Add Car</i></a>
         </section>
 
         <section class="garage__page__cars">
@@ -15,10 +15,30 @@
                 <h3>There not have cars</h3>
             {% else %}
                 {% for car in cars %}
-                    <div>
-                        <h5>{{ car.model }}<h5>
-                        <a>Details</a>
-                        <a>Delete</a>
+                    <div class="col-md-{{ car.pk }}">
+                        <div class="card rounded">
+                            <div class="card-image">
+                                {% if car.repair %}
+                                    <i class="card-notify-repair fas fa-tools"></i>
+                                {% endif %}
+                                {% if car.brand.get_image %}
+                                    <img class="img-fluid" src="{% static 'images/car_brands/' %}{{ car.brand.get_image }}" alt="{{ car.img.brand }}" />
+                                {% else %}
+                                    <img class="img-fluid" src="{% static 'images/car_brands/default_car.png' %}" alt="Default car" />
+                                {% endif %}
+                            </div>
+                            <div class="card-body text-center">
+                                <div class="ad-title m-auto">
+                                    <h5>{{ car.model }}</h5>
+                                    <div class="card-image-overlay m-auto">
+                                        {% if car.kilometers %}
+                                            <span class="card-detail-km">{{ car.kilometers }} km</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <a class="ad-btn" href="#">View</a>
+                            </div>
+                        </div>
                     </div>
                 {% endfor %}
             {% endif %}

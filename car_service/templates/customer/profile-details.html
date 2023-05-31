@@ -1,9 +1,12 @@
 {% extends 'customer/base.html' %}
 
 {% block content %}
-    <form method="POST" action="{% url 'profile' %}">
-        {{form_profile.as_p}}
-        {% csrf_token %}
-        <button>Save</button>
-    </form>
+    <section class="pofile__data">
+        <h1> Your Profile data</h1>
+        <form method="POST" action="{% url 'profile' %}">
+            {{ form_profile.as_div }}
+            {% csrf_token %}
+            <input type="submit" value="Save" class="sub"/>
+        </form>
+    </section>
 {% endblock  %}

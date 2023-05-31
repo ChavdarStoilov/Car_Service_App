@@ -1,3 +1,12 @@
 {% extends 'customer/base.html' %}
 
-{% block main %}{% endblock  %}
+{% block content %}
+    <section class="content__add__car">
+        <h1>Add Car</h1>
+        <form method="POST" action="{% url 'customer add car page' %}" >
+            {{ form.as_div }}
+            {% csrf_token %}
+            <input type="submit" value="Add"/>
+        </form>
+    </section>
+{% endblock  %}

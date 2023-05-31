@@ -144,12 +144,45 @@ header {
 }
 
 
+/* Pofile page Data */
+
+
+
+.pofile__data{
+    margin: 130px 15px 0px 0px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 30px 40px 60px 40px;
+
+}
+
+form{
+    position: relative;
+    width: 60%;
+    text-align: right;
+}
+
+.field {
+    text-align: center;
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    margin: 10px 0px 10px 0px;
+    position: absolute;
+    left: 82%;
+}
 
 /* Garage page styles */
 
-.garage__page__image {
 
-}
 .title__content__title {
     text-align: center;
 }
@@ -168,4 +201,112 @@ header {
     display: flex;
     align-content: center;
     justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 50%;
+    margin: 20px auto;
+}
+
+.card{
+    position: relative;
+    padding: 20px;
+    margin-top: 30px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    }
+
+.img-fluid {
+    width: 150px;
+    height: 120px;
+}
+
+.card-image-overlay span {
+    display: inline-block;              
+    font-size: 12px;
+}
+
+
+
+.card-notify-repair {
+    position: absolute;
+    top: -8px;
+    right: -3px;
+    font-size: 20px;
+    color: red;
+}
+
+.ad-btn {
+    width: 80px;
+    height: 40px;
+    border-radius: 80px;
+    font-size: 16px;
+    line-height: 35px;
+    text-align: center;
+    border: 3px solid #e6de08;
+    display: block;
+    text-decoration: none;
+    margin: 15px auto 1px auto;
+    color: #000;
+    overflow: hidden;        
+    position: relative;
+    background-color: #e6de08;
+}
+
+.ad-btn:hover {
+    background-color: #e6de08;
+    color: #1e1717;
+    border: 2px solid #e6de08;
+    background: transparent;
+    transition: all 0.3s ease;
+    box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+}
+
+.ad-title h5 {
+    margin-bottom: 10px;
+}
+
+
+
+/* Garage Car Add page */
+.content__add__car {
+    text-align: center;
+    margin-top: 100px;
+}
+
+form > div:nth-of-type(1)  select {
+  color: rgb(0, 0, 0);
+  padding: 8px;
+  width: 33%;
+  border: none;
+  font-size: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+
+form > div:nth-of-type(1) ::before {
+  content: "\f13a";
+  font-family: FontAwesome;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+form > div:nth-of-type(1) :hover::before {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+form > div:nth-of-type(1)  select option {
+  padding: 30px;
 }

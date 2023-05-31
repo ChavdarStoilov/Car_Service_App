@@ -36,14 +36,45 @@ class PersonalProfile(models.Model):
         on_delete=models.CASCADE,
     )
     
+    
+class CarBrand(models.Model):
+    id = models.AutoField(
+        primary_key=True
+    )
+    brand = models.CharField()
+    image = models.CharField()
+    
+    
+    def get_image(self):
+        return self.image
+    
+    def __str__(self):
+        return self.brand
+    
 class Cars(models.Model):
+    
+    brand = models.ForeignKey(
+        CarBrand,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
+    )
+    
     model = models.CharField()
     year = models.DateField()
     VIN = models.CharField()
- 
+    repair = models.BooleanField(
+        default=False,
+    )
+    kilometers = models.CharField(
+        null=True,
+        blank=True,
+    )
+    
     registration_number = models.CharField(
         null=True,
         blank=True,
+        unique=True
     )
     history_id = models.OneToOneField(
         to='RepairHistory',
