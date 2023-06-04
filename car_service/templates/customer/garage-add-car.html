@@ -2,11 +2,12 @@
 
 {% block content %}
     <section class="content__add__car">
+        <a href="{% url 'garage' %}" class="back"><i class="fas fa-arrow-alt-circle-left"></i></a>
         <h1>Add Car</h1>
         <form method="POST" action="{% url 'customer add car page' %}" >
             {{ form.as_div }}
             {% csrf_token %}
-            <input type="submit" value="Add"/>
+            <input type="submit" value="Add" class='btn'/>
         </form>
     </section>
 {% endblock  %}

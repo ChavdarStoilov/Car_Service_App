@@ -1,0 +1,14 @@
+{% extends 'customer/base.html' %} 
+
+{% block content %}
+
+    <section class="content__car__detials">
+        <a href="{% url 'garage' %}" class="back"><i class="fas fa-arrow-alt-circle-left"></i></a>
+        <h1>Car Detail</h1>
+
+        <div class="details">
+            {{ form.as_div }} {% csrf_token %}
+        </div>
+    </section>
+
+{% endblock %}

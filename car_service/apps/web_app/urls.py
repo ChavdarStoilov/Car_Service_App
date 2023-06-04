@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import IndexView, ProfileView, GarageView, AddCar
+from .views import IndexView, ProfileView, GarageView, AddCar, CarEditView
 
 
 urlpatterns = [
@@ -8,6 +8,7 @@ urlpatterns = [
     path('garage/',include([
         path("", GarageView.as_view(), name='garage'),
         path("add/", AddCar.as_view(), name='customer add car page'),
+        path("edit/<int:pk>", CarEditView.as_view(), name='car edit page')
         ])),
     
 ]

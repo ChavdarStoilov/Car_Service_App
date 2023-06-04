@@ -148,7 +148,7 @@ header {
 
 
 
-.pofile__data{
+.pofile__data, .content__car__detials, .content__add__car{
     margin: 130px 15px 0px 0px;
     text-align: center;
     border-radius: 5px;
@@ -157,13 +157,13 @@ header {
 
 }
 
-form{
+form, .details{
     position: relative;
     width: 60%;
     text-align: right;
 }
 
-.field {
+.field, .brands {
     text-align: center;
     width: 30%;
     padding: 12px 20px;
@@ -174,12 +174,37 @@ form{
     box-sizing: border-box;
 }
 
-input[type=submit] {
+.btn {
+    text-decoration: none;
+    color: #000;
+    border: 2px solid #e6de08;
+    border-radius: 20px;
+    padding: 10px 14px;
+    background-color: #e6de08;
+}
+
+
+.btn:hover {
+    background: transparent;
+    
+}
+
+input[type=submit], .btn {
     margin: 10px 0px 10px 0px;
     position: absolute;
     left: 82%;
 }
 
+.back {
+    text-decoration: none;
+    font-size: 26px;
+    color: green;
+
+}
+.back:hover {
+    color: rgb(37, 198, 37);
+    left: 1%;
+}
 /* Garage page styles */
 
 
@@ -208,7 +233,7 @@ input[type=submit] {
 
 .card{
     position: relative;
-    padding: 20px;
+    padding: 55px;
     margin-top: 30px;
     text-align: center;
     background: #fff;
@@ -218,8 +243,8 @@ input[type=submit] {
     }
 
 .img-fluid {
-    width: 150px;
-    height: 120px;
+    width: 180px;
+    height: 140px;
 }
 
 .card-image-overlay span {
@@ -235,9 +260,10 @@ input[type=submit] {
     right: -3px;
     font-size: 20px;
     color: red;
+    cursor: pointer;
 }
 
-.ad-btn {
+.edit-btn, .delete-btn{
     width: 80px;
     height: 40px;
     border-radius: 80px;
@@ -245,7 +271,7 @@ input[type=submit] {
     line-height: 35px;
     text-align: center;
     border: 3px solid #e6de08;
-    display: block;
+    display: inline-block;
     text-decoration: none;
     margin: 15px auto 1px auto;
     color: #000;
@@ -254,7 +280,12 @@ input[type=submit] {
     background-color: #e6de08;
 }
 
-.ad-btn:hover {
+.delete-btn {
+    border: 3px solid #da3a3a;
+    background-color: #ee3945;
+}
+
+.edit-btn:hover, .delete-btn:hover{
     background-color: #e6de08;
     color: #1e1717;
     border: 2px solid #e6de08;
@@ -262,51 +293,11 @@ input[type=submit] {
     transition: all 0.3s ease;
     box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
 }
+.delete-btn:hover {
+    border: 2px solid #e60808;
+
+}
 
 .ad-title h5 {
     margin-bottom: 10px;
-}
-
-
-
-/* Garage Car Add page */
-.content__add__car {
-    text-align: center;
-    margin-top: 100px;
-}
-
-form > div:nth-of-type(1)  select {
-  color: rgb(0, 0, 0);
-  padding: 8px;
-  width: 33%;
-  border: none;
-  font-size: 20px;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-  -webkit-appearance: button;
-  appearance: button;
-  outline: none;
-}
-
-form > div:nth-of-type(1) ::before {
-  content: "\f13a";
-  font-family: FontAwesome;
-  top: 0;
-  right: 0;
-  width: 20%;
-  height: 100%;
-  text-align: center;
-  font-size: 28px;
-  line-height: 45px;
-  color: rgba(255, 255, 255, 0.5);
-  background-color: rgba(255, 255, 255, 0.1);
-  pointer-events: none;
-}
-
-form > div:nth-of-type(1) :hover::before {
-  color: rgba(255, 255, 255, 0.6);
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-form > div:nth-of-type(1)  select option {
-  padding: 30px;
 }

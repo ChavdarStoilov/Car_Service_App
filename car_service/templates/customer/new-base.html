@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Service</title>
+
+    <link rel="stylesheet"  href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/customer/new_base.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+
+</head>
+<body>
+    <header class="header">
+        <img src="{% static 'images/auth-background.png' %}" class='auth_background' alt="auth background">
+
+        <div class="header__logo">
+            <img src="{% static 'images/new_logo.png' %}" alt="Logo img">
+        </div>
+        <section class="auth_system">
+
+            <ul class="auth_system__menu">
+                {% if not user.is_authenticated %}
+                        <div class="auth_content">
+                            <a href="{% url 'singin page' %}" class="btn">Sing in</a>
+                            <a href="{% url 'singup page' %}" class="btn">Sing up</a>
+                        </div>
+
+                {% else %}
+                    <li >
+                        <a href="{% url 'profile' %}" class="auth_system__links"><i class="nav__icons fas fa-user"></i>
+                            </br>
+                            <label>Profile</label>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'garage' %}" class="auth_system__links"><i class="nav__icons fas fa-warehouse"></i>
+                            </br>
+                            <label>Garage</label>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'logout' %}" class="auth_system__links">
+                            <i class="nav__icons fas fa-sign-out-alt"></i>
+                            </br>
+                            <label>Logout</label>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </section>
+    </header>
+    <main class='main__content'>
+        {% block content %}
+        {% endblock  %}
+    </main>
+</body>
+</html>

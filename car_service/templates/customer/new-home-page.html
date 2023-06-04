@@ -1,0 +1,25 @@
+{% extends 'customer/new-base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="hero">
+        <img src="{% static 'images/background-img.png' %}" alt="">
+        <sidebar class="sidebar">
+            <nav class="navigation">
+                <ul>
+                    <li class="navigation__list">
+                        <a href="{% url 'home page' %}" class="navigation__links navigation__home"><i class="fas fa-home"> Home</i></a>
+                    </li>
+                    <li class="navigation__list">
+                        <a href="" class="navigation__links navigation__gallery"><i class="fas fa-images"> Gallery</i></a>
+                    </li>
+                    <li class="navigation__list">
+                        <a href="" class="navigation__links navigation__contacts"><i class="fas fa-address-card"> Contacts</i></a>
+                    </li>
+                </ul>
+            </nav>
+        </sidebar>
+    </div>
+
+{% endblock %}
