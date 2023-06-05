@@ -1,0 +1,29 @@
+{% extends 'customer/new-base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>404 error Page not found</h1>
+    <section class="hero">
+        
+        <img src="{% static 'images/background-img.png' %}" alt="">
+        <sidebar class="sidebar">
+            
+        </sidebar>
+    </section>
+
+
+    <section class="brands">
+        <div class="items">
+            <img src="{% static 'images/car_brands/audi.png' %}" alt="" class="brands__logo">
+            <img src="{% static 'images/car_brands/bently.png' %}" alt="" class="brands__logo">
+            <img src="{% static 'images/car_brands/bugatti.png' %}" alt="" class="brands__logo">
+            <img src="{% static 'images/car_brands/lamborgini.png' %}" alt="" class="brands__logo">
+            <img src="{% static 'images/car_brands/porsche.png' %}" alt="" class="brands__logo">
+            <img src="{% static 'images/car_brands/seat.png' %}" alt="" class="brands__logo">
+            <img src="{% static 'images/car_brands/skoda.png' %}" alt="" class="brands__logo">
+            <img src="{% static 'images/car_brands/vw.png' %}" alt="" class="brands__logo">
+        </div>
+    
+    </section>
+
+{% endblock %}

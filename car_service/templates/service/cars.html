@@ -11,7 +11,7 @@
                     <th>Model</th>
                     <th>Registration Number</th>
                     <th>VIN</th>
-                    <th></th>
+                    <th>Actions</th>
                 </tr>
                 {% for car in cars %}
                     <tr id="{{ car.pk }}">
@@ -19,8 +19,10 @@
                         <td>{{ car.registration_number }}</td>
                         <td>{{ car.VIN }}</td>
                         <td>
-                            <a {% comment "url for detail" %}href="{% url 'car detail' car.pk %}"{% endcomment %}>Detail</a>
-                            <a {% comment "url for delete" %}href="{% url 'car detail' car.pk %}"{% endcomment %}>Delete</a>
+                            <a class="btn__action details"{% comment "url for detail" %}href="{% url 'car detail' car.pk %}"{% endcomment %}>Detail</a>
+                            <a class="btn__action delete"{% comment "url for delete" %}href="{% url 'car detail' car.pk %}"{% endcomment %}>Delete</a>
+                            <a class="btn__action move"{% comment "url for delete" %}href="{% url 'car detail' car.pk %}"{% endcomment %}>Move to Repair</a>
+
                         </td>
 
                     </tr>

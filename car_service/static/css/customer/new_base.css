@@ -116,6 +116,15 @@ header {
 
 }
 
+/* .hero > h1 {
+    font-family: 'Acme', sans-serif;
+    position: relative;
+    z-index: 100;
+    top: 350px;
+    font-size: 50px;
+    text-align: center
+} */
+
 .hero > img {
     position: absolute;
     margin-top: 46px;
@@ -293,6 +302,6 @@ input[type=submit], .btn {
 }
 
 .brands__logo {
-    width: 180px;
-    height: 150px;
+    width: 160px;
+    height: 120px;
 }

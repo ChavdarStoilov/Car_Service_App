@@ -71,11 +71,11 @@
 } */
 .container-table{
   /* width: 60%; */
-  /* height: 100vh; */
+  /* height: 100vh;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
   padding: 33px 30px;
 }
 
@@ -104,4 +104,26 @@
   text-align: center;
   background-color: #36304a;
   color: white;
+}
+
+
+.btn__action {
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 6px 8px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+.details:hover {
+    background-color: darkgoldenrod;
+}
+
+.delete:hover {
+    background-color: red;
+
+}
+
+.move:hover {
+    background-color: darkslategrey;
 }

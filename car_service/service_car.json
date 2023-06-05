@@ -1,0 +1,20 @@
+[
+    {
+      "model": "service_app.person",
+      "pk": 1,
+      "fields": {
+        "brand": "John",
+        "model": "Lennon",
+        "variants": "avant"
+      }
+    },
+    {
+      "model": "service_app.person",
+      "pk": 2,
+      "fields": {
+        "brand": "Paul",
+        "model": "McCartney",
+        "variants": "test"
+      }
+    }
+  ]

@@ -13,7 +13,7 @@
                     <th>Last name</th>
                     <th>Email</th>
                     <th>Phone</th>
-                    <th></th>
+                    <th>Actions</th>
 
                 </tr>
                 {% for customer in customers %}
@@ -24,8 +24,8 @@
                         <td>{{ customer.phone }}</td>
 
                         <td>
-                            <a {% comment "url for detail" %}href="{% url 'car detail' car.pk %}"{% endcomment %}>Detail</a>
-                            <a {% comment "url for delete" %}href="{% url 'car detail' car.pk %}"{% endcomment %}>Delete</a>
+                            <a class="btn__action details"{% comment "url for detail" %}href="{% url 'car detail' car.pk %}"{% endcomment %}>Detail</a>
+                            <a class="btn__action delete"{% comment "url for delete" %}href="{% url 'car detail' car.pk %}"{% endcomment %}>Delete</a>
                         </td>
 
                     </tr>

@@ -18,7 +18,7 @@ class AddCarFrom(forms.ModelForm):
     class Meta:
         model = Cars
         fields = (
-            'model', 'year', 'VIN', 'registration_number', 'user_id'
+            'brand', 'model', 'year', 'VIN', 'registration_number', 'user_id'
         )
         
         

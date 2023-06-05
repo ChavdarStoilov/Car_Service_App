@@ -51,6 +51,12 @@ class CarBrand(models.Model):
     def __str__(self):
         return self.brand
     
+    
+class TestCarsBrands(models.Model):
+    brand = models.CharField()
+    model = models.CharField()
+    variants = models.CharField()
+    
 class Cars(models.Model):
     
     brand = models.ForeignKey(

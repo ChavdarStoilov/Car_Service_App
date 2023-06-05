@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-height: 50px;
+    height: 50px;
     background-color: #434c5f;
 
 }
@@ -36,7 +36,7 @@ body {
 
 
 .header > img {
-    width: 120px;
+    width:70px;
 }
 
 .auth_system > ul > li {

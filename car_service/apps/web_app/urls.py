@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import IndexView, ProfileView, GarageView, AddCar, CarEditView
+from .views import IndexView, ProfileView, GarageView, AddCar, CarEditView, error_page
 
 
 urlpatterns = [
@@ -11,4 +11,5 @@ urlpatterns = [
         path("edit/<int:pk>", CarEditView.as_view(), name='car edit page')
         ])),
     
+    path('error/', error_page)
 ]

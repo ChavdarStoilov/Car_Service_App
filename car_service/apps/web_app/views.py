@@ -80,3 +80,8 @@ class CarRepairProcessView(TemplateView):
         car = CarQueue.objects.get(pk = kwargs['pk'])
         context['car'] = car
         return context
+    
+    
+    
+def error_page(request):
+    return render(request, '404.html')
