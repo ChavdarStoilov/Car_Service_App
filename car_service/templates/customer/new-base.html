@@ -14,8 +14,9 @@
 
 </head>
 <body>
+    <img src="{% static 'images/auth-background.png' %}" class='auth_background' alt="auth background">
     <header class="header">
-        <img src="{% static 'images/auth-background.png' %}" class='auth_background' alt="auth background">
+        
 
         <div class="header__logo">
             <img src="{% static 'images/new_logo.png' %}" alt="Logo img">
@@ -31,22 +32,13 @@
 
                 {% else %}
                     <li >
-                        <a href="{% url 'profile' %}" class="auth_system__links"><i class="nav__icons fas fa-user"></i>
-                            </br>
-                            <label>Profile</label>
+                        <a href="{% url 'profile' %}" class="btn auth_system__links">
+                            Profile
                         </a>
                     </li>
                     <li>
-                        <a href="{% url 'garage' %}" class="auth_system__links"><i class="nav__icons fas fa-warehouse"></i>
-                            </br>
-                            <label>Garage</label>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'logout' %}" class="auth_system__links">
-                            <i class="nav__icons fas fa-sign-out-alt"></i>
-                            </br>
-                            <label>Logout</label>
+                        <a href="{% url 'logout' %}" class="btn auth_system__links">
+                            Logout
                         </a>
                     </li>
                 {% endif %}

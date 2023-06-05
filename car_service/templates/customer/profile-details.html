@@ -1,12 +1,9 @@
 {% extends 'customer/new-base.html' %}
-
+{% load static %}
 {% block content %}
-    <div class="blur">
-        <img src="https://cdn.wallpapersafari.com/75/2/XzNrmv.jpg" alt="">
-    </div>
     <section class="pofile__data">
-        
-            <a href="{% url 'garage' %}" class="back"><i class="fas fa-arrow-alt-circle-left"></i></a> 
+
+        <a href="{% url 'garage' %}" class="back"><i class="fas fa-arrow-alt-circle-left"></i></a> 
         
         <h1> Your Profile data</h1>
         <form method="POST" action="{% url 'profile' %}">

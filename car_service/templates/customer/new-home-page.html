@@ -3,7 +3,7 @@
 
 {% block content %}
 
-    <div class="hero">
+    <section class="hero">
         <img src="{% static 'images/background-img.png' %}" alt="">
         <sidebar class="sidebar">
             <nav class="navigation">
@@ -11,6 +11,13 @@
                     <li class="navigation__list">
                         <a href="{% url 'home page' %}" class="navigation__links navigation__home"><i class="fas fa-home"> Home</i></a>
                     </li>
+                    {% if user.is_authenticated %}
+                        <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
+
+                        <li class="navigation__list">
+                            <a href="{% url 'garage' %}" class="navigation__links navigation__garage"><i class="fas fa-warehouse"> Garage</i></a>
+                        </li>
+                    {% endif %}
                     <li class="navigation__list">
                         <a href="" class="navigation__links navigation__gallery"><i class="fas fa-images"> Gallery</i></a>
                     </li>
@@ -20,6 +27,21 @@
                 </ul>
             </nav>
         </sidebar>
-    </div>
+    </section>
+
+
+    <section class="brands">
+        <div class="items">
+            <img src="{% static 'images/car_brands/audi.png' %}" alt="" class="brands__logo">
+            <img src="{% static 'images/car_brands/bently.png' %}" alt="" class="brands__logo">
+            <img src="{% static 'images/car_brands/bugatti.png' %}" alt="" class="brands__logo">
+            <img src="{% static 'images/car_brands/lamborgini.png' %}" alt="" class="brands__logo">
+            <img src="{% static 'images/car_brands/porsche.png' %}" alt="" class="brands__logo">
+            <img src="{% static 'images/car_brands/seat.png' %}" alt="" class="brands__logo">
+            <img src="{% static 'images/car_brands/skoda.png' %}" alt="" class="brands__logo">
+            <img src="{% static 'images/car_brands/vw.png' %}" alt="" class="brands__logo">
+        </div>
+    
+    </section>
 
 {% endblock %}
