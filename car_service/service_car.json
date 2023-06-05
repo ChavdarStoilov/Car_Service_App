@@ -1,6 +1,6 @@
 [
     {
-      "model": "service_app.person",
+      "model": "service_app.TestCarsBrands",
       "pk": 1,
       "fields": {
         "brand": "John",
@@ -9,7 +9,7 @@
       }
     },
     {
-      "model": "service_app.person",
+      "model": "service_app.TestCarsBrands",
       "pk": 2,
       "fields": {
         "brand": "Paul",
