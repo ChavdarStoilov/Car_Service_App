@@ -291,14 +291,13 @@ input[type=submit], .btn {
     align-items: center;
     gap: 50px;
     color: black;
-    animation: mymove 80s linear infinite alternate;
+    animation: mymove 30s linear infinite ;
     width: 3160px;
     
 }
 @keyframes mymove {
-    from   {right:  0px;}    
-    to  {right:  2600px;}    
-    /* 100% {right:  0;}   */
+    from   {right:  -1900px;}    
+    to  {right:  1900px;}    
 }
 
 .brands__logo {
