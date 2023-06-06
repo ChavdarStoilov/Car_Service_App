@@ -4,7 +4,7 @@
     "pk": 1,
     "fields": {
       "brand": "Audi", 
-      "image": "images/car_brands/audi.png"
+      "image": "audi.png"
     }
   },
   {
@@ -12,7 +12,7 @@
     "pk": 2,
     "fields": {
       "brand": "Bently", 
-      "image": "images/car_brands/bently.png"
+      "image": "bently.png"
     }
   },
   {
@@ -20,7 +20,7 @@
     "pk": 3,
     "fields": {
       "brand": "Bugatti", 
-      "image": "images/car_brands/bugatti.png"
+      "image": "bugatti.png"
     }
   },
   {
@@ -28,7 +28,7 @@
     "pk": 4,
     "fields": {
       "brand": "Lamborgini", 
-      "image": "images/car_brands/lamborgini.png"
+      "image": "lamborgini.png"
     }
   },
   {
@@ -36,7 +36,7 @@
     "pk": 5,
     "fields": {
       "brand": "Porsche", 
-      "image": "images/car_brands/porsche.png"
+      "image": "porsche.png"
     }
   },
   {
@@ -44,7 +44,7 @@
     "pk": 6,
     "fields": {
       "brand": "Seat", 
-      "image": "images/car_brands/seat.png"
+      "image": "seat.png"
     }
   },
   {
@@ -52,7 +52,7 @@
     "pk": 7,
     "fields": {
       "brand": "Skoda", 
-      "image": "images/car_brands/skoda.png"
+      "image": "skoda.png"
     }
   },
   {
@@ -60,7 +60,7 @@
     "pk": 8,
     "fields": {
       "brand": "VW", 
-      "image": "images/car_brands/vw.png"
+      "image": "vw.png"
     }
   }
   
