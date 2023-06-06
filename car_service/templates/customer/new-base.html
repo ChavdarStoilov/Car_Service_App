@@ -46,8 +46,25 @@
         </section>
     </header>
     <main class='main__content'>
-        {% block content %}
-        {% endblock  %}
+        <section class="hero">
+            <img src="{% static 'images/background-img.png' %}" alt="">
+            {% block content %}
+            {% endblock %}
+        </section>
     </main>
+
+        
+    {% block footer %}
+        <section class="brands">
+            <div class="items">
+                {% if cars %}
+                    {% for car in cars %}
+                        <img src="{% static 'images/car_brands/' %}{{ car.image }}" alt="{{ car.brand }}" class="brands__logo">
+                    {% endfor %}
+                {% endif %}
+            </div>
+        
+        </section>
+    {% endblock %}
 </body>
 </html>

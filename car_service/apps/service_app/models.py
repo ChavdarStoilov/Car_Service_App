@@ -54,8 +54,10 @@ class CarBrand(models.Model):
     
 class TestCarsBrands(models.Model):
     brand = models.CharField()
-    model = models.CharField()
-    variants = models.CharField()
+    model = models.CharField(
+        
+    )
+    # variants = models.CharField()
     
 class Cars(models.Model):
     

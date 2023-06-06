@@ -1,20 +1,68 @@
 [
-    {
-      "model": "service_app.TestCarsBrands",
-      "pk": 1,
-      "fields": {
-        "brand": "John",
-        "model": "Lennon",
-        "variants": "avant"
-      }
-    },
-    {
-      "model": "service_app.TestCarsBrands",
-      "pk": 2,
-      "fields": {
-        "brand": "Paul",
-        "model": "McCartney",
-        "variants": "test"
-      }
+  {
+    "model": "service_app.CarBrand",
+    "pk": 1,
+    "fields": {
+      "brand": "Audi", 
+      "image": "images/car_brands/audi.png"
     }
-  ]
+  },
+  {
+    "model": "service_app.CarBrand",
+    "pk": 2,
+    "fields": {
+      "brand": "Bently", 
+      "image": "images/car_brands/bently.png"
+    }
+  },
+  {
+    "model": "service_app.CarBrand",
+    "pk": 3,
+    "fields": {
+      "brand": "Bugatti", 
+      "image": "images/car_brands/bugatti.png"
+    }
+  },
+  {
+    "model": "service_app.CarBrand",
+    "pk": 4,
+    "fields": {
+      "brand": "Lamborgini", 
+      "image": "images/car_brands/lamborgini.png"
+    }
+  },
+  {
+    "model": "service_app.CarBrand",
+    "pk": 5,
+    "fields": {
+      "brand": "Porsche", 
+      "image": "images/car_brands/porsche.png"
+    }
+  },
+  {
+    "model": "service_app.CarBrand",
+    "pk": 6,
+    "fields": {
+      "brand": "Seat", 
+      "image": "images/car_brands/seat.png"
+    }
+  },
+  {
+    "model": "service_app.CarBrand",
+    "pk": 7,
+    "fields": {
+      "brand": "Skoda", 
+      "image": "images/car_brands/skoda.png"
+    }
+  },
+  {
+    "model": "service_app.CarBrand",
+    "pk": 8,
+    "fields": {
+      "brand": "VW", 
+      "image": "images/car_brands/vw.png"
+    }
+  }
+  
+
+]

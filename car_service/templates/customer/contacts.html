@@ -1,0 +1,52 @@
+{% extends 'customer/new-base.html' %} 
+
+{% block content %}
+    <sidebar class="contacts">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <i class="fas fa-address-book"></i>
+            </div>
+            <div class="flip-card-back">
+                <span>
+                    <h2>Email:</h2>
+                    <p>service_auto@gmail.com</p>
+                </span>
+
+                <span>
+                    <h2>Phone:</h2>
+                    <p>+ 359 888 888 888</p>
+                </span>
+                
+            </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <div class="flip-card-back">
+                <span>
+                    <h2>Work hour:</h2>
+                    <p>Monday - Friday</p>
+                    <p>09:00 - 18:00</p>
+                </span>
+            </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <i class="fas fa-map-marked-alt"></i>
+            </div>
+            <div class="flip-card-back">
+                <h1>Address:</h1>
+                <p>Гр. София, Ж.к Враждебна 3</p>
+            </div>
+            </div>
+        </div>
+    </sidebar>
+{% endblock %}

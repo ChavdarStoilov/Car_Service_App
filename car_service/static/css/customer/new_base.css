@@ -304,3 +304,77 @@ input[type=submit], .btn {
     width: 160px;
     height: 120px;
 }
+
+
+
+
+/* Contacts page */
+
+.contacts{
+    position: absolute;
+    z-index: 98;
+    top: 46px;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+
+.flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 300px;
+    perspective: 1000px;
+    z-index: 98;
+    color: bisque;
+    position: relative;
+    top: 120px;
+}
+
+.fas {
+    font-size: 200px;
+    padding: 50px;
+    
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(-180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 20px;
+
+
+}
+
+.flip-card-front {
+    color: rgb(187, 190, 192);
+    background-color: rgba(49, 101, 141, 0.7);
+
+}
+
+.flip-card-back {
+    background-color: rgba(49, 101, 141, 0.9);
+    color: white;
+    transform: rotateY(180deg);
+}

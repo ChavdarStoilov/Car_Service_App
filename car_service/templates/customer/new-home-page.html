@@ -3,8 +3,6 @@
 
 {% block content %}
 
-    <section class="hero">
-        <img src="{% static 'images/background-img.png' %}" alt="">
         <sidebar class="sidebar">
             <nav class="navigation">
                 <ul>
@@ -22,26 +20,12 @@
                         <a href="" class="navigation__links navigation__gallery"><i class="fas fa-images"> Gallery</i></a>
                     </li>
                     <li class="navigation__list">
-                        <a href="" class="navigation__links navigation__contacts"><i class="fas fa-address-card"> Contacts</i></a>
+                        <a href="{% url 'contacts' %}" class="navigation__links navigation__contacts"><i class="fas fa-address-card"> Contacts</i></a>
                     </li>
                 </ul>
             </nav>
         </sidebar>
-    </section>
-
-
-    <section class="brands">
-        <div class="items">
-            <img src="{% static 'images/car_brands/audi.png' %}" alt="" class="brands__logo">
-            <img src="{% static 'images/car_brands/bently.png' %}" alt="" class="brands__logo">
-            <img src="{% static 'images/car_brands/bugatti.png' %}" alt="" class="brands__logo">
-            <img src="{% static 'images/car_brands/lamborgini.png' %}" alt="" class="brands__logo">
-            <img src="{% static 'images/car_brands/porsche.png' %}" alt="" class="brands__logo">
-            <img src="{% static 'images/car_brands/seat.png' %}" alt="" class="brands__logo">
-            <img src="{% static 'images/car_brands/skoda.png' %}" alt="" class="brands__logo">
-            <img src="{% static 'images/car_brands/vw.png' %}" alt="" class="brands__logo">
-        </div>
-    
-    </section>
-
+   
 {% endblock %}
+    
+
