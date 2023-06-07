@@ -2,7 +2,8 @@
 {% load static %}
 
 {% block content %}
-    
+    {% block cover_car %}
+    {% endblock %}
     <div class="garage__page">
 
         <section class="title__content">
@@ -15,29 +16,34 @@
                 <h3>There not have cars</h3>
             {% else %}
                 {% for car in cars %}
-                    <div class="col-md-{{ car.pk }}">
-                        <div class="card rounded">
-                            <div class="card-image">
-                                {% if car.repair %}
-                                    <a href="#"><i class="card-notify-repair fas fa-tools"></i></a>
-                                {% endif %}
-                                {% if car.brand.get_image %}
-                                    <img class="img-fluid" src="{% static 'images/car_brands/' %}{{ car.brand.get_image }}" alt="{{ car.img.brand }}" />
-                                {% else %}
-                                    <img class="img-fluid" src="{% static 'images/car_brands/default_car.png' %}" alt="Default car" />
-                                {% endif %}
-                            </div>
-                            <div class="card-body text-center">
-                                <div class="ad-title m-auto">
-                                    <h5>{{ car.model }}</h5>
-                                    <div class="card-image-overlay m-auto">
-                                        {% if car.kilometers %}
-                                            <span class="card-detail-km">{{ car.kilometers }} km</span>
-                                        {% endif %}
-                                    </div>
+                    <div class="cards col-md-{{ car.pk }}">
+                        <div class="card card-{{ car.pk }}">
+                            {% if car.repair %}
+                                <a href="#"><i class="card-notify-repair fas fa-tools"></i></a>
+                            {% endif %}
+                            <div class="card-front">
+                                <div class="card-image">
+                                    {% if car.brand.get_image %}
+                                        <img class="img-fluid" src="{% static 'images/car_brands/' %}{{ car.brand.get_image }}" alt="{{ car.img.brand }}" />
+                                    {% else %}
+                                        <img class="img-fluid" src="{% static 'images/car_brands/default_car.png' %}" alt="Default car" />
+                                    {% endif %}
                                 </div>
-                                <a class="edit-btn" href="{% url 'car edit page' car.pk %}">Details</a>
-                                {% comment %} <a class="delete-btn" href="{% url 'car details page' car.pk %}">Delete</a> {% endcomment %}
+
+                                <div class="card-body text-center">
+                                    <div class="ad-title m-auto">
+                                        <h5>{{ car.model }}</h5>
+                                        <div class="card-image-overlay m-auto">
+                                            {% if car.kilometers %}
+                                                <span class="card-detail-km">{{ car.kilometers }} km</span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <a class="edit-btn" onclick="rotateCarCard('col-md-{{ car.pk }}', {{ car.pk }});">Details</a>
+                                    {% comment %} <a class="delete-btn" href="{% url 'car details page' car.pk %}">Delete</a> {% endcomment %}
+                                </div>
+                            </div>
+                            <div class="card-back">
                             </div>
                         </div>
                     </div>
@@ -45,4 +51,7 @@
             {% endif %}
         </section>
     </div>
+{% endblock  %}
+
+{% block footer %}
 {% endblock  %}

@@ -85,7 +85,6 @@ class CarRepairProcessView(TemplateView):
         return context
     
     
-    
 def error_page(request):
     return render(request, '404.html')
 

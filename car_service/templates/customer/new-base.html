@@ -47,7 +47,9 @@
     </header>
     <main class='main__content'>
         <section class="hero">
-            <img src="{% static 'images/background-img.png' %}" alt="">
+            {% block cover_car %}
+                <img src="{% static 'images/background-img.png' %}" alt="">
+            {% endblock  %}
             {% block content %}
             {% endblock %}
         </section>
@@ -66,5 +68,7 @@
         
         </section>
     {% endblock %}
+
+    <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
 </body>
 </html>

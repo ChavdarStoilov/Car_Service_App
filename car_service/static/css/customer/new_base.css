@@ -41,7 +41,7 @@ header {
 }
 
 .auth_background {
-    position: absolute;
+    position: fixed;
     z-index: -100;
     width: 100%;
     height: 100%;
@@ -106,7 +106,12 @@ header {
 
 .main__content {
     margin: 15px 0px 0px 0px;
-    margin-top: -400px;
+    /* margin-top: -400px; */
+
+    border-top: 2px solid whitesmoke;
+    top: 10px;
+    padding-top: -10px;
+    margin-top: -285px;
 }
 
 .hero {
@@ -127,7 +132,7 @@ header {
 
 .hero > img {
     position: absolute;
-    margin-top: 46px;
+    /* margin-top: 46px; */
     width: 100%;
     height: 150%;
     object-fit: cover;
@@ -191,7 +196,6 @@ header {
 /* Another pages */
 
 .pofile__data, .content__car__detials, .content__add__car{
-    margin: 130px 15px 0px 0px;
     text-align: center;
     border-radius: 5px;
     padding: 30px 40px 60px 40px;
@@ -313,7 +317,7 @@ input[type=submit], .btn {
 .contacts{
     position: absolute;
     z-index: 98;
-    top: 46px;
+    /* top: 46px; */
     background: rgba(0, 0, 0, 0.5);
     width: 100%;
     height: 600px;
@@ -377,4 +381,113 @@ input[type=submit], .btn {
     background-color: rgba(49, 101, 141, 0.9);
     color: white;
     transform: rotateY(180deg);
+}
+
+
+
+/* Garage Page */
+
+.title__content__title {
+    margin-top: 0px;
+}
+.garage__page {
+    position: relative;
+    z-index: 99;
+    top: 100px;
+    text-align: center;
+}
+
+.garage__page__cars {
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 20px auto;;
+}
+
+
+.card{
+    position: relative;
+    width: 280px;
+    height: 390px;
+    padding: 55px;
+    margin-top: 30px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+    border-radius: 4px;
+    transition: transform 0.4s;
+    transform-style: preserve-3d;
+}
+
+.card-front, .card-back{
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 20px;  
+}
+
+.card-back {
+    display: none;
+}
+
+.img-fluid {
+    width: 180px;
+    height: 140px;
+}
+
+.card-image-overlay span {
+    display: inline-block;              
+    font-size: 12px;
+}
+
+
+
+.card-notify-repair {
+    position: absolute;
+    top: -8px;
+    right: -2px;
+    font-size: 20px;
+    color: red;
+    cursor: pointer;
+    margin-right: 0px;
+}
+
+.edit-btn, .delete-btn{
+    width: 80px;
+    height: 40px;
+    border-radius: 80px;
+    font-size: 16px;
+    line-height: 35px;
+    text-align: center;
+    border: 3px solid #31658d;
+    display: inline-block;
+    text-decoration: none;
+    margin: 15px auto 1px auto;
+    color: #000;
+    overflow: hidden;        
+    position: relative;
+    background-color: #31658d;
+}
+
+.delete-btn {
+    border: 3px solid #da3a3a;
+    background-color: #ee3945;
+}
+
+.edit-btn:hover, .delete-btn:hover{
+    background-color: #e6de08;
+    color: #1e1717;
+    border: 2px solid #4e4f4f;
+    background: transparent;
+    transition: all 0.3s ease;
+    box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+}
+.delete-btn:hover {
+    border: 2px solid #e60808;
+
+}
+
+.ad-title h5 {
+    margin-bottom: 10px;
 }
