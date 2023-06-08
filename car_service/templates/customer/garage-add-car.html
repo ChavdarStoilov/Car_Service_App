@@ -1,6 +1,8 @@
 {% extends 'customer/new-base.html' %}
 
 {% block content %}
+{% block cover_car %}
+{% endblock %}
     <section class="content__add__car">
         <a href="{% url 'garage' %}" class="back"><i class="fas fa-arrow-alt-circle-left"></i></a>
         <h1>Add Car</h1>
@@ -10,4 +12,7 @@
             <input type="submit" value="Add" class='btn'/>
         </form>
     </section>
+{% endblock  %}
+
+{% block footer %}
 {% endblock  %}

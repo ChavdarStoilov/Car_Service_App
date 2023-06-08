@@ -76,13 +76,20 @@ class CarEditView(TemplateView):
 
 
 class CarRepairProcessView(TemplateView):
-    template_name = 'customer/car-repair_process.html'
+    template_name = 'customer/car-repair-process.html'
     
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        car = CarQueue.objects.get(pk = kwargs['pk'])
-        context['car'] = car
+        try:
+            car = CarQueue.objects.get(pk = kwargs['pk'])
+            context['car'] = car
+            
+        except:
+            return redirect(reverse_lazy('garage'))
+        
         return context
+
+        
     
     
 def error_page(request):

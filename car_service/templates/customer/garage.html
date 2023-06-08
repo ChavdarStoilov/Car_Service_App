@@ -19,7 +19,7 @@
                     <div class="cards col-md-{{ car.pk }}">
                         <div class="card card-{{ car.pk }}">
                             {% if car.repair %}
-                                <a href="#"><i class="card-notify-repair fas fa-tools"></i></a>
+                                <a href="{% url 'car process page' car.pk %}" onclick='carQueue({{ car.pk }});'><i class="card-notify-repair fas fa-tools"></i></a>
                             {% endif %}
                             <div class="card-front">
                                 <div class="card-image">

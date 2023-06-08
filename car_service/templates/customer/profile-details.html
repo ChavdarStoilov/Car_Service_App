@@ -1,6 +1,8 @@
 {% extends 'customer/new-base.html' %}
 {% load static %}
 {% block content %}
+    {% block cover_car %}
+    {% endblock %}
     <section class="pofile__data">
 
         <a href="{% url 'garage' %}" class="back"><i class="fas fa-arrow-alt-circle-left"></i></a> 
@@ -12,4 +14,6 @@
             <input type="submit" value="Save" class="sub"/>
         </form>
     </section>
+{% endblock  %}
+{% block footer %}
 {% endblock  %}

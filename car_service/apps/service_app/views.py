@@ -89,3 +89,4 @@ class AddCustomerView(IndexView):
         
         return redirect(reverse_lazy('customers page'))
     
+    

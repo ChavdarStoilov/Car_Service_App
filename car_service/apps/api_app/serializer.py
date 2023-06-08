@@ -1,4 +1,4 @@
-from ..service_app.models import Cars
+from ..service_app.models import Cars, CarQueue
 from rest_framework import serializers
 
 
@@ -10,4 +10,11 @@ class CarsSerializer(serializers.ModelSerializer):
             'year',
             'VIN',
             'kilometers',
+        ]
+        
+class CarQueueSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CarQueue
+        fields = [
+            'status',
         ]
