@@ -55,3 +55,12 @@ function BackrotateCarCard(cardId, pk) {
         display: block;
     `
 }
+
+
+
+function carQueue(pk) {
+    console.log(pk);
+    // active
+    // <i class="fas fa-check"></i>
+    // active-bar
+}

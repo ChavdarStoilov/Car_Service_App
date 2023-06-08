@@ -123,6 +123,7 @@ class RepairHistory(models.Model):
 class CarQueue(models.Model):
     TYPE_STATUS = (
         ('Awaiting To Take', 'Awaiting To Take'),
+        ('Investigating Car', 'Investigating Car'),
         ('In Progress', 'In Progress'),
         ('Done', 'Done'),
         
@@ -143,7 +144,7 @@ class CarQueue(models.Model):
     
     status = models.CharField(
         choices=TYPE_STATUS,
-        max_length=16,
+        max_length=20,
         null=True,
         blank=True,
     )

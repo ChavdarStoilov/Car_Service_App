@@ -1,3 +1,36 @@
-{% extends 'customer/base.html' %}
+{% extends 'customer/new-base.html' %}
 
 
+{% block content %}
+    {% block cover_car %}
+    {% endblock %}
+    <div class="md-stepper-horizontal orange">
+        <div class="md-step Awaiting-To-Take">
+            <div class="md-step-circle"><i class="fas fa-check"></i></div>
+            <div class="md-step-title">Queue</div>
+            <div class="md-step-bar-left"></div>
+            <div class="md-step-bar-right"></div>
+        </div>
+        <div class="md-step editable">
+            <div class="md-step-circle"><span>2</span></div>
+            <div class="md-step-title">Taked</div>
+            <div class="md-step-bar-left"></div>
+            <div class="md-step-bar-right"></div>
+        </div>
+        <div class="md-step">
+            <div class="md-step-circle"><span>3</span></div>
+            <div class="md-step-title">Wokring</div>
+            <div class="md-step-bar-left"></div>
+            <div class="md-step-bar-right"></div>
+        </div>
+        <div class="md-step">
+            <div class="md-step-circle"><span>4</span></div>
+            <div class="md-step-title">Finished</div>
+            <div class="md-step-bar-left"></div>
+            <div class="md-step-bar-right"></div>
+        </div>
+  </div>
+
+{% endblock  %}
+{% block footer %}
+{% endblock  %}
