@@ -105,7 +105,19 @@ class CarHistoryView(TemplateView):
     
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        car_history = RepairHistory.objects.get(pk = kwargs['pk'])
-        context['history'] = car_history.hisory
+        car_history = RepairHistory.objects.filter(car_id = kwargs['pk'])
+        print(car_history)
+        # context['history'] = car_history.hisory
         return context
+
     
+'''
+1	{
+  "Date": "11.10.2022", 
+  "Kilometers": "100 000",
+  "Changed parts": {
+    "Oil Filter SWAG": 20, 
+    "Oil Castrol 5w40": 100}
+  
+}
+'''
