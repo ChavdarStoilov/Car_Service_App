@@ -16,8 +16,15 @@ function rotateCarCard(cardId, pk) {
             <p>Year: ${data.year}</p>
             <p>VIN: ${data.VIN}</p>
             <p>Kilometers: ${data.kilometers}</p>
+            
             <a class="edit-btn" onclick="BackrotateCarCard('col-md-${pk}', ${pk});">Back</a>
+            
         `
+        if (data.history_id != null) {
+            cardBackContent.innerHTML += `
+                <a class="edit-btn" href="/garage/history/${pk}">History</a>
+            `
+        }
     }
 
     card.style.cssText = `

@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from .forms import ProfileForm, AddCarFrom, CarDetailsForm
 from .models import CustomerProfile
 from django.urls import reverse_lazy
-from ..service_app.models import Cars, CarQueue, CarBrand
+from ..service_app.models import Cars, CarQueue, CarBrand, RepairHistory
 from ..auth_app.models import AppUsers
 
 class IndexView(TemplateView):
@@ -98,3 +98,14 @@ def error_page(request):
 
 class ContactsView(IndexView, TemplateView):
     template_name ='customer/contacts.html'
+    
+    
+class CarHistoryView(TemplateView):
+    template_name = 'customer/car-history.html'
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        car_history = RepairHistory.objects.get(pk = kwargs['pk'])
+        context['history'] = car_history.hisory
+        return context
+    

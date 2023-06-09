@@ -33,7 +33,7 @@ class AddCarFrom(forms.ModelForm):
     brand = forms.ChoiceField( 
         choices=CHOICES, 
         required=False,
-        widget=forms.Select(attrs={'class':'brands'})
+        widget=forms.Select(attrs={'class':'brands-choide'})
     )
     
     

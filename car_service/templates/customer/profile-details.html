@@ -7,11 +7,11 @@
 
         <a href="{% url 'garage' %}" class="back"><i class="fas fa-arrow-alt-circle-left"></i></a> 
         
-        <h1> Your Profile data</h1>
+        <h1 class='title__content__title'> Your Profile data</h1>
         <form method="POST" action="{% url 'profile' %}">
             {{ form_profile.as_div }}
             {% csrf_token %}
-            <input type="submit" value="Save" class="sub"/>
+            <input type="submit" value="Save" class="btn-submit"/>
         </form>
     </section>
 {% endblock  %}

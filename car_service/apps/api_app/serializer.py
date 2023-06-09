@@ -10,6 +10,7 @@ class CarsSerializer(serializers.ModelSerializer):
             'year',
             'VIN',
             'kilometers',
+            'history_id',
         ]
         
 class CarQueueSerializer(serializers.ModelSerializer):

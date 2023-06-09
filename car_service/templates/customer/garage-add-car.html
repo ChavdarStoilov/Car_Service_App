@@ -4,12 +4,12 @@
 {% block cover_car %}
 {% endblock %}
     <section class="content__add__car">
-        <a href="{% url 'garage' %}" class="back"><i class="fas fa-arrow-alt-circle-left"></i></a>
-        <h1>Add Car</h1>
+        <a href="{% url 'garage' %}" class="back"><i class="fas fa-arrow-alt-circle-left"> Back</i></a>
+        <h1 class='title__content__title' >Add Car</h1>
         <form method="POST" action="{% url 'customer add car page' %}" >
             {{ form.as_div }}
             {% csrf_token %}
-            <input type="submit" value="Add" class='btn'/>
+            <input type="submit" value="Add" class='btn-submit'/>
         </form>
     </section>
 {% endblock  %}

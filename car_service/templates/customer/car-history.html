@@ -1,0 +1,40 @@
+{% extends 'customer/new-base.html' %}
+
+
+{% block content %}
+    {% block cover_car %}
+    {% endblock  %}
+    <section class="car__hisotry">
+        <h1 class='title__content__title' >Car Hisotry</h1>
+
+        {% if history %}
+            {% for row in history %}
+                {% for key, value in row.items %}
+                    <div class='field'>
+                        {% if key == 'Price' %}
+                            <p>{{ key }}: {{ value }} лв</p>
+                        {% elif key == 'Kilometars' %}
+                            <p>{{ key }}: {{ value }} км</p>
+                        {% elif key == 'Changed parts'%}
+                                <p>{{ key }}: </p>
+                                <ul class="list__parts">
+                                    {% for part in value %}
+                                        
+                                        <li>{{ part }}</li>
+                                    
+                                    {% endfor %}
+                                </ul>
+                        {% else %}
+                            <p>{{ key }}: {{ value }}</p>    
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% else %}
+            <h2>There not have history</h2>
+        {% endif %}
+    </section>
+{% endblock  %}
+
+{% block footer %}
+{% endblock %}

@@ -106,7 +106,6 @@ header {
 
 .main__content {
     margin: 15px 0px 0px 0px;
-    /* margin-top: -400px; */
 
     border-top: 2px solid whitesmoke;
     top: 10px;
@@ -142,7 +141,6 @@ header {
 .sidebar {
     position: absolute;
     z-index: 98;
-    top: 46px;
     right: 0px;
     background: rgba(0, 0, 0, 0.5);
     width: 800px;
@@ -192,6 +190,21 @@ header {
 }
 
 
+.btn-submit {
+    margin: 10px 0px 10px 0px;
+    position: absolute;
+    left: 79%;
+    font-size: 20px;
+    text-align: center;
+    padding: 15px 40px;
+    border: 1px solid #4d99e3;
+    border-radius: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    background-color: #31658d;
+}
+
 
 /* Another pages */
 
@@ -208,7 +221,7 @@ form, .details{
     text-align: right;
 }
 
-.field, .brands {
+.field, .brands-choide {
     text-align: center;
     width: 30%;
     padding: 12px 20px;
@@ -218,6 +231,7 @@ form, .details{
     border-radius: 4px;
     box-sizing: border-box;
 }
+
 
 .fas {
     margin-right: 10px;
@@ -389,7 +403,9 @@ input[type=submit], .btn {
 
 .title__content__title {
     margin-top: 0px;
+    font-size: 30px;
 }
+
 .garage__page {
     position: relative;
     z-index: 99;
@@ -402,7 +418,10 @@ input[type=submit], .btn {
     align-content: center;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    margin: 20px auto;;
+    margin: 20px auto;
+    width: 50%;
+    gap: 15px;
+    padding: 20px;
 }
 
 
@@ -614,4 +633,28 @@ input[type=submit], .btn {
 
 .fa-check {
     margin-right: 0px;
+}
+
+
+
+/* Car History Page */
+.car__hisotry {
+    padding: 100px;
+    text-align: center;
+    background-color: rgba(0,0,0, 0.3);
+    width: 50%;
+    margin: 0 auto;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    position: relative;
+    top: 100px;
+}
+
+.list__parts {
+    height: 123px;
+    width: 88%;
+    overflow: hidden;
+    overflow-y: hidden;
+    overflow-y: scroll;
+    margin: 20px auto;
 }
