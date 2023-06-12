@@ -13,6 +13,7 @@
                     <tr>
                         <th>Date</th>
                         <th>Invoice number</th>
+                        <th>Kilometers</th>
                         <th>Total Price</th>
                         <th>Actions</th>
                     </tr>
@@ -22,6 +23,7 @@
                         <tr>
                             <td>{{ row.date }}</td>
                             <td>№ {{ row.number }}</td>
+                            <td>{{ row.kilometers }} km</td>
                             <td>{{ row.total_price }}</td>
                             <td><a class="btn__action" onClick="genereateInvoice({{ row.number }});">Invoice</a>
                         </tr>

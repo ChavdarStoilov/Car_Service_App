@@ -208,7 +208,10 @@ header {
 
 /* Another pages */
 
-.pofile__data, .content__car__detials, .content__add__car{
+.pofile__data, 
+.content__car__detials, 
+.content__add__car,
+.car__hisotry{
     text-align: center;
     border-radius: 5px;
     padding: 30px 40px 60px 40px;
@@ -241,39 +244,6 @@ form, .details{
 .pofile__data {
    position: relative;
 }
-
-/* .pofile__data::before {
-   content: "";
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   background-image: url('../../images/check-engine-light.jpg');
-   background-repeat: no-repeat;
-   background-size: cover;
-   opacity: 0.5;
-} */
-/* .btn {
-    text-decoration: none;
-    color: #000;
-    border: 2px solid #e6de08;
-    border-radius: 20px;
-    padding: 10px 14px;
-    backgro und-color: #e6de08;
-}
-
-
-.btn:hover {
-    background: transparent;
-    
-}
-
-input[type=submit], .btn {
-    margin: 10px 0px 10px 0px;
-    position: absolute;
-    left: 82%;
-} */
 
 .blur{
     background: rgba(0, 0, 0, 0.7);
@@ -639,10 +609,7 @@ input[type=submit], .btn {
 
 /* Car History Page */
 
-.car__hisotry {
-    text-align: center;
 
-}
 
 .container {
 	position: absolute;
