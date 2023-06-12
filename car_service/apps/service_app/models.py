@@ -52,13 +52,6 @@ class CarBrand(models.Model):
         return self.brand
     
     
-class TestCarsBrands(models.Model):
-    brand = models.CharField()
-    model = models.CharField(
-        
-    )
-    # variants = models.CharField()
-    
 class Cars(models.Model):
     
     brand = models.ForeignKey(
@@ -84,12 +77,10 @@ class Cars(models.Model):
         blank=True,
         unique=True
     )
-    history_id = models.OneToOneField(
-        to='RepairHistory',
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True,
+    have_history= models.BooleanField(
+        default=False,
     )
+    
     user_id = models.ForeignKey(
         CustomerProfile,
         on_delete=models.CASCADE,
@@ -100,21 +91,19 @@ class Cars(models.Model):
 class RepairHistory(models.Model):
     def default_json():
         return  {
-            "date": "",
-            "parts": {
-                "part_name": "",
-                "price": "",
-            },
-            "mechanic": "",
+            "Date": "", 
+            "Kilometers": "",
+            "Changed parts": {
+                
+            }
         }
         
-    car_id = models.OneToOneField(
+    car_id = models.ForeignKey(
         Cars,
-        primary_key=True,
         on_delete=models.CASCADE,        
 
     )
-    hisory = models.JSONField(
+    history = models.JSONField(
         default=default_json
     )
     

@@ -20,7 +20,7 @@ function rotateCarCard(cardId, pk) {
             <a class="edit-btn" onclick="BackrotateCarCard('col-md-${pk}', ${pk});">Back</a>
             
         `
-        if (data.history_id != null) {
+        if (data.have_history) {
             cardBackContent.innerHTML += `
                 <a class="edit-btn" href="/garage/history/${pk}">History</a>
             `
