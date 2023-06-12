@@ -105,11 +105,26 @@ class CarHistoryView(TemplateView):
     
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        car_history = RepairHistory.objects.filter(car_id = kwargs['pk'])
-        print(car_history)
-        # context['history'] = car_history.hisory
-        return context
+        cars_history = RepairHistory.objects.filter(car_id = kwargs['pk'])
+        date_invoice_number = []
+        
+        for row in cars_history:
+            car_history_datails = row.history
+            
+            total_price = sum([int(price) for price in car_history_datails['Changed parts'].values()])
+            
+            date_invoice_number.append(
+                {
+                    'date': car_history_datails['Date'],
+                    'number':row.pk,
+                    'total_price':total_price
+            
+                }
+            ) 
 
+        context['history'] = date_invoice_number
+        return context
+        
     
 '''
 1	{

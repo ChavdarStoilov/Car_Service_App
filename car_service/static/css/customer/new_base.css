@@ -25,7 +25,7 @@ header {
 .header__logo {
     padding-right: 300px;
     clip-path: polygon(0px 0px, 88% 0px, 71.67% 100.00%, 0% 100%);
-    z-index: 95;
+    /* z-index: 95; */
     background: #e3e3e3;
     margin-left: -25px;
     padding-left: 80px;
@@ -638,23 +638,183 @@ input[type=submit], .btn {
 
 
 /* Car History Page */
+
 .car__hisotry {
-    padding: 100px;
     text-align: center;
-    background-color: rgba(0,0,0, 0.3);
-    width: 50%;
-    margin: 0 auto;
-    border-top-right-radius: 30px;
-    border-bottom-left-radius: 30px;
-    position: relative;
-    top: 100px;
+
 }
 
-.list__parts {
-    height: 123px;
-    width: 88%;
-    overflow: hidden;
-    overflow-y: hidden;
-    overflow-y: scroll;
-    margin: 20px auto;
+.container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
+
+.history__table {
+	width: 1200px;
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.history__table th, .history__table td {
+	padding: 15px;
+	background-color: rgba(255,255,255,0.7);
+	color: #000000;
+}
+
+.history__table th {
+    background-color: #31658d;
+}
+
+.history__table tr:hover {
+    background-color: rgba(255,255,255,0.2)
+}
+
+.btn__action {
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 6px 8px;
+    margin: 2px;
+    cursor: pointer;
+}
+.btn__action:hover {
+    background-color: #31658d;
+}
+
+/* History PopUp window */
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    display: none;
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup {
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 65%;
+    position: relative;
+    transition: all 5s ease-in-out;
+    height: 95%;
+}
+  
+.popup h2 {
+    margin-top: 0;
+    color: #333;
+    font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+.popup .close:hover {
+    color: #06D85F;
+}
+.popup .content {
+    max-height: 70%;
+    /* overflow: auto; */
+}
+
+.close {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
+}
+
+/* Invoice  */
+.invoice {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 40px;
+}
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+#logo {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+#logo img {
+    width: 90px;
+  }
+  
+.invoice__title {
+    border-top: 1px solid  #5D6975;
+    border-bottom: 1px solid  #5D6975;
+    color: #5D6975;
+    font-size: 25px;
+    line-height: 1.4em;
+    font-weight: normal;
+    text-align: center;
+    margin: 0 0 20px 0;
+}
+  
+
+.invoice__table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 20px;
+  }
+  
+.invoice__table tr:nth-child(2n-1) td {
+    background: #F5F5F5;
+  }
+  
+  
+.invoice__table th {
+    padding: 5px 20px;
+    color: #5D6975;
+    border-bottom: 1px solid #C1CED9;
+    white-space: nowrap;        
+    font-weight: normal;
+  }
+
+.table_body {
+    height: 70px;
+}
+.td__center {
+    text-align: center;
+}
+.td__right {
+    text-align: right;
+}
+
+.table_footer {
+    height: 100px;
+}
+.invoice__total {
+   border-top: 2px solid black;
+}
+

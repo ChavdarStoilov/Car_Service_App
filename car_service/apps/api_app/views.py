@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from ..service_app.models import Cars, CarQueue
-from .serializer import CarsSerializer, CarQueueSerializer
+from ..service_app.models import Cars, CarQueue, RepairHistory
+from .serializer import CarsSerializer, CarQueueSerializer, RepairHistorySerializer
 from django.http import Http404
 # from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -37,4 +37,17 @@ class CarQueueApiVeiw(APIView):
     def get(self, request, pk, format=None):
         snippet = self.get_object(pk)
         serializer = CarQueueSerializer(snippet)
+        return Response(serializer.data)
+    
+    
+class InvoiceApiView(APIView):
+    def get_object(self, pk):
+        try:
+            return RepairHistory.objects.get(pk=pk)
+        except RepairHistory.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        snippet = self.get_object(pk)
+        serializer = RepairHistorySerializer(snippet)
         return Response(serializer.data)
