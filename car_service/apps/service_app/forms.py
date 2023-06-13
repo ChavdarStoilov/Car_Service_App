@@ -4,14 +4,23 @@ from django.contrib.auth import get_user_model, forms as auth_forms
 
 UserModel = get_user_model()
 
-class CarQueueFrom(forms.ModelForm):
-    
+class CarQueueFrom(forms.ModelForm):    
     class Meta:
         model = CarQueue
         
         fields = (
-            '__all__'
+          "car_id",
+          "mechanic_id",
+          "status",
         )
+        
+    def save(self, commit=True):
+      car_id = self.instance.car_id.pk
+      super().save(commit=commit)
+      car = Cars.objects.get(pk = car_id)
+      car.repair  = True
+      if commit:
+        car.save()
         
 class AddCarFrom(forms.ModelForm):
     

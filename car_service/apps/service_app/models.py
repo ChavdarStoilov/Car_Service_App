@@ -37,6 +37,10 @@ class PersonalProfile(models.Model):
     )
     
     
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+    
+    
 class CarBrand(models.Model):
     id = models.AutoField(
         primary_key=True
@@ -86,6 +90,9 @@ class Cars(models.Model):
         on_delete=models.CASCADE,
 
     )
+    
+    def __str__(self):
+        return f"{self.brand} - {self.registration_number}"
 
     
 class RepairHistory(models.Model):
@@ -121,14 +128,17 @@ class CarQueue(models.Model):
         Cars,
         primary_key=True,
         on_delete=models.CASCADE,
+        verbose_name="Customer Car",
+        
 
     )
     
-    mechanic_id = models.OneToOneField(
+    mechanic_id = models.ForeignKey(
         PersonalProfile,
         on_delete=models.CASCADE,
         null=True,
         blank=True,
+        verbose_name="Mechanic",
     )
     
     status = models.CharField(

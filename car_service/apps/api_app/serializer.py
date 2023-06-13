@@ -12,6 +12,8 @@ class CarsSerializer(serializers.ModelSerializer):
             'kilometers',
             'have_history',
         ]
+    
+        
         
 class CarQueueSerializer(serializers.ModelSerializer):
     class Meta:

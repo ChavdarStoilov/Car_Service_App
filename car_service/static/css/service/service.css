@@ -70,12 +70,6 @@
     font-size: 15px;
 } */
 .container-table{
-  /* width: 60%; */
-  /* height: 100vh;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-wrap: wrap; */
   padding: 33px 30px;
 }
 
@@ -106,13 +100,21 @@
   color: white;
 }
 
-
+.choice__filed {
+    border: 1px solid #777;
+    border-radius: 8px;
+    font-family: inherit;
+    padding: 8px;
+    text-align: center;
+}
 .btn__action {
     border: 2px solid black;
     border-radius: 20px;
     padding: 6px 8px;
     margin: 2px;
     cursor: pointer;
+    text-decoration: none;
+    color: black;
 }
 
 .details:hover {
@@ -126,4 +128,68 @@
 
 .move:hover {
     background-color: darkslategrey;
+}
+
+
+/* Form style */
+
+.adding__from {
+    background-color: #fff;
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 30px 20px;
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Styling form-control Class */
+.form-control {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+/* Styling form-control Label */
+.form-control label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Styling form-control input,
+select, textarea */
+.form-control input,
+.form-control select,
+.form-control textarea{
+    border: 1px solid #777;
+    border-radius: 2px;
+    font-family: inherit;
+    padding: 8px;
+    display: block;
+    width: 95%;
+}
+
+/* Styling form-control Radio
+button and Checkbox */
+.form-control input[type="radio"],
+.form-control input[type="checkbox"] {
+    display: inline-block;
+    width: auto;
+}
+
+/* Styling Button */
+button {
+    background-color: #0b9b58;
+    border: 1px solid #777;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 20px;
+    display: block;
+    width: 50%;
+    margin-top: 27px;
+    margin-bottom: -14px;
+    margin: 20px auto;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #05c46b;
+
 }

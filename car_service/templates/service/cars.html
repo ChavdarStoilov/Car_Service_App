@@ -21,8 +21,9 @@
                         <td>
                             <a class="btn__action details"{% comment "url for detail" %}href="{% url 'car detail' car.pk %}"{% endcomment %}>Detail</a>
                             <a class="btn__action delete"{% comment "url for delete" %}href="{% url 'car detail' car.pk %}"{% endcomment %}>Delete</a>
-                            <a class="btn__action move"{% comment "url for delete" %}href="{% url 'car detail' car.pk %}"{% endcomment %}>Move to Repair</a>
-
+                            {% if not car.repair %}
+                                <a class="btn__action move" href="{% url 'add car in queue' %}">Move to Repair</a>
+                            {% endif %}
                         </td>
 
                     </tr>

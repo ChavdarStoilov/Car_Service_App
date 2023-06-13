@@ -17,7 +17,7 @@
                         <td>{{ car.car_id.model }}</td>
                         <td>{{ car.car_id.registration_number }}</td>
                         <td>
-                            <select id='choice'>
+                            <select id='choice' class="choice__filed">
                                 {% for choice in car.get_choices %}
                                     {% if choice != car.status %}
                                         <option value="{{ choice }}">{{ choice }}</option>

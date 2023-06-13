@@ -3,10 +3,19 @@
 {% block title %}Sing In Page{% endblock  %}
 
 {% block contant %}
-    <form method="POST" action = "{% url 'singin page' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
+    <div class="login-box">
+        <h2>Login</h2>
+        <form method="POST" action = "{% url 'singin page' %}">
+            {% for field in form %}
+                <div class="user-box">
+                    {{ field.errors }}
+                    {{ field.label_tag }} {{ field }}
+                </div>
+            {% endfor %}
+            {% csrf_token %}
 
-        <input type="submit" value="Login" />
-    </form>
+
+            <input type="submit" value="Login" class="login__btn" />
+        </form>
+    </div>
 {% endblock %}

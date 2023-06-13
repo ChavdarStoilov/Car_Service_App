@@ -1,15 +1,18 @@
 {% extends 'service/base.html' %}
 
 {% block main %}
-    <form class="adding__from" method="POST" action="{% url 'add customer page' %}">
-        <h2>Create Customer From</h2>
-        {% for field in customer_form %}
+    <form class="adding__from" action="{% url 'add car in queue' %}" method="POST">
+        <h2>Move to Queue Form</h2>
+
+        {% for field in queue_from %}
             <div class="form-control">
                 {{ field.errors }}
                 {{ field.label_tag }} {{ field }}
             </div>
         {% endfor %}
         {% csrf_token %}
-        <button>Add customer</button>
+        <button>Save</button>
     </form>
+
 {% endblock  %}
+    
