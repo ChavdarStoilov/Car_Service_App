@@ -3,7 +3,7 @@ from .models import PersonalProfile, Cars, CarQueue, CustomerProfile
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from .forms import AddCarFrom, AddCustomerFrom, CarQueueFrom
+from .forms import AddCarFrom, AddCustomerFrom, AddCarQueueFrom
 
 class IndexView(LoginRequiredMixin, TemplateView):
     template_name = "service/index.html"
@@ -31,6 +31,14 @@ class CarQueueVeiw(IndexView):
         
         return context
 
+    def post(self, request):
+        car_pk = int(request.POST.get('submitter')[0])
+        new_status = request.POST.get('submitter')[2:]
+        if car_pk:
+            car = CarQueue.objects.get(pk=car_pk)
+            car.status=new_status
+            car.save()
+        return redirect(reverse_lazy('car queue'))
         
     
 class CarsVeiw(IndexView):
@@ -56,7 +64,7 @@ class AddCarView(IndexView):
         if form.is_valid():
             form.save()
         
-        return redirect(reverse_lazy('cars'))
+        return redirect(reverse_lazy('car'))
     
     
 class CustomersView(IndexView):
@@ -90,11 +98,11 @@ class AddCarInQueueView(IndexView):
     
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['queue_from'] = CarQueueFrom()
+        context['queue_from'] = AddCarQueueFrom()
         return context
     
     def post(self, request):
-        form = CarQueueFrom(request.POST)
+        form = AddCarQueueFrom(request.POST)
 
         if form.is_valid():
             form.save()

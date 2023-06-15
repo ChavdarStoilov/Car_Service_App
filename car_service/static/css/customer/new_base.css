@@ -577,12 +577,9 @@ form, .details{
     border-top: 4px solid #31658D;
     background-size: 600% 600%;
     animation: blink2 .5s step-end infinite alternate;
+
 }
-/* .box {
-    background: linear-gradient(80deg, #f3efef, #90009f, #01060d);
-    background-size: 600% 600%;
-    animation: AnimationName 29s ease infinite;
-} */
+
 
 @keyframes blink2 {
     50% {

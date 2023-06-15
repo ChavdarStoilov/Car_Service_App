@@ -1,6 +1,5 @@
 
 function updateStatus(){
-    console.log("ok");
     var mySelect = document.getElementById('choice');
     mySelect.onchange = (event) => {
         var pk = event.target.parentNode.parentNode;
@@ -10,7 +9,7 @@ function updateStatus(){
     } 
 };
 
-
+updateStatus();
 
 function openWindow(){
     window.open('/service/cars/add-queue', 'Queue Form', 'width=600,height=450'); return false;

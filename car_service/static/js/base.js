@@ -65,12 +65,6 @@ function BackrotateCarCard(cardId, pk) {
 
 
 
-function carQueue(pk) {
-    console.log(pk);
-    // active
-    // <i class="fas fa-check"></i>
-    // active-bar
-}
 
 
 function genereateInvoice(id) {

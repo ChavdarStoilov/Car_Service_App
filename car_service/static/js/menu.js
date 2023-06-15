@@ -15,7 +15,6 @@ function menu() {
     .navigation__contacts {
         margin-left: -160px;
     }`);
-    console.log(addCSS);
 }
 
 menu();
