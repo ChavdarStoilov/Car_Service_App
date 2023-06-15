@@ -35,10 +35,30 @@ class CarQueueVeiw(IndexView):
         car_pk = int(request.POST.get('submitter')[0])
         new_status = request.POST.get('submitter')[2:]
         if car_pk:
-            car = CarQueue.objects.get(pk=car_pk)
-            car.status=new_status
-            car.save()
+            self.change_car_status(car_pk, new_status)
+           
+            if new_status == 'Done':
+               self.change_repair_car_status(car_pk)
+               
+               #TODO: Write function for create car hisotry and remove from car queue
+            
         return redirect(reverse_lazy('car queue'))
+    
+    
+    def change_car_status(self, *args, **kwargs):
+        pk = args[0]
+        new_status = args[1]
+        car = CarQueue.objects.get(pk=pk)
+        car.status=new_status   
+        car.save()
+        
+        
+    def change_repair_car_status(self, *args, **kwargs):
+        pk = args[0]
+        car = Cars.objects.get(pk=pk)
+        car.repair = False
+        car.save()
+
         
     
 class CarsVeiw(IndexView):

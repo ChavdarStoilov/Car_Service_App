@@ -29,72 +29,74 @@
             <div class="md-step-bar-left"></div>
         </div>
 </div>
-<script>
-    const url = '{% url "queue cars" car.pk %}'
-    
-    const getStatus = () =>
-        fetch(url)
-        .then(status => status.json())
-
-    changeTileLIne = (status) => {
-        const theStatus = status.status.replaceAll(" ", "-")
-        const TimeLine = document.querySelector('.md-stepper-horizontal').children
-
-        for(index = 0; index < TimeLine.length; index++){
-            const stepName = TimeLine[index].classList[1]
-            const step = document.querySelector(`.${stepName}`)
-            const stepCircle = document.querySelector(`.${stepName} .md-step-circle`)
-            step.classList.add("active")
-            stepCircle.innerHTML = '<i class="fas fa-check"></i>'
-
-            if (stepName !== "Done") {
-                const rightBar = document.querySelector(`.${stepName} .md-step-bar-right`)
-                rightBar.classList.add("active-bar")
-                let leftBar;
-
-                if (stepName === "In-Progress") {
-                    leftBar = step.nextElementSibling.lastElementChild
-                }
-                else {
-
-                    leftBar = step.nextElementSibling.children[2]
-                }
-                leftBar.classList.add("active-bar")
-            }
-
-            
-
-            if (stepName === theStatus) {
-                if(stepName === "Done") {
-                    const addCSS = css => 
-                        document.head.appendChild(document.createElement("style")).innerHTML=css;
-
-                    addCSS(`
-                        .md-stepper-horizontal .md-step .md-step-bar-left, .md-stepper-horizontal .md-step .md-step-bar-right{
-                            border-top: 4px solid #F96302;
-                        }
-                    `)
-
-                }
-                break
-            }
-        }
-
-
-        
-
-    }
-    
-    window.onload = () => {
-        getStatus().then(
-            status => {
-                changeTileLIne(status);
-            }
-
-        )
-    }
-
-</script>
 {% endblock  %}
 {% block footer %}
 {% endblock  %}
+{% block script %}
+    <script>
+        const url = '{% url "queue cars" car.pk %}'
+
+        const getStatus = () =>
+            fetch(url)
+            .then(status => status.json())
+
+        changeTileLIne = (status) => {
+            const theStatus = status.status.replaceAll(" ", "-")
+            const TimeLine = document.querySelector('.md-stepper-horizontal').children
+
+            for(index = 0; index < TimeLine.length; index++){
+                const stepName = TimeLine[index].classList[1]
+                const step = document.querySelector(`.${stepName}`)
+                const stepCircle = document.querySelector(`.${stepName} .md-step-circle`)
+                step.classList.add("active")
+                stepCircle.innerHTML = '<i class="fas fa-check"></i>'
+
+                if (stepName !== "Done") {
+                    const rightBar = document.querySelector(`.${stepName} .md-step-bar-right`)
+                    rightBar.classList.add("active-bar")
+                    let leftBar;
+
+                    if (stepName === "In-Progress") {
+                        leftBar = step.nextElementSibling.lastElementChild
+                    }
+                    else {
+
+                        leftBar = step.nextElementSibling.children[2]
+                    }
+                    leftBar.classList.add("active-bar")
+                }
+
+
+
+                if (stepName === theStatus) {
+                    if(stepName === "Done") {
+                        const addCSS = css => 
+                            document.head.appendChild(document.createElement("style")).innerHTML=css;
+
+                        addCSS(`
+                            .md-stepper-horizontal .md-step .md-step-bar-left, .md-stepper-horizontal .md-step .md-step-bar-right{
+                                border-top: 4px solid #F96302;
+                            }
+                        `)
+
+                    }
+                    break
+                }
+            }
+
+
+
+
+        }
+
+        window.onload = () => {
+            getStatus().then(
+                status => {
+                    changeTileLIne(status);
+                }
+
+            )
+        }
+
+    </script>
+{% endblock %}
