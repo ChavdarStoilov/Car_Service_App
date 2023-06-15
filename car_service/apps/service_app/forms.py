@@ -4,7 +4,15 @@ from django.contrib.auth import get_user_model, forms as auth_forms
 
 UserModel = get_user_model()
 
-class CarQueueFrom(forms.ModelForm):    
+class CarQueueFrom(forms.ModelForm):   
+    cars = Cars.objects.filter(repair = False)
+    # available_cars = [(car.pk, car) for car in cars if not car.repair]
+    
+    car_id = forms.ModelChoiceField(
+      queryset=cars
+    )
+    
+     
     class Meta:
         model = CarQueue
         
