@@ -3,10 +3,21 @@
 {% block title %}SingUp Page{% endblock  %}
 
 {% block contant %}
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
 
-        <input type="submit" value="Create" />
-    </form>
+    <div class="register-box">
+        <h2>Register</h2>
+        <form method="POST" action = "{% url 'singup page' %}">
+            {% for field in form %}
+                <div class="user-box">
+                    {{ field.errors }}
+                    {{ field.label_tag }} {{ field }}
+                </div>
+            {% endfor %}
+            {% csrf_token %}
+
+
+            <input type="submit" value="Create" class="register__btn" />
+        </form>
+    </div>
 {% endblock %}
+

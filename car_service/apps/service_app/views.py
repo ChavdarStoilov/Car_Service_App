@@ -8,15 +8,19 @@ from .forms import AddCarFrom, AddCustomerFrom, CarQueueFrom
 class IndexView(LoginRequiredMixin, TemplateView):
     template_name = "service/index.html"
     login_url = reverse_lazy('singin page')
-    redirect_field_name = reverse_lazy('home page')
+    permission_denied_message = "Do not have access for this url"
  
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated or request.user.is_customer:
+            return self.handle_no_permission()
+        return super().dispatch(request, *args, **kwargs)
     
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['user'] = PersonalProfile.objects.get(user_id=self.request.user.pk)
-        
+                
         return context
-    
+        
 
 class CarQueueVeiw(IndexView):
     template_name = "service/car_queue.html"

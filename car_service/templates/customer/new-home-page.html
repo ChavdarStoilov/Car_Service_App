@@ -11,10 +11,15 @@
                     </li>
                     {% if user.is_authenticated %}
                         <script type="text/javascript" src="{% static 'js/menu.js' %}"></script>
-
+                        {% if user.is_customer %}
+                            <li class="navigation__list">
+                                <a href="{% url 'garage' %}" class="navigation__links navigation__garage"><i class="fas fa-warehouse"> Garage</i></a>
+                            </li>
+                        {% else %}
                         <li class="navigation__list">
-                            <a href="{% url 'garage' %}" class="navigation__links navigation__garage"><i class="fas fa-warehouse"> Garage</i></a>
+                            <a href="{% url 'service home page' %}" class="navigation__links navigation__garage"><i class="fas fa-warehouse"> Service</i></a>
                         </li>
+                        {% endif %}
                     {% endif %}
                     <li class="navigation__list">
                         <a href="" class="navigation__links navigation__gallery"><i class="fas fa-images"> Gallery</i></a>

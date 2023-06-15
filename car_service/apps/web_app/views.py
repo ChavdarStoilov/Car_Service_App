@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from .forms import ProfileForm, AddCarFrom, CarDetailsForm
 from .models import CustomerProfile
 from django.urls import reverse_lazy
-from ..service_app.models import Cars, CarQueue, CarBrand, RepairHistory
+from ..service_app.models import Cars, CarQueue, CarBrand, RepairHistory, PersonalProfile
 from ..auth_app.models import AppUsers
 
 class IndexView(TemplateView):
@@ -21,10 +21,12 @@ class ProfileView(TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         if not self.request.user.is_customer:
-            pass
+            user = PersonalProfile.objects.get(user_id_id  = self.request.user.pk)
+
         else:   
             user = CustomerProfile.objects.get(user_id_id  = self.request.user.pk)
-            context['form_profile'] = ProfileForm(instance=user)
+
+        context['form_profile'] = ProfileForm(instance=user)
         return context
 
     def post(self, request):
