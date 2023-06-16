@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from ..service_app.models import Cars, CarQueue, CarBrand, RepairHistory, PersonalProfile
 from ..auth_app.models import AppUsers
 
+
 class IndexView(TemplateView):
     template_name ='customer/new-home-page.html'
     
@@ -30,7 +31,8 @@ class ProfileView(TemplateView):
         return context
 
     def post(self, request):
-        user = CustomerProfile.objects.get(user_id_id  = self.request.user.pk - 1)
+
+        user = CustomerProfile.objects.get(user_id  = self.request.user)
         form = ProfileForm(request.POST, instance=user)
         if form.is_valid():
             form.save()
@@ -80,6 +82,13 @@ class CarEditView(TemplateView):
 class CarRepairProcessView(TemplateView):
     template_name = 'customer/car-repair-process.html'
     
+    def get(self, **kwargs):
+
+        try:
+            CarQueue.objects.get(pk = kwargs['pk'])
+        except:
+            return redirect('garage')
+        
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         try:
@@ -90,8 +99,8 @@ class CarRepairProcessView(TemplateView):
             return redirect(reverse_lazy('garage'))
         
         return context
-
         
+
     
     
 def error_page(request):
@@ -105,9 +114,11 @@ class ContactsView(IndexView, TemplateView):
 class CarHistoryView(TemplateView):
     template_name = 'customer/car-history.html'
     
+    
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         cars_history = RepairHistory.objects.filter(car_id = kwargs['pk'])
+        
         date_invoice_number = []
         
         for row in cars_history:

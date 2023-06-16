@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import PermissionsMixin
+from django.contrib.auth.models import PermissionsMixin, Group
 from django.contrib.auth.base_user import AbstractBaseUser
 from .managers import AppUserManager
 
@@ -27,7 +27,14 @@ class AppUsers(AbstractBaseUser, PermissionsMixin):
         default=False,
     )
     
+    last_login =models.DateTimeField(("last login"), blank=True, null=True)
     
+    groups = models.ManyToManyField(
+        Group,
+        verbose_name=("groups"),
+        blank=True,
+
+    )
     
     USERNAME_FIELD = 'username'
     objects = AppUserManager()

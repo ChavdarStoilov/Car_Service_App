@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth import admin as auth_admin, get_user_model
-from .forms import CustomerUserCreation, UserChangeForm
+from .forms import PersonalUserCreation, UserChangeForm
 
 UserModel = get_user_model()
 
@@ -18,20 +18,22 @@ class AppUserAdmin(auth_admin.UserAdmin):
         'is_staff',
         'is_active',
         'is_customer',
+        'is_customer',
+        'last_login',
     ]
     
     list_filter = (
         
     )
     
-    add_form = CustomerUserCreation
+    # add_form = PersonalUserCreation
     form = UserChangeForm
     
     fieldsets = (
         (
             None, 
             {
-                "fields": ("username", "is_customer", )
+                "fields": ("username", "is_customer", "groups",)
             }
         ),
     )

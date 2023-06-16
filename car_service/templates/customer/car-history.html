@@ -80,8 +80,8 @@
                     <tr>
                         <th>Part</th>
                         <th></th>
-                        <th>PRICE</th>
                         <th>QTY</th>
+                        <th>PRICE</th>
                         <th>TOTAL</th>
                     </tr>
                     </thead>
@@ -101,15 +101,15 @@
             const partPrice = parts[part].price;
             const quantity = parts[part].qty;
             const totalPartPrice = partPrice * quantity;
-            totalPrice +=  partPrice    ;
+            totalPrice +=  totalPartPrice    ;
 
             var newRow = document.createElement("tr");
             newRow.innerHTML = `
                 <td class="td__center">${partName}</td>
                 <td></td>
-                <td class="td__center">${partPrice.toFixed(2)}</td>
-                <td class="td__center">1</td>
-                <td class="td__right">${totalPartPrice.toFixed(2)}</td>
+                <td class="td__center">${quantity}</td>
+                <td class="td__center">${partPrice.toFixed(2)} лв.</td>
+                <td class="td__right">${totalPartPrice.toFixed(2)} лв.</td>
             `;
             tableBody.appendChild(newRow);
 
@@ -121,15 +121,15 @@
         tableFooter.innerHTML = `
             <tr class="td__right invoice__total">
                 <td colspan="4">SUBTOTAL</td>
-                <td class="subtotal">${subTotal.toFixed(2)}</td>
+                <td class="subtotal">${subTotal.toFixed(2)} лв.</td>
             </tr>
             <tr class="td__right">
                 <td colspan="4">TAX 25%</td>
-                <td class="tax">${tax.toFixed(2)}</td>
+                <td class="tax">${tax.toFixed(2)} лв.</td>
             </tr>
             <tr class="td__right">
                 <td colspan="4" class="grand total">GRAND TOTAL</td>
-                <td class="grand total">${totalPrice.toFixed(2)}</td>
+                <td class="grand total">${totalPrice.toFixed(2)} лв.</td>
             </tr>
         `;
 

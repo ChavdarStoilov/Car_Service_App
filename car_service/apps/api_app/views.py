@@ -23,6 +23,12 @@ class CarApiVeiw(APIView):
         serializer = CarsSerializer(snippet)
         return Response(serializer.data)
     
+    def delete(self, request, pk, format=None):
+        snippet = self.get_object(pk)
+        print(snippet)
+        snippet.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
 class CarQueueApiVeiw(APIView):
     """
     List all snippets, or create a new snippet.

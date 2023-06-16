@@ -20,7 +20,7 @@
                         <td>{{ car.VIN }}</td>
                         <td>
                             <a class="btn__action details"{% comment "url for detail" %}href="{% url 'car detail' car.pk %}"{% endcomment %}>Detail</a>
-                            <a class="btn__action delete"{% comment "url for delete" %}href="{% url 'car detail' car.pk %}"{% endcomment %}>Delete</a>
+                            <a class="btn__action delete" onClick='deleteCar("{% url "car" car.pk %}")'>Delete</a>
                             {% if not car.repair %}
                                 {% if car_done %}
                                     {% for done in car_done %}
@@ -41,4 +41,14 @@
                 {% endfor %}
             </table>
     </section>
+{% endblock  %}
+{% block script %}
+<script type="text/javascript">
+    deleteCar = (url) => {
+        console.log(url)
+        fetch(url, {
+            method: 'DELETE',
+          })
+    }
+</script>
 {% endblock  %}
