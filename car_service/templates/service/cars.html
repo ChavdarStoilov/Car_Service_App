@@ -22,11 +22,13 @@
                             <a class="btn__action details"{% comment "url for detail" %}href="{% url 'car detail' car.pk %}"{% endcomment %}>Detail</a>
                             <a class="btn__action delete"{% comment "url for delete" %}href="{% url 'car detail' car.pk %}"{% endcomment %}>Delete</a>
                             {% if not car.repair %}
-                                <a class="btn__action move" href="{% url 'add car in queue' car.pk %}">Move to Repair</a>
                                 {% for done in car_done %}
                                     {% if done.status == "Done" and done.car_id.pk == car.pk %}
                                         <a class="btn__action history" href="{% url 'add car history' car.pk %}">Fill History</a>
+                                    {% else %}
+                                        <a class="btn__action move" href="{% url 'add car in queue' car.pk %}">Move to Repair</a>
                                     {% endif %} 
+                                    
                                 {% endfor %}
                             {% endif %}
                         </td>
