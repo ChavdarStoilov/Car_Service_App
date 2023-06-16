@@ -129,7 +129,7 @@ class AddCarInQueueView(IndexView):
             return redirect(reverse_lazy('cars'))
         
         
-class AddHisotryView(TemplateView):
+class AddHisotryView(IndexView):
     template_name = "service/car-history.html"
     
     def get_context_data(self, *args, **kwargs):
