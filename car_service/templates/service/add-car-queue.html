@@ -1,9 +1,8 @@
 {% extends 'service/base.html' %}
 
 {% block main %}
-    <form class="adding__from" action="{% url 'add car in queue' %}" method="POST">
+    <form class="adding__from" action="{% url 'add car in queue' car_pk %}" method="POST">
         <h2>Move to Queue Form</h2>
-
         {% for field in queue_from %}
             <div class="form-control">
                 {{ field.errors }}

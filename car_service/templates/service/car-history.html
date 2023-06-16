@@ -1,0 +1,26 @@
+{% extends 'service/base.html' %}
+
+{% block main %}
+    <form class="adding__from" method="POST" action="{% url 'add car history' car_pk %}">
+        <h2>Car history From</h2>
+        <div class="form-control">
+            <lable for="kilometers" >Kilometers:</lable>
+            <input placeholder="100 000" id="kilometers" name="kilometers"></input>
+        </div>
+        <div class="form-control">
+            <lable for="parts">Changed parts:</lable>
+            <textarea id="parts" name="parts" placeholder="Name Part 1- QTY - Price, Name Part 2- QTY - Price,"></textarea>
+        </div>
+        {% csrf_token %}
+        <button>Add history</button>
+    </form>
+
+{% endblock %}
+
+
+{% comment %} 
+
+{"Date": "11.10.2021", "Kilometers": "90 000", "Changed parts": {"Oil Filter SWAG": 20, "Oil Castrol 5w40": 150}}
+
+
+{% endcomment %}

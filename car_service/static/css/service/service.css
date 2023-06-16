@@ -59,6 +59,9 @@
     background-color: darkslategrey;
 }
 
+.history:hover {
+    background-color: cornflowerblue;
+}
 
 /* Form style */
 

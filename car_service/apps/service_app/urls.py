@@ -1,6 +1,6 @@
 from django.urls import include, path
 from .views import IndexView, CarQueueVeiw, CarsVeiw, AddCarView, \
-    CustomersView, AddCustomerView, AddCarInQueueView
+    CustomersView, AddCustomerView, AddCarInQueueView, AddHisotryView
 
 
 urlpatterns = [
@@ -8,7 +8,9 @@ urlpatterns = [
     path('car-queue/', CarQueueVeiw.as_view(), name='car queue'),
     path('cars/', include([
         path('',CarsVeiw.as_view(), name='cars'),
-        path("add-queue/", AddCarInQueueView.as_view(), name='add car in queue'),
+        path("add-queue/<int:pk>", AddCarInQueueView.as_view(), name='add car in queue'),
+        path("add-history/<int:pk>", AddHisotryView.as_view(), name='add car history'),
+        
         ])),
     path('add_car/', AddCarView.as_view(), name='add car page'),
     path('customers/', CustomersView.as_view(), name='customers page'),

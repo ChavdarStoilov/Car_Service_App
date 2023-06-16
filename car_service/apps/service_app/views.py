@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
-from .models import PersonalProfile, Cars, CarQueue, CustomerProfile
+from .models import PersonalProfile, Cars, CarQueue, CustomerProfile, RepairHistory
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from .forms import AddCarFrom, AddCustomerFrom, AddCarQueueFrom
+from .forms import AddCarFrom, AddCustomerFrom, AddCarQueueFrom, AddHistoryForm
+from datetime import date
 
 class IndexView(LoginRequiredMixin, TemplateView):
     template_name = "service/index.html"
@@ -39,9 +40,7 @@ class CarQueueVeiw(IndexView):
            
             if new_status == 'Done':
                self.change_repair_car_status(car_pk)
-               
-               #TODO: Write function for create car hisotry and remove from car queue
-            
+                           
         return redirect(reverse_lazy('car queue'))
     
     
@@ -67,7 +66,7 @@ class CarsVeiw(IndexView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['cars'] = Cars.objects.all()
-        
+        context['car_done'] = CarQueue.objects.filter(status="Done")
         return context
 
 
@@ -84,7 +83,7 @@ class AddCarView(IndexView):
         if form.is_valid():
             form.save()
         
-        return redirect(reverse_lazy('car'))
+        return redirect(reverse_lazy('cars'))
     
     
 class CustomersView(IndexView):
@@ -118,12 +117,64 @@ class AddCarInQueueView(IndexView):
     
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['queue_from'] = AddCarQueueFrom()
+        context['car_pk'] = kwargs['pk']
+        context['queue_from'] = AddCarQueueFrom(initial={'car_id': kwargs['pk']})
         return context
     
-    def post(self, request):
-        form = AddCarQueueFrom(request.POST)
+    def post(self, request, **kwargs):
+        car_pk = kwargs["pk"]
+        form = AddCarQueueFrom(request.POST, initial={'car_id': kwargs['pk']})
+        if form.is_valid():
+            form.save(car_pk)
+            return redirect(reverse_lazy('cars'))
+        
+        
+class AddHisotryView(TemplateView):
+    template_name = "service/car-history.html"
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['car_pk'] = kwargs["pk"]
+        return context
 
+    def post(self, request, **kwargs):
+        form = request.POST
+        car_pk = kwargs["pk"]
+        
+        the_date = date.today()
+        kilometers = form["kilometers"]
+        parts = [row.split(" - ") for row in form["parts"].split(", ")]
+        
+        changed_parts = {
+        }
+        
+        for part in parts:
+            changed_parts[part[0]] = {
+                "qty": part[1],
+                "price": part[2]
+            }
+        
+        
+
+        data = {
+            "car_id": car_pk,
+            "history":{
+                "Date" : the_date.strftime("%d-%m-%Y"),
+                "Kilometers": kilometers,
+                "Changed parts": changed_parts
+            }
+        }
+        
+         
+        form = AddHistoryForm(data)
+        
         if form.is_valid():
             form.save()
-            return redirect(reverse_lazy('cars'))
+            
+            car = CarQueue.objects.get(pk = car_pk)
+            car.delete()
+
+        return redirect(reverse_lazy('cars'))
+
+
+        

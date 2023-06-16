@@ -1,18 +1,17 @@
 from django import forms
-from .models import CarQueue, Cars, CustomerProfile
+from .models import CarQueue, Cars, CustomerProfile, RepairHistory
 from django.contrib.auth import get_user_model, forms as auth_forms
 
 UserModel = get_user_model()
       
   
-class AddCarQueueFrom(forms.ModelForm):   
-    cars = Cars.objects.filter(repair = False)
-    
-    car_id = forms.ModelChoiceField(
-      queryset=cars
-    )
-    
-     
+class AddCarQueueFrom(forms.ModelForm):     
+  
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["car_id"].disabled = True
+        self.fields["car_id"].widget.attrs["readonly"] = True
+        
     class Meta:
         model = CarQueue
         
@@ -22,10 +21,9 @@ class AddCarQueueFrom(forms.ModelForm):
           "status",
         )
         
-    def save(self, commit=True):
-      car_id = self.instance.car_id.pk
+    def save(self, pk, commit=True):
       super().save(commit=commit)
-      car = Cars.objects.get(pk = car_id)
+      car = Cars.objects.get(pk = pk)
       car.repair  = True
       if commit:
         car.save()
@@ -74,3 +72,10 @@ class AddCustomerFrom(auth_forms.UserCreationForm):
       
       if commit:
         profile.save()
+        
+        
+class AddHistoryForm(forms.ModelForm):
+  
+  class Meta:
+    model=RepairHistory
+    fields = '__all__'
