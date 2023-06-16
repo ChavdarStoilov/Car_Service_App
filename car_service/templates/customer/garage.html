@@ -39,7 +39,7 @@
                                             {% endif %}
                                         </div>
                                     </div>
-                                    <a class="edit-btn" onclick="rotateCarCard('col-md-{{ car.pk }}', {{ car.pk }});">Details</a>
+                                    <a class="edit-btn" onclick='rotateCarCard({{ car.pk }}, "{% url "car" car.pk %}");'>Details</a>
                                     {% comment %} <a class="delete-btn" href="{% url 'car details page' car.pk %}">Delete</a> {% endcomment %}
                                 </div>
                             </div>
@@ -51,6 +51,74 @@
             {% endif %}
         </section>
     </div>
+{% endblock  %}
+
+
+{% block script %}
+
+<script type="text/javascript">
+
+    const getDetails = (url) =>
+        fetch(url)
+        .then(data => data.json())
+
+
+
+    rotateCarCard = (pk, url) => {
+        const card = document.querySelector(`.card-${pk}`)
+        const cardBackContent = document.querySelector(`.col-md-${pk} > .card > .card-back`)
+        const cardFront = document.querySelector(`.col-md-${pk} > .card > .card-front`)
+
+        getDetails(url).then(
+            data => {
+
+                cardBackContent.innerHTML = `
+                    <h2>Model: ${data.model}</h2>
+                    <p>Year: ${data.year}</p>
+                    <p>VIN: ${data.VIN}</p>
+                    <p>Kilometers: ${data.kilometers}</p>
+                    
+                    <a class="edit-btn" onclick="BackrotateCarCard('col-md-${pk}', ${pk});">Back</a>
+                    
+                `
+                if (data.have_history) {
+                    cardBackContent.innerHTML += `
+                        <a class="edit-btn" href="/garage/history/${pk}">History</a>
+                    `
+                }
+            
+                card.style.cssText = `
+                    transform: rotateY(-180deg);
+                `
+                cardFront.style.cssText = `
+                    display: none;
+                `
+                cardBackContent.style.cssText = `
+                    transform: rotateY(180deg);
+                    display: block;
+                `
+            }
+        )
+    }    
+
+    BackrotateCarCard = (cardId, pk) => {
+        const card = document.querySelector(`.card-${pk}`)
+        const cardBackContent = document.querySelector(`.${cardId} > .card > .card-back`)
+        const cardFront = document.querySelector(`.${cardId} > .card > .card-front`)
+        card.style.cssText = `
+            transform: none;
+        `
+        cardBackContent.style.cssText = `
+            display: none;
+            transform: none;
+        `
+    
+        cardFront.style.cssText = `
+            display: block;
+        `
+    }
+
+</script>
 {% endblock  %}
 
 {% block footer %}

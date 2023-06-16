@@ -112,14 +112,12 @@ class CarHistoryView(TemplateView):
         
         for row in cars_history:
             car_history_datails = row.history
-            
-            total_price = sum([int(price) for price in car_history_datails['Changed parts'].values()])
-            print(car_history_datails["Kilometers"])
+            total_price = [item["qty"] * item["price"] for item in car_history_datails['Changed parts'].values()]
             date_invoice_number.append(
                 {
                     'date': car_history_datails['Date'],
                     'number':row.pk,
-                    'total_price':total_price,
+                    'total_price': sum(total_price),
                     'kilometers': car_history_datails["Kilometers"]
                 }
             ) 
@@ -127,14 +125,3 @@ class CarHistoryView(TemplateView):
         context['history'] = date_invoice_number
         return context
         
-    
-'''
-1	{
-  "Date": "11.10.2022", 
-  "Kilometers": "100 000",
-  "Changed parts": {
-    "Oil Filter SWAG": 20, 
-    "Oil Castrol 5w40": 100}
-  
-}
-'''

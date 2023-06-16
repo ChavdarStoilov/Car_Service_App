@@ -25,7 +25,7 @@
                             <td>№ {{ row.number }}</td>
                             <td>{{ row.kilometers }} km</td>
                             <td>{{ row.total_price }}</td>
-                            <td><a class="btn__action" onClick="genereateInvoice({{ row.number }});">Invoice</a>
+                            <td><a class="btn__action" onClick='genereateInvoice("{% url "history" row.number %}");'>Invoice</a>
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -43,6 +43,124 @@
     </section>
 
 {% endblock  %}
+
+{% block script %}
+<script>
+
+    const getInvoice = (url) => 
+        fetch(url)
+        .then(data => data.json())
+
+
+    showInvoice = (invoice, url) => {
+        const id = url.split('/')[4];
+        const data =  invoice.history
+        const date = data.Date
+        const parts = data["Changed parts"]
+
+        
+        const contentBox = document.getElementsByClassName("content")[0]
+        const popup = document.getElementsByClassName("overlay")[0]
+        
+        contentBox.innerHTML = ""
+
+        totalPrice = 0
+        const invoiceSection = document.createElement("section")
+        invoiceSection.setAttribute("class", "invoice")
+        invoiceSection.innerHTML = `
+                <div class="invoice__header">
+                <div id="logo">
+                    <img class="invoice__header__logo" src="/static/images/new_logo.png" alt="company logo">
+                </div>
+                <h1 class="invoice__title" >INVOICE ${id}</h1>
+            </div>
+            <div class="invoice__summary">
+                <table class="invoice__table">
+                    <thead>
+                    <tr>
+                        <th>Part</th>
+                        <th></th>
+                        <th>PRICE</th>
+                        <th>QTY</th>
+                        <th>TOTAL</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table_body">
+                    </tbody>
+                    <tfoot class="table_footer">
+                    </tfoot>
+                </table>
+            </div>
+        `
+        contentBox.appendChild(invoiceSection)
+        tableBody = document.getElementsByClassName("table_body")[0]
+        tableFooter = document.getElementsByClassName("table_footer")[0]
+
+        for (const part in parts) {
+            const partName = part;
+            const partPrice = parts[part].price;
+            const quantity = parts[part].qty;
+            const totalPartPrice = partPrice * quantity;
+            totalPrice +=  partPrice    ;
+
+            var newRow = document.createElement("tr");
+            newRow.innerHTML = `
+                <td class="td__center">${partName}</td>
+                <td></td>
+                <td class="td__center">${partPrice.toFixed(2)}</td>
+                <td class="td__center">1</td>
+                <td class="td__right">${totalPartPrice.toFixed(2)}</td>
+            `;
+            tableBody.appendChild(newRow);
+
+                    
+        }
+        tax = (totalPrice * 0.25);
+        subTotal = (totalPrice - tax);
+
+        tableFooter.innerHTML = `
+            <tr class="td__right invoice__total">
+                <td colspan="4">SUBTOTAL</td>
+                <td class="subtotal">${subTotal.toFixed(2)}</td>
+            </tr>
+            <tr class="td__right">
+                <td colspan="4">TAX 25%</td>
+                <td class="tax">${tax.toFixed(2)}</td>
+            </tr>
+            <tr class="td__right">
+                <td colspan="4" class="grand total">GRAND TOTAL</td>
+                <td class="grand total">${totalPrice.toFixed(2)}</td>
+            </tr>
+        `;
+
+        popup.style.cssText = `
+            display: block;
+        `;
+        
+    }
+
+
+    genereateInvoice = (url) => {
+        getInvoice(url).then(
+            data => {
+                showInvoice(data, url);
+            }
+
+        )
+    }
+
+
+    closePopUp = () => {
+        const popup = document.getElementsByClassName("overlay")[0]
+
+        popup.style.cssText = `
+            display: none;
+        `;
+    }
+
+</script>
+{% endblock  %}
+
 
 {% block footer %}
 {% endblock %}

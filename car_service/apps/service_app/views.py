@@ -143,15 +143,16 @@ class AddHisotryView(IndexView):
         
         the_date = date.today()
         kilometers = form["kilometers"]
-        parts = [row.split(" - ") for row in form["parts"].split(", ")]
         
+        parts = [row.split(" - ") for row in form["parts"].split(", ")]
+
         changed_parts = {
         }
         
         for part in parts:
             changed_parts[part[0]] = {
-                "qty": part[1],
-                "price": part[2]
+                "qty": int(part[1]),
+                "price": int(part[2].replace(",", ""))
             }
         
         
@@ -164,6 +165,8 @@ class AddHisotryView(IndexView):
                 "Changed parts": changed_parts
             }
         }
+        
+        print(data)
         
          
         form = AddHistoryForm(data)
