@@ -71,12 +71,20 @@
 
         getDetails(url).then(
             data => {
+                console.log(data)
+                models =  data.model ? data.model : "Missing Data";
+                years = data.year ? data.year : "Missing Data";
+                vins = data.VIN ? data.VIN : "Missing Data";
+                kilometers = data.kilometers ? data.kilometers : "Missing Data";
+
+
+
 
                 cardBackContent.innerHTML = `
-                    <h2>Model: ${data.model}</h2>
-                    <p>Year: ${data.year}</p>
-                    <p>VIN: ${data.VIN}</p>
-                    <p>Kilometers: ${data.kilometers}</p>
+                    <h2>Model: ${models}</h2>
+                    <p>Year: ${years}</p>
+                    <p>VIN: ${vins}</p>
+                    <p>Kilometers: ${kilometers}</p>
                     
                     <a class="edit-btn" onclick="BackrotateCarCard('col-md-${pk}', ${pk});">Back</a>
                     
