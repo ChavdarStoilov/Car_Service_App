@@ -18,7 +18,6 @@ class AppUserAdmin(auth_admin.UserAdmin):
         'is_staff',
         'is_active',
         'is_customer',
-        'is_customer',
         'last_login',
     ]
     
