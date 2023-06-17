@@ -118,12 +118,22 @@ class AddCarInQueueView(IndexView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['car_pk'] = kwargs['pk']
-        context['queue_from'] = AddCarQueueFrom(initial={'car_id': kwargs['pk']})
+        context['queue_from'] = AddCarQueueFrom(
+            initial={
+                'car_id': kwargs['pk'],
+                'status': 'Awaiting To Take',
+            }
+        )
         return context
     
     def post(self, request, **kwargs):
         car_pk = kwargs["pk"]
-        form = AddCarQueueFrom(request.POST, initial={'car_id': kwargs['pk']})
+        form = AddCarQueueFrom(
+            request.POST, initial={
+                'car_id': kwargs['pk'],
+                'status': 'Awaiting To Take',
+            }
+        )
         if form.is_valid():
             form.save(car_pk)
             return redirect(reverse_lazy('cars'))

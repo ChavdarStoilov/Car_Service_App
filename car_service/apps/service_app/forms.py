@@ -1,16 +1,25 @@
 from django import forms
-from .models import CarQueue, Cars, CustomerProfile, RepairHistory
+from .models import CarQueue, Cars, CustomerProfile, RepairHistory, PersonalProfile
 from django.contrib.auth import get_user_model, forms as auth_forms
 
 UserModel = get_user_model()
       
   
 class AddCarQueueFrom(forms.ModelForm):     
-  
+
+    mechanics = [(person.pk, person) for person in PersonalProfile.objects.all() if person.position == "Mechanic"]
+    
+    mechanic_id = forms.ChoiceField( 
+        choices=mechanics, 
+        required=True,
+      )
+    
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["car_id"].disabled = True
         self.fields["car_id"].widget.attrs["readonly"] = True
+        self.fields["status"].disabled = True
+        self.fields["status"].widget.attrs["readonly"] = True
         
     class Meta:
         model = CarQueue
