@@ -29,6 +29,14 @@ class CarApiVeiw(APIView):
         snippet.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
     
+    def put(self, request, pk, format=None):
+        snippet = self.get_object(pk)
+        serializer = CarsSerializer(snippet, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
 class CarQueueApiVeiw(APIView):
     """
     List all snippets, or create a new snippet.

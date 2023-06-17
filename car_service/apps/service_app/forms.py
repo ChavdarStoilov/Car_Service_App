@@ -45,7 +45,6 @@ class AddCarFrom(forms.ModelForm):
             'brand', 'model', 'year', 'VIN', 'registration_number', 'user_id'
         )
         
-        
 class AddCustomerFrom(auth_forms.UserCreationForm):
     first_name = forms.CharField()
     last_name = forms.CharField()
