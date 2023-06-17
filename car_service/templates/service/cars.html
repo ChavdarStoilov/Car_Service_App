@@ -56,7 +56,17 @@
         console.log(url)
         fetch(url, {
             method: 'DELETE',
-          })
+        })
+        .then(response => {
+            if (response.ok) {
+                location.href = "{% url 'cars' %}";
+            }
+        }
+        
+        )
+        .catch(function(err) {
+            console.info(err + " url: " + url);
+        });
     }
 
 
@@ -67,28 +77,55 @@
 
     saveDate = (url) => {
         const formFilled =  document.querySelectorAll(".form-control input")
-        const formData = new FormData();
 
-        formData.append('model', formFilled[0].value);
-        formData.append('year', formFilled[1].value);
-        formData.append('VIN', formFilled[2].value);
-        formData.append('kilometers', formFilled[3].value);
-        formData.append('csrfmiddlewaretoken', '{{ csrf_token }}');
-
-
+        const formData = {
+            'model': formFilled[0].value,
+            'year': formFilled[1].value,
+            'VIN': formFilled[2].value,
+            'kilometers': formFilled[3].value,
+        }
         
         fetch(url,{
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 "Content-Type": "application/json",
                 },
             body: JSON.stringify(formData)
         })
-        .then(response => response.json())
-        .then(data => {
-          console.log('Success:', data);
-        })
+        .then(response => {
+            const form = document.querySelector(".form-control")
+            const formInputs = document.querySelector(".form__inputs")
+            const spanMessage = document.createElement("span")
+            
+            if (response.ok){
+                
+                spanMessage.textContent = "Save was success"
+                spanMessage.style.cssText = `
+                    display: block;
+                    text-align: center;
+                    color: green;
+                    margin: 20px;
+                
+                `
 
+            }
+            else {
+                spanMessage.textContent = "Save was not success"
+                spanMessage.style.cssText = `
+                    display: block;
+                    text-align: center;
+                    color: red;
+                    margin: 20px;
+                
+                `
+
+            }
+            form.insertBefore(spanMessage, formInputs)
+        }
+        )
+        .catch(function(err) {
+            console.info(err + " url: " + url);
+        });
 
 
     }
@@ -105,17 +142,19 @@
             data => 
             details.innerHTML = `
                 <div class="form-control">
-                    
-                    <label>Model</label>
-                    <input type="text" value="${data.model}"></input>
-                    <label>Year</label>
-                    <input type="text" value="${data.year}"></input>
-                    <label>VIN</label>
-                    <input type="text" value="${data.VIN}"></input>
-                    <label>Kilometers</label>
-                    <input type="text" value="${data.kilometers}"></input>
-                    <button onClick="saveDate('${url}');">Save</button>
-                    <button onClick="closePopUp();">Back</button>
+                    <h2>Car Detail</h2>
+                    <div class="form__inputs">
+                        <label>Model</label>
+                        <input type="text" value="${data.model}"></input>
+                        <label>Year</label>
+                        <input type="text" value="${data.year}"></input>
+                        <label>VIN</label>
+                        <input type="text" value="${data.VIN}"></input>
+                        <label>Kilometers</label>
+                        <input type="text" value="${data.kilometers}"></input>
+                        <button onClick="saveDate('${url}');">Save</button>
+                        <button onClick="closePopUp();">Back</button>
+                    </div>
                 </div>
             `
 

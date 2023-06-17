@@ -72,6 +72,9 @@
     padding: 30px 20px;
     box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
 }
+.adding__from h2 {
+    text-align: center;
+}
 
 /* Styling form-control Class */
 .form-control {
