@@ -1,4 +1,4 @@
-from ..service_app.models import Cars, CarQueue, RepairHistory
+from ..service_app.models import Cars, CarQueue, RepairHistory, CustomerProfile
 from rest_framework import serializers
 
 
@@ -13,7 +13,11 @@ class CarsSerializer(serializers.ModelSerializer):
             'have_history',
         ]
     
-        
+    
+class CustomerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomerProfile
+        fields = '__all__'
         
 class CarQueueSerializer(serializers.ModelSerializer):
     class Meta:

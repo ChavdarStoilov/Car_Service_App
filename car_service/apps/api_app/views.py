@@ -1,67 +1,83 @@
+from typing import Any
 from django.shortcuts import render
-from ..service_app.models import Cars, CarQueue, RepairHistory
-from .serializer import CarsSerializer, CarQueueSerializer, RepairHistorySerializer
+from ..service_app.models import Cars, CarQueue, RepairHistory, CustomerProfile
+from .serializer import CarsSerializer, CarQueueSerializer, RepairHistorySerializer,\
+    CustomerSerializer
 from django.http import Http404
-# from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 
-class CarApiVeiw(APIView):
-    """
-    List all snippets, or create a new snippet.
-    """
-    
+
+
+class ApiFunctions(APIView):
     def get_object(self, pk):
         try:
-            return Cars.objects.get(pk=pk)
-        except Cars.DoesNotExist:
+            return self.object.objects.get(pk=pk)
+        except self.object.DoesNotExist:
             raise Http404
 
     def get(self, request, pk, format=None):
         snippet = self.get_object(pk)
-        serializer = CarsSerializer(snippet)
+        serializer = self.serializer(snippet)
         return Response(serializer.data)
     
     def delete(self, request, pk, format=None):
         snippet = self.get_object(pk)
-        print(snippet)
         snippet.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
     
     def put(self, request, pk, format=None):
         snippet = self.get_object(pk)
-        serializer = CarsSerializer(snippet, data=request.data)
+        serializer = self.serializer(snippet, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
-class CarQueueApiVeiw(APIView):
-    """
-    List all snippets, or create a new snippet.
-    """
-    
-    def get_object(self, pk):
-        try:
-            return CarQueue.objects.get(pk=pk)
-        except CarQueue.DoesNotExist:
-            raise Http404
 
-    def get(self, request, pk, format=None):
-        snippet = self.get_object(pk)
-        serializer = CarQueueSerializer(snippet)
-        return Response(serializer.data)
-    
-    
-class InvoiceApiView(APIView):
-    def get_object(self, pk):
-        try:
-            return RepairHistory.objects.get(pk=pk)
-        except RepairHistory.DoesNotExist:
-            raise Http404
+class CarApiVeiw(ApiFunctions):
 
-    def get(self, request, pk, format=None):
-        snippet = self.get_object(pk)
-        serializer = RepairHistorySerializer(snippet)
-        return Response(serializer.data)
+    def __init__(self):
+        self.serializer = CarsSerializer
+        self.object = Cars
+    
+    
+    
+class CustomerApiView(ApiFunctions):
+    def __init__(self):
+        self.serializer = CustomerSerializer
+        self.object = CustomerProfile
+
+    
+class CarQueueApiVeiw(ApiFunctions):
+    def __init__(self):
+        self.serializer = CarQueueSerializer
+        self.object = CarQueue
+
+    
+    # def get_object(self, pk):
+    #     try:
+    #         return CarQueue.objects.get(pk=pk)
+    #     except CarQueue.DoesNotExist:
+    #         raise Http404
+
+    # def get(self, request, pk, format=None):
+    #     snippet = self.get_object(pk)
+    #     serializer = CarQueueSerializer(snippet)
+    #     return Response(serializer.data)
+    
+    
+class InvoiceApiView(ApiFunctions):
+    def __init__(self):
+        self.serializer = RepairHistorySerializer
+        self.object = RepairHistory
+    # def get_object(self, pk):
+    #     try:
+    #         return RepairHistory.objects.get(pk=pk)
+    #     except RepairHistory.DoesNotExist:
+    #         raise Http404
+
+    # def get(self, request, pk, format=None):
+    #     snippet = self.get_object(pk)
+    #     serializer = RepairHistorySerializer(snippet)
+    #     return Response(serializer.data)

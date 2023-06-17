@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import CarApiVeiw, CarQueueApiVeiw, InvoiceApiView
+from .views import CarApiVeiw, CarQueueApiVeiw, InvoiceApiView, CustomerApiView
 
 
 
@@ -11,8 +11,11 @@ urlpatterns = [
             path('queue/<int:pk>/', CarQueueApiVeiw.as_view(), name="queue cars"),
             path('history/<int:pk>/', InvoiceApiView.as_view(), name="history"),
             ])),
-        
+        path('customers/', include([
+            path('<int:pk>/', CustomerApiView.as_view(), name="customers"),
+        ]))
         ]
+        
     )),
     
 ]
