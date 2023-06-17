@@ -165,17 +165,19 @@ class AddHisotryView(IndexView):
                 "Changed parts": changed_parts
             }
         }
-        
-        print(data)
-        
+                
          
         form = AddHistoryForm(data)
         
         if form.is_valid():
             form.save()
             
-            car = CarQueue.objects.get(pk = car_pk)
-            car.delete()
+            car = Cars.objects.get(pk=car_pk)
+            car.have_history = True
+            car.save()
+            
+            carqueue = CarQueue.objects.get(pk = car_pk)
+            carqueue.delete()
 
         return redirect(reverse_lazy('cars'))
 

@@ -5,6 +5,7 @@ from .models import CustomerProfile
 from django.urls import reverse_lazy
 from ..service_app.models import Cars, CarQueue, CarBrand, RepairHistory, PersonalProfile
 from ..auth_app.models import AppUsers
+from rest_framework.response import Response
 
 
 class IndexView(TemplateView):
@@ -82,24 +83,20 @@ class CarEditView(TemplateView):
 class CarRepairProcessView(TemplateView):
     template_name = 'customer/car-repair-process.html'
     
-    def get(self, **kwargs):
-
+    
+    def get_object(self, pk):
         try:
-            CarQueue.objects.get(pk = kwargs['pk'])
-        except:
-            return redirect('garage')
-        
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        try:
-            car = CarQueue.objects.get(pk = kwargs['pk'])
-            context['car'] = car
-            
-        except:
+            return CarQueue.objects.get(pk=pk)
+        except CarQueue.DoesNotExist:
+            return False
+    
+    def get(self, request, pk, **kwargs):
+        context = self.get_context_data(**kwargs)
+        car = self.get_object(pk)
+        if not car:
             return redirect(reverse_lazy('garage'))
-        
-        return context
-        
+        context['car'] = self.get_object(pk)
+        return self.render_to_response(context)
 
     
     
