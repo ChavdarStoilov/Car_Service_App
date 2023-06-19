@@ -33,8 +33,9 @@ class CarQueueVeiw(IndexView):
         return context
 
     def post(self, request):
-        car_pk = int(request.POST.get('submitter')[0])
-        new_status = request.POST.get('submitter')[2:]
+        data = request.POST.get('submitter').split(",")
+        car_pk = int(data[0])
+        new_status = data[1]
         if car_pk:
             self.change_car_status(car_pk, new_status)
            
