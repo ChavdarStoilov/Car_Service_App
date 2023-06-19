@@ -21,7 +21,35 @@
         <div class="header__logo">
             <img src="{% static 'images/new_logo.png' %}" alt="Logo img">
         </div>
-        <section class="auth_system">
+        {% block menu %}
+            <nav class="middle-menu">
+
+                <ul class ="menu">
+                    <li class="middle-menu__list">
+                        <a href="{% url 'home page' %}" ><i class="fas fa-home"></i></a>
+                    </li>
+                    {% if user.is_authenticated %}
+                        <script type="text/javascript" src="{% static 'js/menu.js' %}"></script>
+                        {% if user.is_customer %}
+                            <li class="middle-menu__list">
+                                <a href="{% url 'garage' %}" ><i class="fas fa-warehouse"></i></a>
+                            </li>
+                        {% else %}
+                        <li class="middle-menu__list">
+                            <a href="{% url 'service home page' %}" ><i class="fas fa-warehouse"></i></a>
+                        </li>
+                        {% endif %}
+                    {% endif %}
+                    <li class="middle-menu__list">
+                        <a href="" ><i class="fas fa-images"></i></a>
+                    </li>
+                    <li class="middle-menu__list">
+                        <a href="{% url 'contacts' %}" ><i class="fas fa-address-card"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        {% endblock %}
+    <section class="auth_system">
 
             <ul class="auth_system__menu">
                 {% if not user.is_authenticated %}
