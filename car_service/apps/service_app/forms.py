@@ -7,13 +7,19 @@ UserModel = get_user_model()
   
 class AddCarQueueFrom(forms.ModelForm):     
 
-    mechanics = [(person.pk, person) for person in PersonalProfile.objects.all() if person.position == "Mechanic"]
+    # mechanics = [(person.pk, person) for person in PersonalProfile.objects.all() if person.position == "Mechanic"]
     
-    mechanic_id = forms.ChoiceField( 
-        choices=mechanics, 
-        required=True,
-      )
+    # mechanic_id = forms.ChoiceField( 
+    #     choices=mechanics,
+    #     required=True,
+      # )
     
+    
+    queryset = PersonalProfile.objects.filter(position = "Mechanic")
+    mechanic_id = forms.ModelChoiceField(
+      queryset=queryset, 
+    )
+        
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["car_id"].disabled = True
