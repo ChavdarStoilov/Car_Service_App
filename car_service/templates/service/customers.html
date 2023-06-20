@@ -67,12 +67,14 @@
 
     saveDate = (url) => {
         const formFilled =  document.querySelectorAll(".form-control input")
+        pk = url.split("/")[3]
 
         const formData = {
-            'model': formFilled[0].value,
-            'year': formFilled[1].value,
-            'VIN': formFilled[2].value,
-            'kilometers': formFilled[3].value,
+            'user_id': pk,
+            'first_name': formFilled[0].value,
+            'last_name': formFilled[1].value,
+            'email': formFilled[2].value,
+            'phone': formFilled[3].value,
         }
         
         fetch(url,{
@@ -88,7 +90,6 @@
             const spanMessage = document.createElement("span")
             
             if (response.ok){
-                
                 spanMessage.textContent = "Save was success"
                 spanMessage.style.cssText = `
                     display: block;
@@ -111,6 +112,8 @@
 
             }
             form.insertBefore(spanMessage, formInputs)
+
+            setTimeout(() => spanMessage.remove(), 5000)
         }
         )
         .catch(function(err) {
@@ -170,6 +173,7 @@
         popup.style.cssText = `
             display: none;
         `;
+        location.reload();
     }
 </script>
 {% endblock  %}
