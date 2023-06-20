@@ -10,6 +10,7 @@ html, body {
 body {
     background-color: #ebebeb;
     display: grid;
+    grid-template-rows: 445px;
 
 }
 
