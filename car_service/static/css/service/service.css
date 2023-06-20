@@ -2,26 +2,30 @@
   padding: 33px 30px;
 }
 
-.cars {
+.cars, .customer {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
   
-.cars td, .cars th {
+.cars td, .cars th,
+.customer td, .customer th {
     padding: 16px;
 
 }
   
-.cars tr:nth-child(even){
+.cars tr:nth-child(even),
+.customer tr:nth-child(even){
     background-color: #f2f2f2;
 }
 
-.cars tr:hover {
+.cars tr:hover,
+.customer tr:hover{
     background-color: #ddd;
 }
 
-.cars th {
+.cars th,
+.customer th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
@@ -90,6 +94,7 @@
 
 /* Styling form-control input,
 select, textarea */
+
 .form-control input,
 .form-control select,
 .form-control textarea{
@@ -99,6 +104,7 @@ select, textarea */
     padding: 8px;
     display: block;
     width: 95%;
+    margin-bottom: 10px;
 }
 
 /* Styling form-control Radio

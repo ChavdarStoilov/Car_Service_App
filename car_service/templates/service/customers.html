@@ -2,12 +2,13 @@
 
 {% block main %}
 <h1>Customers</h1>
-{% if customers %}
     <section class="container-table">
         <div class="service__btn__add">
             <a href="{% url 'add customer page' %}" class="btn__action service_add">Add customer</a>
         </div>
-            <table class="cars">
+    {% if customers %}
+
+            <table class="customer">
                 <tr>
                     <th>First name</th>
                     <th>Last name</th>
@@ -24,8 +25,8 @@
                         <td>{{ customer.phone }}</td>
 
                         <td>
-                            <a class="btn__action details"{% comment "url for detail" %}href="{% url 'car detail' car.pk %}"{% endcomment %}>Detail</a>
-                            <a class="btn__action delete"{% comment "url for delete" %}href="{% url 'car detail' car.pk %}"{% endcomment %}>Delete</a>
+                            <a class="btn__action details" onClick='customerDetail("{% url "customers" customer.pk %}")'>Detail</a>
+                            <a class="btn__action delete" onClick='deleteCusotmer("{% url "customers" customer.pk %}")'>Delete</a>
                         </td>
 
                     </tr>
@@ -36,6 +37,14 @@
 {% else %}
     <h2>There no customer</h2>
 {% endif %}
+
+    <section id="popup1" class="overlay">
+        <div class="adding__from">
+            <div class="content">       
+            </div>
+        </div>
+    </section>
+
 {% block script %}
 <script type="text/javascript">
     deleteCusotmer = (url) => {
@@ -54,12 +63,7 @@
             console.info(err + " url: " + url);
         });
     }
-
-
-    const getCustomerDetails = (url) => 
-        fetch(url).then(
-                data => data.json()
-            )
+        
 
     saveDate = (url) => {
         const formFilled =  document.querySelectorAll(".form-control input")
@@ -124,27 +128,32 @@
         contentBox.innerHTML = ""
         const details = document.createElement("section")
 
-        getCustomerDetails(url).then(
-            data => 
+        fetch(url)
+            .then(
+                data => data.json()
+            )
+            .then(
+
+            data =>
+            
             details.innerHTML = `
                 <div class="form-control">
                     <h2>Car Detail</h2>
                     <div class="form__inputs">
-                        <label>Model</label>
-                        <input type="text" value="${data.model}"></input>
-                        <label>Year</label>
-                        <input type="text" value="${data.year}"></input>
-                        <label>VIN</label>
-                        <input type="text" value="${data.VIN}"></input>
-                        <label>Kilometers</label>
-                        <input type="text" value="${data.kilometers}"></input>
+                        <label>First name</label>
+                        <input type="text" value="${data.first_name}"></input>
+                        <label>Last name</label>
+                        <input type="text" value="${data.last_name}"></input>
+                        <label>Email</label>
+                        <input type="text" value="${data.email}"></input>
+                        <label>Phone</label>
+                        <input type="text" value="${data.phone}"></input>
                         <button onClick="saveDate('${url}');">Save</button>
                         <button onClick="closePopUp();">Back</button>
                     </div>
                 </div>
             `
-
-            
+           
         )
 
         contentBox.appendChild(details)

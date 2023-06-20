@@ -235,11 +235,14 @@ header {
 .pofile__data, 
 .content__car__detials, 
 .content__add__car,
-.car__hisotry{
+.car__hisotry,
+.garage__page{
     text-align: center;
     border-radius: 5px;
     padding: 30px 40px 60px 40px;
-
+    position: relative;
+    z-index: 99;
+    top: 100px;
 }
 
 form, .details{
@@ -400,12 +403,6 @@ form, .details{
     font-size: 30px;
 }
 
-.garage__page {
-    position: relative;
-    z-index: 99;
-    top: 100px;
-    text-align: center;
-}
 
 .garage__page__cars {
     display: flex;
