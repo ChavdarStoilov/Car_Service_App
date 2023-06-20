@@ -6,13 +6,6 @@ UserModel = get_user_model()
       
   
 class AddCarQueueFrom(forms.ModelForm):     
-
-    # mechanics = [(person.pk, person) for person in PersonalProfile.objects.all() if person.position == "Mechanic"]
-    
-    # mechanic_id = forms.ChoiceField( 
-    #     choices=mechanics,
-    #     required=True,
-      # )
     
     
     queryset = PersonalProfile.objects.filter(position = "Mechanic")
