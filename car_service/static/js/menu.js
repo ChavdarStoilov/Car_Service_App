@@ -14,7 +14,15 @@ function menu() {
     
     .navigation__contacts {
         margin-left: -160px;
-    }`);
+    }
+    @media screen and (max-width: 810px){
+        .sidebar {
+            right: 0px;
+        }
+    }
+    `
+    
+    );
 }
 
 menu();
