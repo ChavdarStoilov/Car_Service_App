@@ -805,7 +805,7 @@ form, .details{
 /* Responsive Design */
 
 
-@media screen and (max-width: 810px){
+@media screen and (max-width: 830px){
     .box{
       width: 70%;
     }
@@ -858,5 +858,17 @@ form, .details{
 
     .btn {
         font-size: 15px;
+    }
+
+    .card {
+        width: 263px;
+        height: 350px;
+    }
+
+    .pofile__data,
+    .content__car__detials, 
+    .content__add__car, 
+    .car__hisotry, .garage__page {
+        padding: 0px;
     }
 }

@@ -86,3 +86,11 @@ body {
     color: #fff;
 }
 
+
+
+@media screen and (max-width: 410px ){
+    
+    .login-box, .register-box {
+        width: 300px;
+    }
+}
