@@ -97,7 +97,8 @@ select, textarea */
 
 .form-control input,
 .form-control select,
-.form-control textarea{
+.form-control textarea
+.form-control p{
     border: 1px solid #777;
     border-radius: 2px;
     font-family: inherit;

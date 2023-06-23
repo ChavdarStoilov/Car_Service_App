@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView, CreateView
 from django.shortcuts import render, redirect
-from .forms import ProfileForm, AddCarFrom, CarDetailsForm
+from .forms import DivErrorList, ProfileForm, AddCarFrom, CarDetailsForm
 from .models import CustomerProfile
 from django.urls import reverse_lazy
 from ..service_app.models import Cars, CarQueue, CarBrand, RepairHistory, PersonalProfile
@@ -55,12 +55,12 @@ class AddCar(TemplateView):
     
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['form'] = AddCarFrom()
+        context['form'] = AddCarFrom(error_class=DivErrorList)
         return context
     
     
     def post(self, request):
-        car_form = AddCarFrom(request.POST)
+        car_form = AddCarFrom(request.POST, error_class=DivErrorList)
         user_pk = request.user.pk
         if car_form.is_valid():
             car_form.save(user_pk)

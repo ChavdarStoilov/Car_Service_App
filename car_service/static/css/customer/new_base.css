@@ -800,12 +800,10 @@ form, .details{
 
 
 
-
-
 /* Responsive Design */
 
 
-@media screen and (max-width: 830px){
+@media screen and (max-width: 1368px){
     .box{
       width: 70%;
     }
@@ -816,7 +814,7 @@ form, .details{
         right: -4px;
     }
     .hero > img {
-        width: 140%;
+        width: 100%;
     }
     .brands {
         top: 670px;
@@ -838,17 +836,24 @@ form, .details{
         width: 175px;
     }
 
+    .card {
+        width: 263px;
+        height: 350px;
+    }
+
     .flip-card {
         width: 210px;
         height: 218px;
     }
+
+
     .contact {
         font-size: 142px;
         padding: 28px;
     }
 
     .menu {
-        padding-left: 20px;
+        padding-left: 0px;
         padding-right: 20px;
     }
 
@@ -860,15 +865,44 @@ form, .details{
         font-size: 15px;
     }
 
-    .card {
-        width: 263px;
-        height: 350px;
-    }
-
+    
     .pofile__data,
     .content__car__detials, 
     .content__add__car, 
     .car__hisotry, .garage__page {
         padding: 0px;
     }
+
+    .auth_system__menu {
+        flex-direction: column;
+        padding-left: 0px;
+    }
+
+    .garage__page__cars {
+        width: 100%;
+    }
+
+    form, .details {
+        width: 75%;
+    }
+    .field, .brands-choide {
+        width: 50%;
+    }
+
+    .btn-submit {
+        left: 65%;
+    }
+}
+
+
+.error{
+    color: red;
+    margin-right: 95px;
+    width: 400px;
+    text-align: center;
+    position: relative;
+    left: 65%;
+}
+.error p {
+    margin: 0;
 }

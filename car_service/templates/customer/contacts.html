@@ -50,3 +50,28 @@
         </div>
     </sidebar>
 {% endblock %}
+
+{% block script %}
+    <script type="text/javascript">
+
+    let childCount = 0
+    const flip = document.querySelectorAll(".flip-card-inner")
+
+    for (index = 0; index < flip.length; index++) {
+        const block = flip[index]
+
+        if childCount !== block.childElementCount
+            childCount = block.childElementCount
+
+            block.addEventListener("touchend", () => {
+                console.log(block)
+                block.style.cssText = `
+                    transform: rotateY(-180deg);
+                `
+
+        })
+
+    }
+
+    </script>
+{% endblock  %}

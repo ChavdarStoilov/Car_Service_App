@@ -1,8 +1,17 @@
-from typing import Any, Dict
 from .models import CustomerProfile
 from django import forms
 from ..service_app.models import Cars, CarBrand
-from .validators import validator_car_numbers
+from .validators import validator_car_numbers, validator_car_kilometers, validator_car_vin
+from django.forms.utils import ErrorList
+
+
+class DivErrorList(ErrorList):
+    def __str__(self):
+        return self.as_divs()
+    def as_divs(self):
+        if not self:
+           return ''
+        return ''.join([error for error in self])
 
 class ProfileForm(forms.ModelForm):
     first_name = forms.CharField(widget=forms.TextInput
@@ -33,27 +42,61 @@ class AddCarFrom(forms.ModelForm):
     brand = forms.ChoiceField( 
         choices=CHOICES, 
         required=False,
-        widget=forms.Select(attrs={'class':'brands-choide'})
+        widget=forms.Select(
+            attrs={
+                'class':'brands-choide'
+            }
+        )
     )
     
     
-    model = forms.CharField(widget=forms.TextInput
-        (attrs={'class':'field',
-            'placeholder':"Example: A4"}))
-    year = forms.DateTimeField(widget=forms.DateInput
-        (attrs={'class':'field',
-            'placeholder':"Example: 2000-01-01"}))
-    kilometers = forms.CharField(widget=forms.TextInput
-        (attrs={'class':'field',
-            'placeholder':"Example: 100 000"}))
-    VIN = forms.CharField(widget=forms.TextInput
-        (attrs={'class':'field',
-            'placeholder':"Example: WASDW20201WDA"}))
-    registration_number = forms.CharField(
-        widget=forms.TextInput(attrs={'class':'field',
-            'placeholder':"Example: СА 1111 СА"}
-        ),
+    model = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'class':'field',
+                'placeholder':"Example: A4"
+            }
         )
+    )
+
+    year = forms.DateTimeField(
+        widget=forms.DateInput(
+            attrs={
+                'class':'field',
+                'placeholder':"Example: 2000-01-01"
+            }
+        ),
+    )
+    
+    kilometers = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'class':'field',
+                'placeholder':"Example: 100 000"
+            }
+        ),
+        validators= [validator_car_kilometers],
+    )
+    
+    VIN = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'class':'field',
+                'placeholder':"Example: WASDW20201WDA"
+            }
+        ),
+        validators=[validator_car_vin],
+    )
+
+    registration_number = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'class':'field',
+                'placeholder':"Example: СА 1111 СА"
+            }
+        ),
+        validators=[validator_car_numbers],
+    )
     
     class Meta:
         model = Cars
@@ -73,9 +116,9 @@ class AddCarFrom(forms.ModelForm):
         cleaned_data['brand'] = self.BRAND
 
         
-        if self.__class__.__name__ == "AddCarFrom":
-            car_number = cleaned_data.get('registration_number')
-            validator_car_numbers(car_number)
+        # if self.__class__.__name__ == "AddCarFrom":
+        #     car_number = cleaned_data.get('registration_number')
+        #     validator_car_numbers(car_number)
         
         return cleaned_data
         
@@ -93,3 +136,6 @@ class CarDetailsForm(AddCarFrom):
         for field in self.fields.keys():
             self.fields[field].disabled = True
             self.fields[field].widget.attrs["readonly"] = True
+
+
+

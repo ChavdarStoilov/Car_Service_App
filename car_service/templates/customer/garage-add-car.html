@@ -6,7 +6,15 @@
     <section class="content__add__car">
         <h1 class='title__content__title' >Add Car</h1>
         <form method="POST" action="{% url 'customer add car page' %}" >
-            {{ form.as_div }}
+            {% for field in form %}
+                
+            <div class="form-control">
+                {% if field.errors %}
+                    <div class="error"><p>{{ field.errors }}</p></div>
+                {% endif %}
+                {{ field.label_tag }} {{ field }}
+            </div>
+            {% endfor %}
             {% csrf_token %}
             <input type="submit" value="Add" class='btn-submit'/>
         </form>
