@@ -1,4 +1,5 @@
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from .forms import DivErrorList, ProfileForm, AddCarFrom, CarDetailsForm
 from .models import CustomerProfile
@@ -17,8 +18,9 @@ class IndexView(TemplateView):
         return context
     
 
-class ProfileView(TemplateView):
+class ProfileView(LoginRequiredMixin, TemplateView):
     template_name ='customer/profile-details.html'
+    login_url = reverse_lazy('singin page')
     
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
@@ -41,8 +43,9 @@ class ProfileView(TemplateView):
         
 
 
-class GarageView(TemplateView):
+class GarageView(LoginRequiredMixin, TemplateView):
     template_name ='customer/garage.html'
+    login_url = reverse_lazy('singin page')
     
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
@@ -50,7 +53,7 @@ class GarageView(TemplateView):
         return context
     
     
-class AddCar(TemplateView):
+class AddCar(LoginRequiredMixin, TemplateView):
     template_name = 'customer/garage-add-car.html'
     
     def get_context_data(self, *args, **kwargs):
@@ -69,7 +72,7 @@ class AddCar(TemplateView):
             return render(request, self.template_name, {'form': car_form })
     
     
-class CarEditView(TemplateView):
+class CarEditView(LoginRequiredMixin, TemplateView):
     template_name = 'customer/car-details.html'
     
     def get_context_data(self, *args, **kwargs):
@@ -80,7 +83,7 @@ class CarEditView(TemplateView):
         return context
 
 
-class CarRepairProcessView(TemplateView):
+class CarRepairProcessView(LoginRequiredMixin, TemplateView):
     template_name = 'customer/car-repair-process.html'
     
     
@@ -108,7 +111,7 @@ class ContactsView(IndexView, TemplateView):
     template_name ='customer/contacts.html'
     
     
-class CarHistoryView(TemplateView):
+class CarHistoryView(LoginRequiredMixin, TemplateView):
     template_name = 'customer/car-history.html'
     
     
