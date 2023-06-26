@@ -148,18 +148,8 @@ header {
 
 }
 
-/* .hero > h1 {
-    font-family: 'Acme', sans-serif;
-    position: relative;
-    z-index: 100;
-    top: 350px;
-    font-size: 50px;
-    text-align: center
-} */
-
 .hero > img {
     position: absolute;
-    /* margin-top: 46px; */
     width: 100%;
     height: 150%;
     object-fit: cover;
@@ -253,6 +243,8 @@ header {
     letter-spacing: 1px;
     font-size: 50px;
     margin: 20px;
+    margin: 20px 170px;
+
 }
 
 #add-hover {
@@ -279,7 +271,8 @@ a#button-add:hover i {
 .content__car__detials, 
 .content__add__car,
 .car__hisotry,
-.garage__page{
+.garage__page,
+.car__timeline{
     text-align: center;
     border-radius: 5px;
     padding: 30px 40px 60px 40px;
@@ -287,6 +280,7 @@ a#button-add:hover i {
     z-index: 99;
     top: 100px;
 }
+
 
 form, .details{
     position: relative;
@@ -680,20 +674,37 @@ form, .details{
 }
 
 .history__table {
-	width: 1200px;
+	/* width: 1200px;
 	border-collapse: collapse;
 	overflow: hidden;
-	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+	box-shadow: 0 0 20px rgba(0,0,0,0.1); */
+
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
 }
 
 .history__table th, .history__table td {
+    padding: .625em;
+    text-align: center;
+
 	padding: 15px;
 	background-color: rgba(255,255,255,0.7);
 	color: #000000;
 }
 
 .history__table th {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
     background-color: #31658d;
+}
+
+.history__table tr {
+    padding: .35em;
 }
 
 .history__table tr:hover {
@@ -935,6 +946,14 @@ form, .details{
     .btn-submit {
         left: 63%;
     }
+
+    .history__table {
+        width: 771px
+    }
+
+    .popup {
+        height: 500px;
+    }
 }
 
 @media screen and (max-width: 796px){
@@ -973,9 +992,9 @@ form, .details{
 
 
 @media screen and (max-width: 455px) {
-    .hero {
+    /* .hero {
         padding-right: 164px;
-    }
+    } */
     .btn-submit {
         left: 55%;
       }
@@ -983,6 +1002,32 @@ form, .details{
 }
  
 @media screen and (max-width: 425px) {
+    body {
+        grid-template-rows: 661px;
+    }
+
+    .header {
+        display: block;
+        padding: unset;
+    }
+    .header__logo {
+        clip-path: unset;
+        padding-left: 118px;
+        background: unset;
+    }
+    .header__logo > img {
+        width: unset;
+    }
+
+    .menu {
+        padding-left: 70px;
+        margin: 30px 0px;
+    }
+
+    .auth_system__menu {
+        flex-direction: row;
+        padding: 20px 15px;
+    }
     .sidebar {
         background: unset;
     }
@@ -1011,16 +1056,28 @@ form, .details{
     .navigation__list a {
         margin-left: unset;
     }
-
     .hero {
-        padding-right: 240px;
+        padding: unset;
     }
-
+    .garage__page {
+        margin-left: 10px;
+    }
     .garage__page__cars {
         flex-direction: column;
     }
-    
+    .form-control > label {
+        display: block;
+        text-align: center;
+    }
 
+    .car__timeline {
+        top: 0px;
+        padding-left: 0px;
+        padding-bottom: 0px;
+    }
+    .md-stepper-horizontal  {
+        top: 100px;
+    }
     .btn-submit {
         left: 52%;
     }
@@ -1042,12 +1099,65 @@ form, .details{
         padding: 20px;
     }
 
+    form, .details {
+        width: 100%;
+        text-align: unset;
+    }
+
     .flip-card-back span h2 {
         font-size: 15px;
     }
     .flip-card-back span p {
         font-size: 10px;
     }
+
+    .brands {
+        top: 896px;
+    }
+
+    .btn-submit {
+        left: 36%;
+    }
+
+    .history__table {
+        border: 0;
+    }
+    
+    .history__table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    
+    .history__table tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+    }
+    
+    .history__table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: right;
+    }
+    
+    .history__table td::before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    
+    .history__table td:last-child {
+      border-bottom: 0;
+    }
+    
 }
 
 .error{

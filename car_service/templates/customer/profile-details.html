@@ -6,7 +6,15 @@
     <section class="pofile__data">        
         <h1 class='title__content__title'> Your Profile data</h1>
         <form method="POST" action="{% url 'profile' %}">
-            {{ form_profile.as_div }}
+            {% for field in form_profile %}
+                
+            <div class="form-control">
+                {% if field.errors %}
+                    <div class="error"><p>{{ field.errors }}</p></div>
+                {% endif %}
+                {{ field.label_tag }} {{ field }}
+            </div>
+            {% endfor %}
             {% csrf_token %}
             <input type="submit" value="Save" class="btn-submit"/>
         </form>
