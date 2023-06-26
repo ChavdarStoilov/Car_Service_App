@@ -6,9 +6,12 @@
 {% endblock %}
 {% block content %}
 
-        <sidebar class="sidebar">
+        <sidebar class="sidebar" id="sidebar">
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
             <nav class="navigation">
-                <ul>
+                <ul class="topnav" id="myTopnav">
                     <li class="navigation__list">
                         <a href="{% url 'home page' %}" class="navigation__links navigation__home"><i class="fas fa-home"> Home</i></a>
                     </li>
@@ -36,4 +39,19 @@
    
 {% endblock %}
     
+{% block script %}
+<script type="text/javascript">
+    function myFunction() {
+        const sidenav = document.getElementById("myTopnav");
+        const sidebar = document.getElementById("sidebar");
+        if (sidenav.className === "topnav") {
+          sidenav.className += " responsive";
+          sidebar.style.background = "rgba(0, 0, 0, 0.5)"
+        } else {
+          sidenav.className = "topnav";
+          sidebar.style.background = "unset"
 
+        }
+      }
+</script>
+{% endblock  %}

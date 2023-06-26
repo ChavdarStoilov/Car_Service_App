@@ -82,6 +82,9 @@ header {
     color: #31658d;
 }
 
+.topnav .icon {
+    display: none;
+}
 
 .navigation__home {
     margin-left: 50px;
@@ -245,9 +248,11 @@ header {
     overflow: hidden;
   }
   
-a {
+.icon {
     text-decoration: none;
     letter-spacing: 1px;
+    font-size: 50px;
+    margin: 20px;
 }
 
 #add-hover {
@@ -928,10 +933,122 @@ form, .details{
     }
 
     .btn-submit {
-        left: 65%;
+        left: 63%;
     }
 }
 
+@media screen and (max-width: 796px){
+    .header__logo {
+        padding-left: 22px;
+        padding-right: 72px;
+    }
+
+    .header__logo > img {
+      width: 118px;
+    }
+    .btn-submit {
+        left: 62%;
+      }
+}
+
+@media screen and (max-width: 594px) {
+    .hero {
+        padding-right: 23px;
+    }
+    
+    .btn-submit {
+        left: 60%;
+    }
+}
+
+
+@media screen and (max-width: 584px) {
+    .hero {
+        padding-right: 56px;
+    }
+    .btn-submit {
+        left: 58%;
+    }
+}
+
+
+@media screen and (max-width: 455px) {
+    .hero {
+        padding-right: 164px;
+    }
+    .btn-submit {
+        left: 55%;
+      }
+    
+}
+ 
+@media screen and (max-width: 425px) {
+    .sidebar {
+        background: unset;
+    }
+    .topnav li{
+        display: none;
+    }
+    .sidebar .icon {
+        float: right;
+        display: block;
+    }
+    .topnav.responsive {position: relative;}
+    .sidebar.responsive .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .topnav.responsive li {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+
+    .navigation {
+        width: unset;
+    }
+    .navigation__list a {
+        margin-left: unset;
+    }
+
+    .hero {
+        padding-right: 240px;
+    }
+
+    .garage__page__cars {
+        flex-direction: column;
+    }
+    
+
+    .btn-submit {
+        left: 52%;
+    }
+
+    .contacts {
+        justify-content: unset;
+        gap: 34px;
+    }
+    .card {
+        padding: 43px;
+    }
+    .flip-card {
+        width: 104px;
+        height: 111px;
+    }
+
+    .contact {
+        font-size: 66px;
+        padding: 20px;
+    }
+
+    .flip-card-back span h2 {
+        font-size: 15px;
+    }
+    .flip-card-back span p {
+        font-size: 10px;
+    }
+}
 
 .error{
     color: red;
