@@ -122,11 +122,11 @@ header {
 }
 
 .middle-menu__list a {
-    color: white;
+    color: #31658d;
 }
 
 .middle-menu__list a:hover {
-    color: #31658d;
+    color: #124770;
 }
 
 .main__content {
@@ -679,6 +679,7 @@ form, .details{
     background: rgba(0, 0, 0, 0.7);
     transition: opacity 500ms;
     display: none;
+    z-index: 99;
 }
 
 .overlay:target {

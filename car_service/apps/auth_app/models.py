@@ -9,6 +9,7 @@ class AppUsers(AbstractBaseUser, PermissionsMixin):
         null=False,
         blank=False,
     )
+
     is_staff = models.BooleanField(
         default=False,
         null=False,
