@@ -230,6 +230,43 @@ header {
     background-color: #31658d;
 }
 
+.button-add {
+    display: inline-flex;
+    height: 40px;
+    width: 150px;
+    border: 2px solid #BFC0C0;
+    color: #000000;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: .8em;
+    letter-spacing: 1.5px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+a {
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+#add-hover {
+    width: 15px;
+    height: 10px;
+    position: absolute;
+    transform: translateX(60px);
+    opacity: 0;
+    -webkit-transition: all .25s cubic-bezier(.14, .59, 1, 1.01);
+    transition: all .15s cubic-bezier(.14, .59, 1, 1.01);
+    margin: 0;
+    padding: 0 5px;
+  }
+  
+a#button-add:hover i {
+    width: 15px;
+    opacity: 1;
+    transform: translateX(50px);
+}
 
 /* Another pages */
 
@@ -410,7 +447,7 @@ form, .details{
     align-content: center;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    margin: 20px auto;
+    margin: 5px auto;
     width: 50%;
     gap: 15px;
     padding: 20px;
