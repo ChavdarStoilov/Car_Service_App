@@ -94,3 +94,15 @@ body {
         width: 300px;
     }
 }
+
+
+.errorlist{
+    color: red;
+    width: 400px;
+    position: relative;
+    left: -12%;
+    list-style: none;
+}
+.errorlist p {
+    margin: 0;
+}

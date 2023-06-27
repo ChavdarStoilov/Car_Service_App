@@ -1,7 +1,7 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView, CreateView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
-from .forms import DivErrorList, ProfileForm, AddCarFrom, CarDetailsForm
+from .forms import ProfileForm, AddCarFrom
 from .models import CustomerProfile
 from django.urls import reverse_lazy
 from ..service_app.models import Cars, CarQueue, CarBrand, RepairHistory, PersonalProfile
@@ -9,14 +9,15 @@ from ..auth_app.models import AppUsers
 from rest_framework.response import Response
 
 
-class IndexView(TemplateView):
+class IndexView(ListView):
     template_name ='customer/new-home-page.html'
-    
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        context['cars'] = CarBrand.objects.all()
-        return context
-    
+    model = CarBrand
+    context_object_name = "cars"
+
+  
+class ContactsView(IndexView):
+    template_name ='customer/contacts.html'
+      
 
 class ProfileView(LoginRequiredMixin, TemplateView):
     template_name ='customer/profile-details.html'
@@ -43,9 +44,11 @@ class ProfileView(LoginRequiredMixin, TemplateView):
         
 
 
-class GarageView(LoginRequiredMixin, TemplateView):
+class GarageView(LoginRequiredMixin, ListView):
     template_name ='customer/garage.html'
     login_url = reverse_lazy('singin page')
+    model = Cars
+    context_object_name = "cars"
     
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
@@ -53,17 +56,15 @@ class GarageView(LoginRequiredMixin, TemplateView):
         return context
     
     
-class AddCar(LoginRequiredMixin, TemplateView):
+class AddCar(LoginRequiredMixin, CreateView):
     template_name = 'customer/garage-add-car.html'
-    
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        context['form'] = AddCarFrom(error_class=DivErrorList)
-        return context
+    form_class = AddCarFrom
+    success_url = reverse_lazy('garage')
+    context_object_name = "form"
     
     
     def post(self, request):
-        car_form = AddCarFrom(request.POST, error_class=DivErrorList)
+        car_form = AddCarFrom(request.POST)
         user_pk = request.user.pk
         if car_form.is_valid():
             car_form.save(user_pk)
@@ -71,47 +72,29 @@ class AddCar(LoginRequiredMixin, TemplateView):
         else:
             return render(request, self.template_name, {'form': car_form })
     
-    
-class CarEditView(LoginRequiredMixin, TemplateView):
-    template_name = 'customer/car-details.html'
-    
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        car = Cars.objects.get(pk = kwargs['pk'])
-        context['car'] = car
-        context['form'] = CarDetailsForm(instance=car)
-        return context
 
 
-class CarRepairProcessView(LoginRequiredMixin, TemplateView):
+class CarRepairProcessView(LoginRequiredMixin, DetailView):
     template_name = 'customer/car-repair-process.html'
+    model = CarQueue
+    context_object_name = "car"
     
-    
-    def get_object(self, pk):
-        try:
-            return CarQueue.objects.get(pk=pk)
-        except CarQueue.DoesNotExist:
-            return False
-    
-    def get(self, request, pk, **kwargs):
-        context = self.get_context_data(**kwargs)
-        car = self.get_object(pk)
-        if not car:
-            return redirect(reverse_lazy('garage'))
-        context['car'] = self.get_object(pk)
-        return self.render_to_response(context)
+
+    # def get(self, request, pk, **kwargs):
+    #     context = self.get_context_data(**kwargs)
+    #     car = self.get_object(pk)
+    #     if not car:
+    #         return redirect(reverse_lazy('garage'))
+    #     context['car'] = self.get_object(pk)
+    #     return self.render_to_response(context)
 
     
     
 def error_page(request):
     return render(request, '404.html')
 
-
-class ContactsView(IndexView, TemplateView):
-    template_name ='customer/contacts.html'
     
-    
-class CarHistoryView(LoginRequiredMixin, TemplateView):
+class CarHistoryView(LoginRequiredMixin, DetailView):
     template_name = 'customer/car-history.html'
     
     

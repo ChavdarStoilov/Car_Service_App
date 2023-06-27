@@ -10,7 +10,7 @@
                 
             <div class="form-control">
                 {% if field.errors %}
-                    <div class="error"><p>{{ field.errors }}</p></div>
+                   {{ field.errors }}
                 {% endif %}
                 {{ field.label_tag }} {{ field }}
             </div>

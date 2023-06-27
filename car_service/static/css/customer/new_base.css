@@ -1160,14 +1160,15 @@ form, .details{
     
 }
 
-.error{
+.errorlist{
     color: red;
     margin-right: 95px;
     width: 400px;
     text-align: center;
     position: relative;
     left: 65%;
+    list-style: none;
 }
-.error p {
+.errorlist p {
     margin: 0;
 }

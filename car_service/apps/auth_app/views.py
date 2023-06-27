@@ -14,7 +14,6 @@ class SingUpView(views.CreateView):
     template_name ='auth/singup.html'
     form_class = CustomerUserCreation
 
-    # success_url = reverse_lazy('singin page')
     def get_success_url(self):
 
         return str(reverse_lazy('singin page')) 
@@ -23,7 +22,7 @@ class SingUpPersonalView(views.CreateView):
     template_name ='auth/singup.html'
     form_class = PersonalUserCreation
 
-    # success_url = reverse_lazy('singin page')
+    success_url = reverse_lazy('singin page')
 
     def get_success_url(self):
 
@@ -31,10 +30,7 @@ class SingUpPersonalView(views.CreateView):
     
     
 class SingInView(auth_views.LoginView):
-    template_name ='auth/singin.html'
-    success_url = ""
-    
-    
+    template_name ='auth/singin.html'    
     
     def get_success_url(self):
         if not self.request.user.is_customer:

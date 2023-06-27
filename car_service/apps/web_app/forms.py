@@ -5,14 +5,6 @@ from .validators import validator_car_numbers, validator_car_kilometers, validat
 from django.forms.utils import ErrorList
 
 
-class DivErrorList(ErrorList):
-    def __str__(self):
-        return self.as_divs()
-    def as_divs(self):
-        if not self:
-           return ''
-        return ''.join([error for error in self])
-
 class ProfileForm(forms.ModelForm):
     first_name = forms.CharField(widget=forms.TextInput
         (attrs={'class':'field'}))
