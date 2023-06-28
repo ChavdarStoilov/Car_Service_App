@@ -5,10 +5,32 @@
     {% block cover_car %}
     {% endblock  %}
     <section class="car__hisotry">
-        <h1 class='title__content__title' >Car Hisotry</h1>
         {% if history %}
         <div class="container">
             <table class="history__table">
+                <caption class='title__content__title'>Car Hisotry</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Invoice number</th>
+                    <th scope="col">Kilometers</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for row in history %}
+                    <tr>
+                        <td data-label="Date">{{ row.date }}</td>
+                        <td data-label="Invoice number">№ {{ row.number }}</td>
+                        <td data-label="Kilometers">{{ row.kilometers }} km</td>
+                        <td data-label="Total Price">{{ row.total_price }}</td>
+                        <td data-label="Actions"><a class="btn__action" onClick='genereateInvoice("{% url "history" row.number %}");'>Invoice</a>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            {% comment %} <table class="history__table">
                 <thead>
                     <tr>
                         <th>Date</th>
@@ -29,7 +51,7 @@
                         </tr>
                     {% endfor %}
                 </tbody>
-            </table>
+            </table> {% endcomment %}
         </div>
         {% endif %}
     </section>
@@ -72,7 +94,7 @@
         invoiceSection.innerHTML = `
                 <div class="invoice__header">
                 <div id="logo">
-                    <img class="invoice__header__logo" src="/static/images/new_logo.png" alt="company logo">
+                    <img class="invoice__header__logo" src="/static/images/logo.png" alt="company logo">
                 </div>
                 <h1 class="invoice__title" >INVOICE ${id}</h1>
             </div>

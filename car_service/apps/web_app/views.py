@@ -94,14 +94,14 @@ def error_page(request):
     return render(request, '404.html')
 
     
-class CarHistoryView(LoginRequiredMixin, DetailView):
+class CarHistoryView(LoginRequiredMixin, TemplateView):
     template_name = 'web/car-history.html'
     
     
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         cars_history = RepairHistory.objects.filter(car_id = kwargs['pk'])
-        
+        print(cars_history)
         date_invoice_number = []
         
         for row in cars_history:

@@ -673,13 +673,13 @@ form, .details{
 	transform: translate(-50%, -50%);
 }
 
-.history__table {
+/* .history__table { */
 	/* width: 1200px;
 	border-collapse: collapse;
 	overflow: hidden;
 	box-shadow: 0 0 20px rgba(0,0,0,0.1); */
 
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc;
     border-collapse: collapse;
     margin: 0;
     padding: 0;
@@ -709,7 +709,7 @@ form, .details{
 
 .history__table tr:hover {
     background-color: rgba(255,255,255,0.2)
-}
+} */
 
 .btn__action {
     border: 1px solid black;
@@ -946,10 +946,10 @@ form, .details{
     .btn-submit {
         left: 63%;
     }
-
+/* 
     .history__table {
         width: 771px
-    }
+    } */
 
     .popup {
         height: 500px;
@@ -971,10 +971,6 @@ form, .details{
 }
 
 @media screen and (max-width: 594px) {
-    .hero {
-        padding-right: 23px;
-    }
-    
     .btn-submit {
         left: 60%;
     }
@@ -983,9 +979,6 @@ form, .details{
 
 
 @media screen and (max-width: 584px) {
-    .hero {
-        padding-right: 56px;
-    }
     .btn-submit {
         left: 58%;
     }
@@ -993,9 +986,6 @@ form, .details{
 
 
 @media screen and (max-width: 455px) {
-    /* .hero {
-        padding-right: 164px;
-    } */
     .btn-submit {
         left: 55%;
       }
@@ -1128,7 +1118,7 @@ form, .details{
         left: 36%;
     }
 
-    .history__table {
+    /* .history__table {
         border: 0;
     }
     
@@ -1141,9 +1131,9 @@ form, .details{
       padding: 0;
       position: absolute;
       width: 1px;
-    }
+    } */
     
-    .history__table tr {
+    /* .history__table tr {
       border-bottom: 3px solid #ddd;
       display: block;
       margin-bottom: .625em;
@@ -1164,8 +1154,8 @@ form, .details{
     }
     
     .history__table td:last-child {
-      border-bottom: 0;
-    }
+      border-bottom: 0; */
+    /* } */
     
 }
 
@@ -1182,3 +1172,107 @@ form, .details{
     margin: 0;
 }
 
+
+
+
+/*  test gpt table resposive design */
+table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.history__table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+.history__table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+.history__table th,
+.history__table td {
+  padding: .625em;
+  text-align: center;
+}
+
+.history__table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+    .container{
+        all: unset;
+    }
+
+    .car__hisotry {
+        margin: 10px;
+    }
+
+    .popup {
+        width: 100%;
+    }
+
+    .invoice {
+        padding: 17px 2px;
+        margin-top: 60px;
+    }
+
+    table {
+        table-layout: unset;
+    }
+    .history__table {
+      border: 0;
+
+    }
+
+    .history__table caption {
+      font-size: 1.3em;
+    }
+
+    .history__table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+
+    .history__table tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+    }
+
+    .history__table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: right;
+    }
+
+    .history__table td::before {
+
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .history__table td:last-child {
+      border-bottom: 0;
+    }
+
+
+}   
