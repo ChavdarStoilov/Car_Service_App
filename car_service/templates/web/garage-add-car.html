@@ -1,4 +1,4 @@
-{% extends 'customer/new-base.html' %}
+{% extends 'web/base.html' %}
 
 {% block content %}
 {% block cover_car %}
@@ -20,6 +20,12 @@
         </form>
     </section>
 {% endblock  %}
-
+{% block script %}
+    <script type="text/javascript">
+        const auth_content  = document.querySelector('.auth_system');
+        auth_content.style.display = 'none';
+    </script>
+{% endblock %}
 {% block footer %}
 {% endblock  %}
+

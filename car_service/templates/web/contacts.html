@@ -1,4 +1,4 @@
-{% extends 'customer/new-base.html' %} 
+{% extends 'web/base.html' %}
 
 {% block content %}
     <sidebar class="contacts">
@@ -56,24 +56,28 @@
 {% block script %}
     <script type="text/javascript">
 
-    let childCount = 0
-    const flip = document.querySelectorAll(".flip-card-inner")
+        const auth_content  = document.querySelector('.auth_system');
+        auth_content.style.display = 'none';
 
-    for (index = 0; index < flip.length; index++) {
-        const block = flip[index]
+        let childCount = 0
+        const flip = document.querySelectorAll(".flip-card-inner")
 
-        if childCount !== block.childElementCount
-            childCount = block.childElementCount
+        for (index = 0; index < flip.length; index++) {
+            const block = flip[index]
 
-            block.addEventListener("touchend", () => {
-                console.log(block)
-                block.style.cssText = `
-                    transform: rotateY(-180deg);
-                `
+            if (childCount !== block.childElementCount) {
+                childCount = block.childElementCount
 
-        })
+                block.addEventListener("touchend", () => {
+                    console.log(block)
+                    block.style.cssText = `
+                        transform: rotateY(-180deg);
+                    `
 
-    }
+                })
+            }
+
+        }
 
     </script>
 {% endblock  %}

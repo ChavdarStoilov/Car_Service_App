@@ -1,4 +1,4 @@
-{% extends 'customer/new-base.html' %}
+{% extends 'web/base.html' %}
 {% load static %}
 
 {% block content %}
@@ -46,6 +46,8 @@
 
 {% block script %}
 <script>
+    const auth_content  = document.querySelector('.auth_system');
+    auth_content.style.display = 'none';
 
     const getInvoice = (url) => 
         fetch(url)

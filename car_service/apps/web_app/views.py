@@ -10,17 +10,17 @@ from rest_framework.response import Response
 
 
 class IndexView(ListView):
-    template_name ='customer/new-home-page.html'
+    template_name ='web/index.html'
     model = CarBrand
     context_object_name = "cars"
 
   
 class ContactsView(IndexView):
-    template_name ='customer/contacts.html'
+    template_name ='web/contacts.html'
       
 
 class ProfileView(LoginRequiredMixin, TemplateView):
-    template_name ='customer/profile-details.html'
+    template_name ='web/profile-details.html'
     login_url = reverse_lazy('singin page')
     
     def get_context_data(self, *args, **kwargs):
@@ -45,7 +45,7 @@ class ProfileView(LoginRequiredMixin, TemplateView):
 
 
 class GarageView(LoginRequiredMixin, ListView):
-    template_name ='customer/garage.html'
+    template_name ='web/garage.html'
     login_url = reverse_lazy('singin page')
     model = Cars
     context_object_name = "cars"
@@ -57,7 +57,7 @@ class GarageView(LoginRequiredMixin, ListView):
     
     
 class AddCar(LoginRequiredMixin, CreateView):
-    template_name = 'customer/garage-add-car.html'
+    template_name = 'web/garage-add-car.html'
     form_class = AddCarFrom
     success_url = reverse_lazy('garage')
     context_object_name = "form"
@@ -75,7 +75,7 @@ class AddCar(LoginRequiredMixin, CreateView):
 
 
 class CarRepairProcessView(LoginRequiredMixin, DetailView):
-    template_name = 'customer/car-repair-process.html'
+    template_name = 'web/car-repair-process.html'
     model = CarQueue
     context_object_name = "car"
     
@@ -95,7 +95,7 @@ def error_page(request):
 
     
 class CarHistoryView(LoginRequiredMixin, DetailView):
-    template_name = 'customer/car-history.html'
+    template_name = 'web/car-history.html'
     
     
     def get_context_data(self, *args, **kwargs):

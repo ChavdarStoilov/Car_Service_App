@@ -9,17 +9,17 @@
     <title>Car Service</title>
 
     <link rel="stylesheet"  href="{% static 'css/reset.css' %}">
-    <link rel="stylesheet" href="{% static 'css/customer/new_base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/web/web_base.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
 
 </head>
 <body>
-    <img src="{% static 'images/auth-background.png' %}" class='auth_background' alt="auth background">
+    <img src="{% static 'images/background.png' %}" class='auth_background' alt="auth background">
     <header class="header">
         
 
         <div class="header__logo">
-            <img src="{% static 'images/new_logo.png' %}" alt="Logo img">
+            <img src="{% static 'images/logo.png' %}" alt="Logo img">
         </div>
         {% block menu %}
             <nav class="middle-menu">
@@ -76,7 +76,7 @@
     <main class='main__content'>
         <section class="hero">
             {% block cover_car %}
-                <img src="{% static 'images/background-img.png' %}" alt="">
+                <img src="{% static 'images/hero.png' %}" alt="">
             {% endblock  %}
             {% block content %}
             {% endblock %}

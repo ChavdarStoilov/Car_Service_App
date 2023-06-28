@@ -912,7 +912,7 @@ form, .details{
     }
 
     .middle-menu__list {
-        font-size: 32px;
+        font-size: 42px;
     }
 
     .btn {
@@ -978,6 +978,7 @@ form, .details{
     .btn-submit {
         left: 60%;
     }
+
 }
 
 
@@ -1003,30 +1004,34 @@ form, .details{
  
 @media screen and (max-width: 425px) {
     body {
-        grid-template-rows: 661px;
+        grid-template-rows: 580px;
     }
 
     .header {
-        display: block;
-        padding: unset;
+        flex-direction: column;
+        justify-content: center;
+        height: 240px;
     }
+
     .header__logo {
         clip-path: unset;
-        padding-left: 118px;
+        padding: 0px;
         background: unset;
     }
     .header__logo > img {
         width: unset;
+        margin-left: 30px;
     }
 
     .menu {
-        padding-left: 70px;
+        padding: unset;
         margin: 30px 0px;
     }
 
     .auth_system__menu {
         flex-direction: row;
-        padding: 20px 15px;
+        padding: unset;
+        margin-top: 30px;
     }
     .sidebar {
         background: unset;
@@ -1060,7 +1065,10 @@ form, .details{
         padding: unset;
     }
     .garage__page {
-        margin-left: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
     }
     .garage__page__cars {
         flex-direction: column;
@@ -1071,9 +1079,9 @@ form, .details{
     }
 
     .car__timeline {
+        margin-top: 30px;
         top: 0px;
-        padding-left: 0px;
-        padding-bottom: 0px;
+        padding: 0px;
     }
     .md-stepper-horizontal  {
         top: 100px;
@@ -1083,8 +1091,9 @@ form, .details{
     }
 
     .contacts {
-        justify-content: unset;
         gap: 34px;
+        display: flex;
+        justify-content: center;
     }
     .card {
         padding: 43px;
@@ -1112,7 +1121,7 @@ form, .details{
     }
 
     .brands {
-        top: 896px;
+        top: 800px;
     }
 
     .btn-submit {
@@ -1172,3 +1181,4 @@ form, .details{
 .errorlist p {
     margin: 0;
 }
+

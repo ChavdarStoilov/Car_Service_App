@@ -1,4 +1,4 @@
-{% extends 'customer/new-base.html' %}
+{% extends 'web/base.html' %}
 {% load static %}
 
 {% block content %}
@@ -40,6 +40,8 @@
 {% endblock  %}
 {% block script %}
     <script>
+        const auth_content  = document.querySelector('.auth_system');
+        auth_content.style.display = 'none';
         const url = '{% url "queue cars" car.pk %}'
 
         const getStatus = () =>
