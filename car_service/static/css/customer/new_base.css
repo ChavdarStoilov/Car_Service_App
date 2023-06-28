@@ -322,7 +322,7 @@ form, .details{
 
 
 .brands {
-    width: 99%;
+    width: 100%;
     position: absolute;
     z-index: 100;
     bottom: 29px;
