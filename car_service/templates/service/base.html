@@ -10,6 +10,7 @@
     <link rel="stylesheet"  href="{% static 'css/reset.css' %}">
     <link rel="stylesheet"  href="{% static 'css/service/service_base.css' %}">
     <link rel="stylesheet"  href="{% static 'css/service/service.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 </head>
 <body>
@@ -28,10 +29,14 @@
         </div>
     </header>
 
-    <div class="sidenav">
+    <aside class="sidenav open">
+        <div class="sidebar-header">
+            <a href="#" class="toggle-sidebar" onclick= "closeSideBar();">
+              <i class="fas fa-chevron-left"></i>
+            </a>
+        </div>
         <nav class="navitaion" >
             <ul>
-                
                 {% if user.position == 'Reciver' %}
                     <li><a href="{% url 'car queue' %}" onClick="updateStatus();"><img src="{% static 'images/car_queue.png' %}" alt="car_queue img" class="navigation__icons"></a></li>
                     <li><a href="{% url 'cars' %}"><img src="{% static 'images/cars.png' %}" alt="cars img" class="navigation__icons"></a></li>
@@ -41,13 +46,37 @@
                 {% endif %}
             </ul>
         </nav>
-    </div>
+    </aside>
    
     <main class="main">
         {% block main %}
         {% endblock  %}
     </main>
 {% block script %}
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+
+            closeSideBar = () => {
+                const sidebar = document.querySelector('.sidenav');
+                const arrow = document.querySelector('.fa-chevron-left');
+                
+                console.log(sidebar.className.includes("open"))
+                if (sidebar.className.includes("open")) {
+                    sidebar.classList.remove('open');
+                    sidebar.classList.add("close");
+                    arrow.style.transform = "rotate(180deg)"
+                    
+                }
+                else {
+                    sidebar.classList.remove('close');
+                    sidebar.classList.add("open");
+                    arrow.style.transform = "rotate(360deg)"
+                    
+                }
+                
+            };
+        });
+    </script>
 {% endblock  %}
 </body>
 </html>
