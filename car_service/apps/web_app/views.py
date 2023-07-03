@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, ListView, CreateView, DetailView
+from django.views.generic import TemplateView, ListView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from .forms import ProfileForm, AddCarFrom
@@ -74,19 +74,23 @@ class AddCar(LoginRequiredMixin, CreateView):
     
 
 
-class CarRepairProcessView(LoginRequiredMixin, DetailView):
+class CarRepairProcessView(LoginRequiredMixin, TemplateView):
     template_name = 'web/car-repair-process.html'
-    model = CarQueue
-    context_object_name = "car"
     
+    def get_object(self, pk):
+        try:
+            return CarQueue.objects.get(pk=pk)
+        except CarQueue.DoesNotExist:
+            return False
 
-    # def get(self, request, pk, **kwargs):
-    #     context = self.get_context_data(**kwargs)
-    #     car = self.get_object(pk)
-    #     if not car:
-    #         return redirect(reverse_lazy('garage'))
-    #     context['car'] = self.get_object(pk)
-    #     return self.render_to_response(context)
+    def get(self, request, pk, **kwargs):
+        context = self.get_context_data(**kwargs)
+        car = self.get_object(pk)
+        print(car)
+        if not car:
+            return redirect(reverse_lazy('garage'))
+        context['car'] = self.get_object(pk)
+        return self.render_to_response(context)
 
     
     
