@@ -4,4 +4,10 @@ from .models import CustomerProfile
 
 @admin.register(CustomerProfile)
 class CustomerProfileAdmin(admin.ModelAdmin):
-    pass
+    list_display = (
+        'user_id',
+        'first_name',
+        'last_name',
+        'email',
+        'phone',   
+    )
