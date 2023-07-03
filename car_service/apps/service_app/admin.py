@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import CarQueue, PersonalProfile, Cars, RepairHistory
+from .models import CarQueue, EmployeesProfile, Cars, RepairHistory, CarBrand
 # Register your models here.
 
-@admin.register(PersonalProfile)
+@admin.register(EmployeesProfile)
 class PersonalProfileAdmin(admin.ModelAdmin):
     pass
 
@@ -18,5 +18,9 @@ class PersonalProfileAdmin(admin.ModelAdmin):
 
 
 @admin.register(CarQueue)
+class CarQueueAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(CarBrand)
 class CarQueueAdmin(admin.ModelAdmin):
     pass

@@ -1,5 +1,5 @@
 from django import forms
-from .models import CarQueue, Cars, CustomerProfile, RepairHistory, PersonalProfile
+from .models import CarQueue, Cars, CustomerProfile, RepairHistory, EmployeesProfile
 from django.contrib.auth import get_user_model, forms as auth_forms
 
 UserModel = get_user_model()
@@ -8,7 +8,7 @@ UserModel = get_user_model()
 class AddCarQueueFrom(forms.ModelForm):     
     
     
-    queryset = PersonalProfile.objects.filter(position = "Mechanic")
+    queryset = EmployeesProfile.objects.filter(position = "Mechanic")
     mechanic_id = forms.ModelChoiceField(
       queryset=queryset, 
     )

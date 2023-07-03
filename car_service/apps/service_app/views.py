@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import PersonalProfile, Cars, CarQueue, CustomerProfile, RepairHistory
+from .models import EmployeesProfile, Cars, CarQueue, CustomerProfile, RepairHistory
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
@@ -18,7 +18,7 @@ class IndexView(LoginRequiredMixin, TemplateView):
     
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['user'] = PersonalProfile.objects.get(user_id=self.request.user.pk)
+        context['user'] = EmployeesProfile.objects.get(user_id=self.request.user.pk)
                 
         return context
         

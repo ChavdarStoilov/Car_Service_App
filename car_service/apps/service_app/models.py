@@ -2,7 +2,7 @@ from django.db import models
 from ..auth_app.models import AppUsers
 from ..web_app.models import CustomerProfile
 
-class PersonalProfile(models.Model):
+class EmployeesProfile(models.Model):
     MAX_LENGTH_NAMES = 20
     MAX_PHONE_LENGTH = 14
     
@@ -134,7 +134,7 @@ class CarQueue(models.Model):
     )
     
     mechanic_id = models.ForeignKey(
-        PersonalProfile,
+        EmployeesProfile,
         on_delete=models.CASCADE,
         null=True,
         blank=True,

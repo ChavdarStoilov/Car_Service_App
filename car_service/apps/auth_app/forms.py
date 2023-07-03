@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model, forms as auth_forms
-from ..service_app.models import PersonalProfile
+from ..service_app.models import EmployeesProfile
 from ..web_app.models import CustomerProfile
 from django import forms
 
@@ -50,7 +50,7 @@ class PersonalUserCreation(auth_forms.UserCreationForm):
       
       user=super().save(commit=commit)
       
-      profile=PersonalProfile(
+      profile=EmployeesProfile(
         user_id=user,
       )
       
