@@ -36,3 +36,6 @@ class AppUserAdmin(auth_admin.UserAdmin):
             }
         ),
     )
+    
+    
+    list_per_page = 20

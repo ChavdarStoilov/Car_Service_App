@@ -11,3 +11,5 @@ class CustomerProfileAdmin(admin.ModelAdmin):
         'email',
         'phone',   
     )
+    
+    list_per_page = 10

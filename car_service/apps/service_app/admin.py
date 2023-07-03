@@ -17,6 +17,8 @@ class EmployeesProfileAdmin(admin.ModelAdmin):
     list_filter = (
         'user_id',
     )
+    
+    list_per_page = 10
 
 @admin.register(Cars)
 class CarsAdmin(admin.ModelAdmin):
@@ -35,12 +37,18 @@ class CarsAdmin(admin.ModelAdmin):
     list_filter = (
         'brand',
     )
+    
+    list_per_page = 20
 
 @admin.register(RepairHistory)
 class RepairHistoryAdmin(admin.ModelAdmin):
     list_display = [
         'car_id',
     ]
+    
+    list_per_page = 20
+
+    
 
 
 @admin.register(CarQueue)
@@ -60,6 +68,8 @@ class CarQueueAdmin(admin.ModelAdmin):
     list_filter = (
         'status',
     )
+    
+    list_per_page = 10
 
 @admin.register(CarBrand)
 class CarBrandAdmin(admin.ModelAdmin):
