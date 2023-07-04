@@ -80,7 +80,7 @@ class Cars(models.Model):
     )
     
     user_id = models.ForeignKey(
-        CustomerProfile,
+        UserModel,
         on_delete=models.CASCADE,
 
     )
@@ -128,7 +128,7 @@ class CarQueue(models.Model):
     )
     
     mechanic_id = models.ForeignKey(
-        EmployeesProfile,
+        UserModel,
         on_delete=models.CASCADE,
         null=True,
         blank=True,
