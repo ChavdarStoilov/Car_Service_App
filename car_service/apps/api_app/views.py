@@ -55,29 +55,7 @@ class CarQueueApiVeiw(ApiFunctions):
         self.object = CarQueue
 
     
-    # def get_object(self, pk):
-    #     try:
-    #         return CarQueue.objects.get(pk=pk)
-    #     except CarQueue.DoesNotExist:
-    #         raise Http404
-
-    # def get(self, request, pk, format=None):
-    #     snippet = self.get_object(pk)
-    #     serializer = CarQueueSerializer(snippet)
-    #     return Response(serializer.data)
-    
-    
 class InvoiceApiView(ApiFunctions):
     def __init__(self):
         self.serializer = RepairHistorySerializer
         self.object = RepairHistory
-    # def get_object(self, pk):
-    #     try:
-    #         return RepairHistory.objects.get(pk=pk)
-    #     except RepairHistory.DoesNotExist:
-    #         raise Http404
-
-    # def get(self, request, pk, format=None):
-    #     snippet = self.get_object(pk)
-    #     serializer = RepairHistorySerializer(snippet)
-    #     return Response(serializer.data)
