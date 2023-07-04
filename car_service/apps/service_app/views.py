@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from .forms import AddCarFrom, AddCustomerFrom, AddCarQueueFrom, AddHistoryForm
 from datetime import date
 
+
 class IndexView(LoginRequiredMixin, TemplateView):
     template_name = "service/index.html"
     login_url = reverse_lazy('singin page')

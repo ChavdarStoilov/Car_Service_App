@@ -1,6 +1,9 @@
 from django.db import models
-from ..auth_app.models import AppUsers
 from ..web_app.models import CustomerProfile
+from django.contrib.auth import get_user_model
+
+UserModel = get_user_model()
+
 
 class EmployeesProfile(models.Model):
     MAX_LENGTH_NAMES = 20
@@ -31,7 +34,7 @@ class EmployeesProfile(models.Model):
         blank=True,
     )
     user_id = models.OneToOneField(
-        AppUsers,
+        UserModel,
         primary_key=True,
         on_delete=models.CASCADE,
     )

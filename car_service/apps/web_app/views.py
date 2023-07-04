@@ -5,8 +5,6 @@ from .forms import ProfileForm, AddCarFrom
 from .models import CustomerProfile
 from django.urls import reverse_lazy
 from ..service_app.models import Cars, CarQueue, CarBrand, RepairHistory, EmployeesProfile
-from ..auth_app.models import AppUsers
-from rest_framework.response import Response
 
 
 class IndexView(ListView):

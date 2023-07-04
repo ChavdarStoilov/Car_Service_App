@@ -1,6 +1,7 @@
 from django.db import models
-from ..auth_app.models import AppUsers
+from django.contrib.auth import get_user_model
 
+UserModel = get_user_model()
     
 class CustomerProfile(models.Model):
     MAX_LENGTH_NAMES = 20
@@ -19,7 +20,7 @@ class CustomerProfile(models.Model):
     )
     
     user_id = models.OneToOneField(
-        AppUsers,
+        UserModel,
         primary_key=True,
         on_delete=models.CASCADE,
     )
