@@ -1,13 +1,12 @@
 from django.urls import path
 from django.contrib.auth import views
-from .views import SingUpPersonalView, SingUpView, SingInView, logout_view
+from .views import SingUpView, SingInView, logout_view
 
 
 urlpatterns = [
     path('sing-up/', SingUpView.as_view(), name='singup page'),
     path('sing-in/', SingInView.as_view(), name='singin page'),
     path('logout/', logout_view, name='logout'),
-    path('personal-sing-up/', SingUpPersonalView.as_view(), name='personal-sing-up'),
     
     path('password_change/', views.PasswordChangeView.as_view(), name='password_change'),
     path('password_change/done/', views.PasswordChangeDoneView.as_view(), name='password_change_done'),

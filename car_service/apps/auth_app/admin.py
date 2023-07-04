@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth import admin as auth_admin, get_user_model
-from .forms import PersonalUserCreation, UserChangeForm
+from .forms import UserChangeForm
 
 UserModel = get_user_model()
 
@@ -25,7 +25,6 @@ class AppUserAdmin(auth_admin.UserAdmin):
         
     )
     
-    # add_form = PersonalUserCreation
     form = UserChangeForm
     
     fieldsets = (

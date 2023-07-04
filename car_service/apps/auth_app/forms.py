@@ -35,8 +35,10 @@ class CustomerUserCreation(auth_forms.UserCreationForm):
       if commit:
         profile.save()
         
+      return user
+        
     
-class PersonalUserCreation(auth_forms.UserCreationForm):
+class EmployeeUserCreation(auth_forms.UserCreationForm):
   
     class Meta:
       model = UserModel
@@ -57,6 +59,7 @@ class PersonalUserCreation(auth_forms.UserCreationForm):
       if commit:
         profile.save()
 
+      return user
 
 class UserChangeForm(auth_forms.UserChangeForm):
     class Meta:
