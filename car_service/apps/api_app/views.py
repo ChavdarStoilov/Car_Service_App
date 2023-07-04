@@ -36,26 +36,21 @@ class ApiFunctions(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class CarApiVeiw(ApiFunctions):
+    serializer = CarsSerializer
+    object = Cars
 
-    def __init__(self):
-        self.serializer = CarsSerializer
-        self.object = Cars
     
-    
-    
+
 class CustomerApiView(ApiFunctions):
-    def __init__(self):
-        self.serializer = CustomerSerializer
-        self.object = CustomerProfile
+    serializer = CustomerSerializer
+    object = CustomerProfile
 
     
 class CarQueueApiVeiw(ApiFunctions):
-    def __init__(self):
-        self.serializer = CarQueueSerializer
-        self.object = CarQueue
+    serializer = CarQueueSerializer
+    object = CarQueue
 
     
 class InvoiceApiView(ApiFunctions):
-    def __init__(self):
-        self.serializer = RepairHistorySerializer
-        self.object = RepairHistory
+    serializer = RepairHistorySerializer
+    object = RepairHistory
