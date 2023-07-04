@@ -4,6 +4,9 @@ from django.contrib.auth import get_user_model
 UserModel = get_user_model()
     
 class CustomerProfile(models.Model):
+    
+
+    
     MAX_LENGTH_NAMES = 20
     MAX_PHONE_LENGTH = 14
     first_name = models.CharField(
@@ -23,6 +26,7 @@ class CustomerProfile(models.Model):
         UserModel,
         primary_key=True,
         on_delete=models.CASCADE,
+        limit_choices_to={'is_customer': True},
     )
     
     

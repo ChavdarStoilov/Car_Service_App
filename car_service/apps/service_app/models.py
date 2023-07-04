@@ -27,6 +27,7 @@ class EmployeesProfile(models.Model):
         UserModel,
         primary_key=True,
         on_delete=models.CASCADE,
+        limit_choices_to={'is_customer': False},
     )
     
     

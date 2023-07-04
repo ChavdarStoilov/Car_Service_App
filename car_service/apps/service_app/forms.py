@@ -7,7 +7,7 @@ UserModel = get_user_model()
   
 class AddCarQueueFrom(forms.ModelForm):     
     
-    queryset = UserModel.objects.filter(groups__name='Mechanics')
+    queryset = UserModel.objects.filter(groups__name='Mechanicals')
     mechanic_id = forms.ModelChoiceField(
       queryset=queryset, 
     )
