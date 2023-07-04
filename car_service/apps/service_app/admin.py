@@ -10,7 +10,6 @@ class EmployeesProfileAdmin(admin.ModelAdmin):
     list_display = [
         'user_id',
         "__str__",
-        'position',
     ]
 
     

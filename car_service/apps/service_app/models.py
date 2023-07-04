@@ -9,10 +9,6 @@ class EmployeesProfile(models.Model):
     MAX_LENGTH_NAMES = 20
     MAX_PHONE_LENGTH = 14
     
-    POSTIONS = (
-        ('Mechanic', 'Mechanic'),
-        ('Reciver', 'Reciver'),
-    )
     
     first_name = models.CharField(
         max_length=MAX_LENGTH_NAMES,
@@ -27,12 +23,6 @@ class EmployeesProfile(models.Model):
         max_length=MAX_PHONE_LENGTH,
     )
     
-    position = models.CharField(
-        choices=POSTIONS,
-        max_length=10,
-        null=True,
-        blank=True,
-    )
     user_id = models.OneToOneField(
         UserModel,
         primary_key=True,
