@@ -31,7 +31,7 @@ class AppUserAdmin(auth_admin.UserAdmin):
         (
             None, 
             {
-                "fields": ("username", "is_customer", "groups",)
+                "fields": ("username", "is_customer", "is_staff", "groups",)
             }
         ),
     )

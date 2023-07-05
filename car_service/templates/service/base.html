@@ -37,13 +37,10 @@
         </div>
         <nav class="navitaion" >
             <ul>
-                {% if perms.service_app.add_cars or  user.is_staff %}
+                {% if perms.service_app.add_cars or  user.is_superuser %}
                     <li><a href="{% url 'car queue' %}" onClick="updateStatus();"><img src="{% static 'images/car_queue.png' %}" alt="car_queue img" class="navigation__icons"></a></li>
                     <li><a href="{% url 'cars' %}"><img src="{% static 'images/cars.png' %}" alt="cars img" class="navigation__icons"></a></li>
                     <li><a href="{% url 'customers page' %}"><img src="{% static 'images/customers.png' %}" alt="customer img" class="navigation__icons"></a></li>
-                {% elif perms.auth_app.add_appusers%}
-                    <li><a href="{% url 'customers page' %}"><img src="{% static 'images/customers.png' %}" alt="customer img" class="navigation__icons">Customers</a></li>
-                    <li><a href="{% url 'customers page' %}"><img src="{% static 'images/customers.png' %}" alt="customer img" class="navigation__icons">Emoployees</a></li>
                 {% else %}
                     <li><a href="{% url 'car queue' %}"><img src="{% static 'images/car_queue.png' %}" alt="car_queue img" class="navigation__icons"></a></li>
                 {% endif %}

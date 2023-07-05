@@ -28,6 +28,10 @@ class AppUsers(AbstractBaseUser, PermissionsMixin):
         default=False,
     )
     
+    is_customer = models.BooleanField(
+        default=False,
+    )
+    
     last_login =models.DateTimeField(("last login"), blank=True, null=True)
     
     groups = models.ManyToManyField(

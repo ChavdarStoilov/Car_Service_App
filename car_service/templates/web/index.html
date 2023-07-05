@@ -20,10 +20,14 @@
                             <li class="navigation__list">
                                 <a href="{% url 'garage' %}" class="navigation__links navigation__garage"><i class="fas fa-warehouse"> Garage</i></a>
                             </li>
+                        {% elif user.is_staff or user.is_superuser %}
+                            <li class="navigation__list">
+                                <a href="{% url 'admin:index' %}" class="navigation__links navigation__admin_panel"><i class="fas fa-users-cog"> Admin Panel</i></a>
+                            </li>
                         {% else %}
-                        <li class="navigation__list">
-                            <a href="{% url 'service home page' %}" class="navigation__links navigation__garage"><i class="fas fa-warehouse"> Service</i></a>
-                        </li>
+                            <li class="navigation__list">
+                                <a href="{% url 'service home page' %}" class="navigation__links navigation__garage"><i class="fas fa-warehouse"> Service</i></a>
+                            </li>
                         {% endif %}
                     {% endif %}
                     <li class="navigation__list">

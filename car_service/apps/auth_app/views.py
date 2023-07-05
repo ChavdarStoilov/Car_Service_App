@@ -19,7 +19,7 @@ class SingInView(auth_views.LoginView):
     template_name ='auth/singin.html'    
     
     def get_success_url(self):
-        if not self.request.user.is_customer:
+        if not self.request.user.is_customer and not self.request.user.is_staff and not self.request.user.is_superuser:
             return reverse_lazy('service home page')
         else:
             return reverse_lazy('home page')

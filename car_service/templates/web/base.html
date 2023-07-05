@@ -34,9 +34,9 @@
                             <li class="middle-menu__list">
                                 <a href="{% url 'garage' %}" ><i class="fas fa-warehouse"></i></a>
                             </li>
-                        {% else %}
+                        {% elif user.is_staff or user.is_superuser %}
                         <li class="middle-menu__list">
-                            <a href="{% url 'service home page' %}" ><i class="fas fa-warehouse"></i></a>
+                            <a href="{% url 'admin:index' %}" ><i class="fas fa-users-cog"></i></a>
                         </li>
                         {% endif %}
                     {% endif %}
