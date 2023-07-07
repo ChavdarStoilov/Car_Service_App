@@ -2,7 +2,7 @@ from .models import CustomerProfile
 from django import forms
 from ..service_app.models import Cars, CarBrand
 from .validators import validator_car_numbers, validator_car_kilometers, validator_car_vin
-from django.forms.utils import ErrorList
+
 
 
 class ProfileForm(forms.ModelForm):
@@ -128,6 +128,4 @@ class CarDetailsForm(AddCarFrom):
         for field in self.fields.keys():
             self.fields[field].disabled = True
             self.fields[field].widget.attrs["readonly"] = True
-
-
 

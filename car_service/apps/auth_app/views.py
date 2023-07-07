@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import CustomerUserCreation
+from .forms import CustomerUserCreation, CustomPasswordChange
 from django.contrib.auth import views as auth_views
 from django.views import generic as views
 from django.urls import reverse_lazy
@@ -24,3 +24,8 @@ class SingInView(auth_views.LoginView):
         else:
             return reverse_lazy('home page')
             
+    
+class CustomPasswordChangeView(auth_views.PasswordChangeView):
+    template_name = 'web/change_password.html'
+    form_class = CustomPasswordChange
+    success_url = reverse_lazy('change password page')

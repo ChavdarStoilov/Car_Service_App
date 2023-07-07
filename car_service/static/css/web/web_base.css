@@ -272,7 +272,8 @@ a#button-add:hover i {
 .content__add__car,
 .car__hisotry,
 .garage__page,
-.car__timeline{
+.car__timeline,
+.change__password{
     text-align: center;
     border-radius: 5px;
     padding: 30px 40px 60px 40px;
@@ -307,6 +308,21 @@ form, .details{
 
 .pofile__data {
    position: relative;
+}
+
+.profile-btn {
+    display: flex;
+    justify-content: right;
+    gap: 10px;
+}
+
+.profile-btn .btn-submit {
+    position: unset;
+    font-size: 17px;
+}
+
+.change-password {
+    left: 74.5%;
 }
 
 .blur{

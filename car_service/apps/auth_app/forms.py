@@ -1,7 +1,9 @@
-from django.contrib.auth import get_user_model, forms as auth_forms
+from django.contrib.auth import get_user_model, forms as auth_forms, password_validation
 from ..service_app.models import EmployeesProfile
 from ..web_app.models import CustomerProfile
 from django import forms
+from django.utils.translation import gettext_lazy as _
+
 
 UserModel = get_user_model()
 
@@ -67,3 +69,45 @@ class UserChangeForm(auth_forms.UserChangeForm):
         fields = (
           "username", "is_customer"
           )
+        
+        
+        
+class CustomPasswordChange(auth_forms.PasswordChangeForm):
+  old_password = forms.CharField(
+        label=_("Old password"),
+        strip=False,
+        widget=forms.PasswordInput(
+            attrs={
+              "autocomplete": "current-password", 
+              "autofocus": True,
+              'class': 'field',
+              "placeholder": "Enter Old Password",
+            }
+        ),
+    )
+  
+  
+  new_password1 = forms.CharField(
+        label=_("New password"),
+        widget=forms.PasswordInput(
+          attrs={
+            "autocomplete": "new-password",
+            "class": 'field',
+            "placeholder": "Enter New Password",
+            }
+        ),
+        strip=False,
+        help_text=password_validation.password_validators_help_text_html(),
+    )
+  
+  new_password2 = forms.CharField(
+      label=_("New password confirmation"),
+      strip=False,
+      widget=forms.PasswordInput(
+        attrs={
+          "autocomplete": "new-password",
+          "class": 'field',
+          "placeholder": "Repeat New Password",
+          }
+      ),
+  )

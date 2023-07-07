@@ -16,7 +16,10 @@
             </div>
             {% endfor %}
             {% csrf_token %}
-            <input type="submit" value="Save" class="btn-submit"/>
+            <section class="profile-btn">
+                <input type="submit" value="Save" class="btn-submit"></input>
+                <a href='{% url 'change password page' %}' class="btn-submit">Change password</a>
+            </sction>
         </form>
     </section>
 {% endblock  %}

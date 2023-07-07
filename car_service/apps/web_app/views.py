@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, ListView, CreateView
+from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from .forms import ProfileForm, AddCarFrom
@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 from ..service_app.models import Cars, CarQueue, CarBrand, RepairHistory, EmployeesProfile
 
 
-class IndexView(ListView):
+class IndexView(generic.ListView):
     template_name ='web/index.html'
     model = CarBrand
     context_object_name = "cars"
@@ -17,7 +17,7 @@ class ContactsView(IndexView):
     template_name ='web/contacts.html'
       
 
-class ProfileView(LoginRequiredMixin, TemplateView):
+class ProfileView(LoginRequiredMixin, generic.TemplateView):
     template_name ='web/profile-details.html'
     login_url = reverse_lazy('singin page')
     
@@ -42,7 +42,7 @@ class ProfileView(LoginRequiredMixin, TemplateView):
         
 
 
-class GarageView(LoginRequiredMixin, ListView):
+class GarageView(LoginRequiredMixin, generic.ListView):
     template_name ='web/garage.html'
     login_url = reverse_lazy('singin page')
     model = Cars
@@ -54,7 +54,7 @@ class GarageView(LoginRequiredMixin, ListView):
         return context
     
     
-class AddCar(LoginRequiredMixin, CreateView):
+class AddCar(LoginRequiredMixin, generic.CreateView):
     template_name = 'web/garage-add-car.html'
     form_class = AddCarFrom
     success_url = reverse_lazy('garage')
@@ -72,7 +72,7 @@ class AddCar(LoginRequiredMixin, CreateView):
     
 
 
-class CarRepairProcessView(LoginRequiredMixin, TemplateView):
+class CarRepairProcessView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'web/car-repair-process.html'
     
     def get_object(self, pk):
@@ -96,7 +96,7 @@ def error_page(request):
     return render(request, '404.html')
 
     
-class CarHistoryView(LoginRequiredMixin, TemplateView):
+class CarHistoryView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'web/car-history.html'
     
     
@@ -120,4 +120,5 @@ class CarHistoryView(LoginRequiredMixin, TemplateView):
 
         context['history'] = date_invoice_number
         return context
+    
         
