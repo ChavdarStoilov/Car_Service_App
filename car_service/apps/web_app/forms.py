@@ -51,6 +51,7 @@ class AddCarFrom(forms.ModelForm):
     )
 
     year = forms.DateTimeField(
+        required=True,
         widget=forms.DateInput(
             attrs={
                 'class':'field',
@@ -60,6 +61,7 @@ class AddCarFrom(forms.ModelForm):
     )
     
     kilometers = forms.CharField(
+        required=True,
         widget=forms.TextInput(
             attrs={
                 'class':'field',
@@ -70,6 +72,7 @@ class AddCarFrom(forms.ModelForm):
     )
     
     VIN = forms.CharField(
+        required=True,
         widget=forms.TextInput(
             attrs={
                 'class':'field',
@@ -80,6 +83,7 @@ class AddCarFrom(forms.ModelForm):
     )
 
     registration_number = forms.CharField(
+        required=True,
         widget=forms.TextInput(
             attrs={
                 'class':'field',
