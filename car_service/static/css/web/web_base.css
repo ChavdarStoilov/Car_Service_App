@@ -321,6 +321,15 @@ form, .details{
     font-size: 17px;
 }
 
+.car-delete-btn {
+    position: relative;
+    right: 60px;
+}
+
+.car-delete-btn a {
+    left: 91%;
+}
+
 .change-password {
     left: 74.5%;
 }

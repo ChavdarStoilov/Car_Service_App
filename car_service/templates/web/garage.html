@@ -40,7 +40,6 @@
                                         </div>
                                     </div>
                                     <a class="edit-btn" onclick='rotateCarCard({{ car.pk }}, "{% url "car" car.pk %}");'>Details</a>
-                                    {% comment %} <a class="delete-btn" href="{% url 'car details page' car.pk %}">Delete</a> {% endcomment %}
                                 </div>
                             </div>
                             <div class="card-back">
@@ -73,7 +72,7 @@
 
         getDetails(url).then(
             data => {
-                console.log(data)
+                console.log(pk)
                 models =  data.model ? data.model : "Missing Data";
                 years = data.year ? data.year : "Missing Data";
                 vins = data.VIN ? data.VIN : "Missing Data";
@@ -89,6 +88,8 @@
                     <p>Kilometers: ${kilometers}</p>
                     
                     <a class="edit-btn" onclick="BackrotateCarCard('col-md-${pk}', ${pk});">Back</a>
+                    <a class="edit-btn" href="delete/${pk}">Delete</a>
+
                     
                 `
                 if (data.have_history) {

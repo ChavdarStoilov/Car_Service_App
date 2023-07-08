@@ -1,0 +1,22 @@
+{% extends 'web/base.html' %}
+
+{% block content %}
+
+    {% block cover_car %}
+    {% endblock %}
+
+    <section class="car__hisotry">
+        <h1 class="title__content__title">Do you wanna delete this car?</h1>
+        <form method="POST">
+            <section class="car-delete-btn">
+                <input type="submit" value="Yes" class="btn-submit"></input>
+                <a href="{% url 'garage' %}" class="btn-submit">No</a>
+            </section>
+            {% csrf_token %}
+        <form>
+    </section>
+
+    {% block footer %}
+    {% endblock %}
+
+{% endblock  %}

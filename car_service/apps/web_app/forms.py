@@ -4,7 +4,6 @@ from ..service_app.models import Cars, CarBrand
 from .validators import validator_car_numbers, validator_car_kilometers, validator_car_vin
 
 
-
 class ProfileForm(forms.ModelForm):
     first_name = forms.CharField(widget=forms.TextInput
         (attrs={'class':'field'}))
@@ -119,13 +118,3 @@ class AddCarFrom(forms.ModelForm):
         self.instance.user_id_id = int(user_pk)
         super().save(commit=commit)
         
-
-
-class CarDetailsForm(AddCarFrom):
-    
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for field in self.fields.keys():
-            self.fields[field].disabled = True
-            self.fields[field].widget.attrs["readonly"] = True
-

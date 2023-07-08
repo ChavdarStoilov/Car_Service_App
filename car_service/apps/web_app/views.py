@@ -4,7 +4,8 @@ from django.shortcuts import render, redirect
 from .forms import ProfileForm, AddCarFrom
 from .models import CustomerProfile
 from django.urls import reverse_lazy
-from ..service_app.models import Cars, CarQueue, CarBrand, RepairHistory, EmployeesProfile
+from ..service_app.models import Cars, CarQueue, CarBrand, RepairHistory, \
+    EmployeesProfile
 
 
 class IndexView(generic.ListView):
@@ -84,7 +85,6 @@ class CarRepairProcessView(LoginRequiredMixin, generic.TemplateView):
     def get(self, request, pk, **kwargs):
         context = self.get_context_data(**kwargs)
         car = self.get_object(pk)
-        print(car)
         if not car:
             return redirect(reverse_lazy('garage'))
         context['car'] = self.get_object(pk)
@@ -122,3 +122,9 @@ class CarHistoryView(LoginRequiredMixin, generic.TemplateView):
         return context
     
         
+        
+class CarDeleteView(generic.DeleteView):
+    template_name = 'web/car-delete.html'
+    model = Cars
+    success_url = reverse_lazy('garage')
+    
