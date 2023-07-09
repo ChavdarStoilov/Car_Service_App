@@ -3,7 +3,7 @@
 {% block main %}
     <form class="adding__from" method="POST" action="{% url 'add car page' %}">
         <h2>Add Car Form</h2>
-        {% for field in car_from %}
+        {% for field in form %}
             <div class="form-control">
                 {{ field.errors }}
                 {{ field.label_tag }} {{ field }}

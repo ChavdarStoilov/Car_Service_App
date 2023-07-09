@@ -137,8 +137,11 @@ button:hover {
 }
 
 .service__btn__add {
-    text-align: left;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 20px;
 }
 
 .service_add:hover {

@@ -10,7 +10,8 @@ urlpatterns = [
             path('queue/<int:pk>/', CarQueueApiVeiw.as_view(), name="queue cars"),
             path('history/<int:pk>/', InvoiceApiView.as_view(), name="history"),
             ])),
-        ]
+        path('customer/<int:pk>/', CustomerApiView.as_view(), name='customers'),
+        ],
     )),
     
 ]

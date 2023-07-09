@@ -5,6 +5,10 @@
     <section class="container-table">
         <div class="service__btn__add">
             <a href="{% url 'add car page' %}" class="btn__action service_add">Add car</a>
+            <form action="{% url 'cars' %}"> 
+                <input placeholder="search register number" type="text" name="search"/>
+                <input type="submit" value="search"/>
+            </form>
         </div>
             <table class="cars">
                 <tr>

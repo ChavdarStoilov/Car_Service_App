@@ -36,6 +36,10 @@ class AddCarQueueFrom(forms.ModelForm):
         car.save()
         
 class AddCarFrom(forms.ModelForm):
+    queryset = UserModel.objects.filter(is_customer=True)
+    user_id = forms.ModelChoiceField(
+      queryset=queryset, 
+    )
     
     class Meta:
         model = Cars

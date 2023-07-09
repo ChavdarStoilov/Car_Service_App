@@ -1,14 +1,14 @@
 from django.shortcuts import render, redirect
-from .models import EmployeesProfile, Cars, CarQueue
+from .models import Cars, CarQueue
 from ..web_app.models import CustomerProfile
-from django.views.generic import TemplateView
+from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .forms import AddCarFrom, AddCustomerFrom, AddCarQueueFrom, AddHistoryForm
 from datetime import date
 
 
-class IndexView(LoginRequiredMixin, TemplateView):
+class IndexView(LoginRequiredMixin, generic.TemplateView):
     template_name = "service/index.html"
     login_url = reverse_lazy('singin page')
     permission_denied_message = "Do not have access for this url"
@@ -17,16 +17,6 @@ class IndexView(LoginRequiredMixin, TemplateView):
         if not request.user.is_authenticated or request.user.is_customer:
             return self.handle_no_permission()
         return super().dispatch(request, *args, **kwargs)
-    
-    # def get_context_data(self, *args, **kwargs):
-    #     context = super().get_context_data(*args, **kwargs)
-
-    #     print(self.request.user.get_group_permissions())
-        
-    #     if self.request.user.is_staff:
-    #         context['user'] = EmployeesProfile.objects.get(user_id=self.request.user.pk)
-                
-    #     return context
         
 
 class CarQueueVeiw(IndexView):
@@ -67,40 +57,34 @@ class CarQueueVeiw(IndexView):
 
         
     
-class CarsVeiw(IndexView):
+class CarsVeiw(generic.ListView):
     template_name = "service/cars.html"
-
+    model = Cars
+    context_object_name = "cars"
+    
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['cars'] = Cars.objects.all()
         context['car_done'] = CarQueue.objects.filter(status="Done")
         return context
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        search = self.request.GET.get('search', '')
+        if search:
+            queryset = queryset.filter(registration_number__icontains=search)
+        return queryset
 
 
-class AddCarView(IndexView):
+class AddCarView(generic.CreateView):
     template_name = "service/add-car.html"
-        
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        context['car_from'] = AddCarFrom()
-        return context
-    
-    def post(self, request):
-        form = AddCarFrom(request.POST)
-        if form.is_valid():
-            form.save()
-        
-        return redirect(reverse_lazy('cars'))
+    form_class = AddCarFrom
+    success_url  = reverse_lazy('cars')
     
     
-class CustomersView(IndexView):
+class CustomersView(generic.ListView):
     template_name = "service/customers.html"
-    
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        context['customers'] = CustomerProfile.objects.all()
-        
-        return context
+    model = CustomerProfile
+    context_object_name = "customers"
     
 
 class AddCustomerView(IndexView):

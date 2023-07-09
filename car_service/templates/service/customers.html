@@ -5,6 +5,10 @@
     <section class="container-table">
         <div class="service__btn__add">
             <a href="{% url 'add customer page' %}" class="btn__action service_add">Add customer</a>
+            <form action="{% url 'customers page' %}"> 
+                <input placeholder="search register number" type="text" name="search"/>
+                <input type="submit" value="search"/>
+            </form>
         </div>
     {% if customers %}
 
