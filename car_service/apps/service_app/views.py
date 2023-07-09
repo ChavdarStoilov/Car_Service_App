@@ -5,6 +5,7 @@ from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .forms import AddCarFrom, AddCustomerFrom, AddCarQueueFrom, AddHistoryForm
+from django.db.models import Q
 from datetime import date
 
 
@@ -19,8 +20,9 @@ class IndexView(LoginRequiredMixin, generic.TemplateView):
         return super().dispatch(request, *args, **kwargs)
         
 
-class CarQueueVeiw(IndexView):
+class CarQueueVeiw(generic.TemplateView):
     template_name = "service/car_queue.html"
+
     
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
@@ -86,21 +88,23 @@ class CustomersView(generic.ListView):
     model = CustomerProfile
     context_object_name = "customers"
     
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        search = self.request.GET.get('search', '')
+        if search:
+            queryset = queryset.filter(
+                Q(first_name__icontains=search) |
+                Q(last_name__icontains=search) |
+                Q(email__icontains=search) |
+                Q(phone__icontains=search)
+                )
+        return queryset
 
-class AddCustomerView(IndexView):
+class AddCustomerView(generic.CreateView):
     template_name = 'service/add-customer.html'
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["customer_form"] = AddCustomerFrom()
-        return context
-    
-    def post(self, request):
-        form = AddCustomerFrom(request.POST)
-        if form.is_valid():
-            form.save()
-        
-        return redirect(reverse_lazy('customers page'))
+    form_class = AddCustomerFrom
+    success_url = reverse_lazy('customers page')
+
 
 class AddCarInQueueView(IndexView):
     template_name = 'service/add-car-queue.html'

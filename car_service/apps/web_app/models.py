@@ -4,11 +4,9 @@ from django.contrib.auth import get_user_model
 UserModel = get_user_model()
     
 class CustomerProfile(models.Model):
-    
-
-    
     MAX_LENGTH_NAMES = 20
     MAX_PHONE_LENGTH = 14
+    
     first_name = models.CharField(
         max_length=MAX_LENGTH_NAMES,
     )
