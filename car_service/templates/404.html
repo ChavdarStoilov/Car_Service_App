@@ -1,29 +1,27 @@
-{% extends 'customer/new-base.html' %}
 {% load static %}
 
-{% block content %}
-    <h1>404 error Page not found</h1>
-    <section class="hero">
-        
-        <img src="{% static 'images/background-img.png' %}" alt="">
-        <sidebar class="sidebar">
-            
-        </sidebar>
-    </section>
-
-
-    <section class="brands">
-        <div class="items">
-            <img src="{% static 'images/car_brands/audi.png' %}" alt="" class="brands__logo">
-            <img src="{% static 'images/car_brands/bently.png' %}" alt="" class="brands__logo">
-            <img src="{% static 'images/car_brands/bugatti.png' %}" alt="" class="brands__logo">
-            <img src="{% static 'images/car_brands/lamborgini.png' %}" alt="" class="brands__logo">
-            <img src="{% static 'images/car_brands/porsche.png' %}" alt="" class="brands__logo">
-            <img src="{% static 'images/car_brands/seat.png' %}" alt="" class="brands__logo">
-            <img src="{% static 'images/car_brands/skoda.png' %}" alt="" class="brands__logo">
-            <img src="{% static 'images/car_brands/vw.png' %}" alt="" class="brands__logo">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page not Found</title>
+    <link rel="stylesheet" href="{% static 'ccs/404.css' %} ">
+</head>
+<body>
+    <section class="notFound">
+        <div class="img">
+        <img src="{% static 'images/backToTheHomepage.webp' %}" alt="Back to the Homepage"/>
+        <img src="{% static 'images/delorean.webp' %}" alt="El Delorean, El Doc y Marti McFly"/>
         </div>
-    
+        <div class="text">
+        <h1>404</h1>
+        <h2>PAGE NOT FOUND</h2>
+        <h3>BACK TO HOME?</h3>
+        <a href="{% url 'home page' %}" class="yes">YES</a>
+        <a href="https://www.google.bg">NO</a>
+        </div>
     </section>
+</body>
+</html>
 
-{% endblock %}

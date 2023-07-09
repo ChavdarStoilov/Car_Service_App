@@ -15,3 +15,7 @@ urlpatterns = [
     path('account/', include('apps.auth_app.urls')),
     path('api/', include('apps.api_app.urls')),
 ]
+
+
+handler404 = 'apps.web_app.views.custom_404'
+# handler500 = 'apps.web_app.views.custom_500'

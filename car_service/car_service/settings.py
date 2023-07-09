@@ -6,9 +6,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-8h@*y!s560(&hel)zw%c&gs#p5hce+54qrw577^b)45^&!uh&6'
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+if DEBUG:
+    ALLOWED_HOSTS = []
+else:
+    ALLOWED_HOSTS = ['127.0.0.1']
 
 
 INSTALLED_APPS = [
@@ -58,17 +61,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'car_service.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
@@ -111,9 +103,14 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+
+if DEBUG:
+    STATICFILES_DIRS = [
+        BASE_DIR / "static",
+    ]
+
+else:
+    STATIC_ROOT = BASE_DIR / "static"
 
 
 

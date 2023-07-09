@@ -91,11 +91,6 @@ class CarRepairProcessView(LoginRequiredMixin, generic.TemplateView):
         return self.render_to_response(context)
 
     
-    
-def error_page(request):
-    return render(request, '404.html')
-
-    
 class CarHistoryView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'web/car-history.html'
     
@@ -128,3 +123,6 @@ class CarDeleteView(generic.DeleteView):
     model = Cars
     success_url = reverse_lazy('garage')
     
+    
+def custom_404(request, exception):
+    return render(request, '404.html')
