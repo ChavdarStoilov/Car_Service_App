@@ -16,15 +16,21 @@
 <body>
     
     <header class="header">
-        <img src="{% static 'images/logo.png' %}" alt="Logo img">
+        <a href="{% url 'service home page' %}"><img src="{% static 'images/logo.png' %}" alt="Logo img"  class="logo"></a>
 
         <div class="auth_system">
             <ul>
-                {% if user.authentication %}
-                    <li><a href="{% url 'singin page' %}">Sing In</a></li>
-                {% else %}
-                    <li><img src="{% static 'images/user.png' %}" alt="user img" class="navigation__icons"></li>
-                {% endif %}
+                <li class="profile">
+                    <img src="{% static 'images/user.png' %}" alt="user img" class="navigation__icons">
+                    <ul class="profile-settings">
+                        <li class="profile-settings-row"><a href="{% url 'employee profile' user.pk %}">Profile</a></li>
+                        {% if user.is_authenticated %}
+                            <li class="profile-settings-row"><a href="{% url 'logout' %}">Logout</a></li>
+                        {% endif %}
+                        
+                    </ul>
+                </li>
+       
             </ul>
         </div>
     </header>

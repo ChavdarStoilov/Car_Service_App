@@ -1,5 +1,5 @@
 from django import forms
-from .models import CarQueue, Cars, CustomerProfile, RepairHistory
+from .models import CarQueue, Cars, CustomerProfile, RepairHistory, EmployeesProfile
 from django.contrib.auth import get_user_model, forms as auth_forms
 
 UserModel = get_user_model()
@@ -89,3 +89,24 @@ class AddHistoryForm(forms.ModelForm):
   class Meta:
     model=RepairHistory
     fields = '__all__'
+    
+    
+class ProfileForm(forms.ModelForm):
+    first_name = forms.CharField(widget=forms.TextInput
+        (attrs={'class':'field'}))
+    last_name = forms.CharField(widget=forms.TextInput
+        (attrs={'class':'field'}))
+    email = forms.EmailField(widget=forms.TextInput
+        (attrs={'class':'field'}))
+    phone = forms.CharField(widget=forms.TextInput
+        (attrs={'class':'field'}))
+      
+    
+    class Meta:
+        model= EmployeesProfile
+        fields =(
+            'first_name', 
+            'last_name', 
+            'email', 
+            'phone', 
+        )

@@ -1,10 +1,14 @@
 from django.urls import include, path
 from .views import IndexView, CarQueueVeiw, CarsVeiw, AddCarView, \
-    CustomersView, AddCustomerView, AddCarInQueueView, AddHisotryView
+    CustomersView, AddCustomerView, AddCarInQueueView, AddHisotryView, \
+    ProfiileView
 
 
 urlpatterns = [
     path('', IndexView.as_view(), name='service home page'),
+    
+    path('profile/<int:pk>', ProfiileView.as_view(), name='employee profile'),
+    
     path('car-queue/', CarQueueVeiw.as_view(), name='car queue'),
     path('cars/', include([
         path('',CarsVeiw.as_view(), name='cars'),

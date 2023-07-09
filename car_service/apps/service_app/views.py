@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
-from .models import Cars, CarQueue
+from .models import Cars, CarQueue, EmployeesProfile
 from ..web_app.models import CustomerProfile
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from .forms import AddCarFrom, AddCustomerFrom, AddCarQueueFrom, AddHistoryForm
+from .forms import AddCarFrom, AddCustomerFrom, AddCarQueueFrom, AddHistoryForm, ProfileForm
 from django.db.models import Q
 from datetime import date
 
@@ -18,7 +18,16 @@ class IndexView(LoginRequiredMixin, generic.TemplateView):
         if not request.user.is_authenticated or request.user.is_customer:
             return self.handle_no_permission()
         return super().dispatch(request, *args, **kwargs)
-        
+  
+  
+class ProfiileView(generic.edit.UpdateView):
+    template_name = "service/profile.html"
+    model = EmployeesProfile
+    form_class = ProfileForm
+    
+    
+    def get_success_url(self) -> str:
+        return reverse_lazy('employee profile', kwargs={'pk': self.object.pk})
 
 class CarQueueVeiw(generic.TemplateView):
     template_name = "service/car_queue.html"
@@ -179,4 +188,5 @@ class AddHisotryView(IndexView):
         return redirect(reverse_lazy('cars'))
 
 
+        
         

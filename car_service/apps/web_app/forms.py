@@ -110,11 +110,6 @@ class AddCarFrom(forms.ModelForm):
         self.BRAND = CarBrand.objects.get(pk = int(cleaned_data['brand']))
         cleaned_data['brand'] = self.BRAND
 
-        
-        # if self.__class__.__name__ == "AddCarFrom":
-        #     car_number = cleaned_data.get('registration_number')
-        #     validator_car_numbers(car_number)
-        
         return cleaned_data
         
     def save(self, user_pk, commit=True):
