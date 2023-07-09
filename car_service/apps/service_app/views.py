@@ -37,9 +37,6 @@ class CarQueueVeiw(generic.TemplateView):
         if car_pk:
             self.change_car_status(car_pk, new_status)
            
-            if new_status == 'Done':
-               self.change_repair_car_status(car_pk)
-                           
         return redirect(reverse_lazy('car queue'))
     
     
@@ -50,12 +47,6 @@ class CarQueueVeiw(generic.TemplateView):
         car.status=new_status   
         car.save()
         
-        
-    def change_repair_car_status(self, *args, **kwargs):
-        pk = args[0]
-        car = Cars.objects.get(pk=pk)
-        car.repair = False
-        car.save()
 
         
     
@@ -179,6 +170,7 @@ class AddHisotryView(IndexView):
             
             car = Cars.objects.get(pk=car_pk)
             car.have_history = True
+            car.repair = False
             car.save()
             
             carqueue = CarQueue.objects.get(pk = car_pk)

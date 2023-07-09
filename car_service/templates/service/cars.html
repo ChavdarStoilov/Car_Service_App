@@ -25,18 +25,16 @@
                         <td>
                             <a class="btn__action details" onClick='carDetail("{% url "car" car.pk %}")'>Detail</a>
                             <a class="btn__action delete" onClick='deleteCar("{% url "car" car.pk %}")'>Delete</a>
-                            {% if not car.repair %}
-                                {% if car_done %}
-                                    {% for done in car_done %}
-                                        {% if done.status == "Done" and done.car_id.pk == car.pk %}
-                                            <a class="btn__action history" href="{% url 'add car history' car.pk %}">Fill History</a>
-                                        {% else %}
-                                            <a class="btn__action move" href="{% url 'add car in queue' car.pk %}">Move to Repair</a>
-                                        {% endif %} 
-                                    {% endfor %}
-                                {% else %}
-                                    <a class="btn__action move" href="{% url 'add car in queue' car.pk %}">Move to Repair</a>
-                                {% endif %}
+                            {% if car_done %}
+                                {% for done in car_done %}
+                                    {% if done.status == "Done" and done.car_id.pk == car.pk %}
+                                        <a class="btn__action history" href="{% url 'add car history' car.pk %}">Fill History</a>
+                                    {% else %}
+                                        <a class="btn__action move" href="{% url 'add car in queue' car.pk %}">Move to Repair</a>
+                                    {% endif %} 
+                                {% endfor %}
+                            {% else %}
+                                <a class="btn__action move" href="{% url 'add car in queue' car.pk %}">Move to Repair</a>
                             {% endif %}
                         </td>
 
