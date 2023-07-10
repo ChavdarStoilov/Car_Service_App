@@ -5,7 +5,7 @@ from .forms import ProfileForm, AddCarFrom
 from .models import CustomerProfile
 from django.urls import reverse_lazy
 from ..service_app.models import Cars, CarQueue, CarBrand, RepairHistory, \
-    EmployeesProfile
+    EmployeesProfile, ServiceGallery
 
 
 class IndexView(generic.ListView):
@@ -98,7 +98,6 @@ class CarHistoryView(LoginRequiredMixin, generic.TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         cars_history = RepairHistory.objects.filter(car_id = kwargs['pk'])
-        print(cars_history)
         date_invoice_number = []
         
         for row in cars_history:
@@ -126,3 +125,10 @@ class CarDeleteView(generic.DeleteView):
     
 def custom_404(request, exception):
     return render(request, '404.html')
+
+
+class GalleryView(generic.ListView):
+    template_name = 'web/gallery.html'
+    model = ServiceGallery
+    context_object_name = "pictures"
+    paginate_by = 3

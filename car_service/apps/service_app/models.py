@@ -50,6 +50,9 @@ class CarBrand(models.Model):
         return self.brand
     
     
+class ServiceGallery(models.Model):
+    image = models.CharField()
+    
 class Cars(models.Model):
     
     brand = models.ForeignKey(

@@ -1,7 +1,7 @@
 from django.urls import path, include
 from .views import IndexView, ProfileView, GarageView, AddCar, \
     ContactsView, CarRepairProcessView, CarHistoryView, \
-    CarDeleteView
+    CarDeleteView, GalleryView
 
 
 urlpatterns = [
@@ -19,4 +19,6 @@ urlpatterns = [
         ])),
 
     path('contacts/', ContactsView.as_view(), name='contacts'),
+    
+    path('gallery/', GalleryView.as_view(), name='gallery page'),
 ]

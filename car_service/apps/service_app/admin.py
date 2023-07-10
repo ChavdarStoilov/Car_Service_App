@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import CarQueue, EmployeesProfile, Cars, RepairHistory, CarBrand
-# Register your models here.
+from .models import CarQueue, EmployeesProfile, Cars, RepairHistory, CarBrand, ServiceGallery
 
 @admin.register(EmployeesProfile)
 class EmployeesProfileAdmin(admin.ModelAdmin):
@@ -72,4 +71,9 @@ class CarQueueAdmin(admin.ModelAdmin):
 
 @admin.register(CarBrand)
 class CarBrandAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(ServiceGallery)
+class GalleryAdmin(admin.ModelAdmin):
     pass

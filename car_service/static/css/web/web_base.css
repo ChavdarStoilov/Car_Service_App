@@ -1,11 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
 
-html, body {
-    margin: 0;
-    height: 100%;
-}
-
+body {
+    display: flex;
+    flex-direction: column;
+  }
+  main {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 50px 0px;
+    flex-direction: column;
+    align-items: center;
+    
+  }
 
 body {
     background-color: #ebebeb;
@@ -273,7 +281,8 @@ a#button-add:hover i {
 .car__hisotry,
 .garage__page,
 .car__timeline,
-.change__password{
+.change__password,
+.gallery{
     text-align: center;
     border-radius: 5px;
     padding: 30px 40px 60px 40px;
@@ -382,9 +391,27 @@ form, .details{
     height: 120px;
 }
 
+/* Gallery */
+.images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.content {
+    transition: 0.3s;
+    width: 25%;
+    border-radius: 15px;
+    overflow: hidden;
+}
 
-
-
+.gallery_pictures {
+    width: 100%;
+    height: 450px;
+    border-bottom: 1px solid black;
+    border-radius: 20px;
+}
 /* Contacts page */
 
 .contacts{
@@ -698,43 +725,6 @@ form, .details{
 	transform: translate(-50%, -50%);
 }
 
-/* .history__table { */
-	/* width: 1200px;
-	border-collapse: collapse;
-	overflow: hidden;
-	box-shadow: 0 0 20px rgba(0,0,0,0.1); */
-
-    /* border: 1px solid #ccc;
-    border-collapse: collapse;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    table-layout: fixed;
-}
-
-.history__table th, .history__table td {
-    padding: .625em;
-    text-align: center;
-
-	padding: 15px;
-	background-color: rgba(255,255,255,0.7);
-	color: #000000;
-}
-
-.history__table th {
-    font-size: .85em;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    background-color: #31658d;
-}
-
-.history__table tr {
-    padding: .35em;
-}
-
-.history__table tr:hover {
-    background-color: rgba(255,255,255,0.2)
-} */
 
 .btn__action {
     border: 1px solid black;
@@ -971,10 +961,7 @@ form, .details{
     .btn-submit {
         left: 63%;
     }
-/* 
-    .history__table {
-        width: 771px
-    } */
+
 
     .popup {
         height: 500px;
@@ -1143,45 +1130,6 @@ form, .details{
         left: 36%;
     }
 
-    /* .history__table {
-        border: 0;
-    }
-    
-    .history__table thead {
-      border: none;
-      clip: rect(0 0 0 0);
-      height: 1px;
-      margin: -1px;
-      overflow: hidden;
-      padding: 0;
-      position: absolute;
-      width: 1px;
-    } */
-    
-    /* .history__table tr {
-      border-bottom: 3px solid #ddd;
-      display: block;
-      margin-bottom: .625em;
-    }
-    
-    .history__table td {
-      border-bottom: 1px solid #ddd;
-      display: block;
-      font-size: .8em;
-      text-align: right;
-    }
-    
-    .history__table td::before {
-      content: attr(data-label);
-      float: left;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
-    
-    .history__table td:last-child {
-      border-bottom: 0; */
-    /* } */
-    
 }
 
 .errorlist{
@@ -1198,9 +1146,6 @@ form, .details{
 }
 
 
-
-
-/*  test gpt table resposive design */
 table {
     border: 1px solid #ccc;
     border-collapse: collapse;
@@ -1301,3 +1246,5 @@ table {
 
 
 }  
+
+

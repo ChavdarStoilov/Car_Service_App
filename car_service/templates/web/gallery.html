@@ -1,0 +1,37 @@
+{% extends 'web/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% block cover_car %}
+    {% endblock  %}
+    <section class="gallery">
+        <h1 class="title__content__title" >Our Gallery</h1>
+        <section class="images" id="gallery">
+            {% for picture in pictures %}
+            
+                    <div class="content">
+                        <img src="{% static 'images/gallery/' %}{{ picture.image }}" alt="{{ picture.pk }}" class="gallery_pictures">
+                    </div>
+            {% endfor %}
+        </section>
+        <section class="pages">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}&search={{ search }}"><i class="fas fa-step-backward"></i></a>
+            {% else %}
+                <a><i class="fas fa-step-backward"></i></a>
+            {% endif %}
+
+            {{ page_obj.number }} / {{ paginator.num_pages }}
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}&search={{ search }}"><i class="fas fa-step-forward"></i></a>
+            {% else %}
+                <a><i class="fas fa-step-forward"></i></a>
+            {% endif %}
+        </section>
+    </section>
+
+{% endblock  %}
+
+{% block footer %}
+{% endblock  %}
