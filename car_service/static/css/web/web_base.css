@@ -966,6 +966,13 @@ form, .details{
     .popup {
         height: 500px;
     }
+
+    .content {
+        width: 50%;
+    }
+    .gallery_pictures {
+        height: 230px;
+    }
 }
 
 @media screen and (max-width: 796px){
@@ -1243,7 +1250,13 @@ table {
     .history__table td:last-child {
       border-bottom: 0;
     }
+    .content{
+        width: 70%;
+    }
 
+    .gallery_pictures {
+        height: 200px;
+    }
 
 }  
 
