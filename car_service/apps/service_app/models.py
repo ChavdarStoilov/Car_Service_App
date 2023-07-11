@@ -36,11 +36,20 @@ class EmployeesProfile(models.Model):
     
     
 class CarBrand(models.Model):
+    MAX_LENGTH_BRAND = 25
+    MAX_LENGTH_IMAGE = 50
+    
+    
     id = models.AutoField(
         primary_key=True
     )
-    brand = models.CharField()
-    image = models.CharField()
+    brand = models.CharField(
+        max_length=MAX_LENGTH_BRAND,
+    )
+    image = models.CharField(
+        max_length=MAX_LENGTH_IMAGE,
+        
+    )
     
     
     def get_image(self):
@@ -51,9 +60,17 @@ class CarBrand(models.Model):
     
     
 class ServiceGallery(models.Model):
-    image = models.CharField()
+    MAX_LENGTH_IMAGE = 50
+    
+    image = models.CharField(
+        max_length=MAX_LENGTH_IMAGE,
+    )
     
 class Cars(models.Model):
+    MAX_LENGTH_MODEL = 10
+    MAX_LENGTH_VIN = 30
+    MAX_LENGTH_KILOMETERS = 8
+    MAX_LENGTH_REGISTER_NUMBER =12
     
     brand = models.ForeignKey(
         CarBrand,
@@ -62,21 +79,27 @@ class Cars(models.Model):
         blank=True
     )
     
-    model = models.CharField()
+    model = models.CharField(
+        max_length=MAX_LENGTH_MODEL,
+    )
     year = models.DateField()
-    VIN = models.CharField()
+    VIN = models.CharField(
+        max_length=MAX_LENGTH_VIN,
+    )
     repair = models.BooleanField(
         default=False,
     )
     kilometers = models.CharField(
         null=True,
         blank=True,
+        max_length=MAX_LENGTH_KILOMETERS,
     )
     
     registration_number = models.CharField(
         null=True,
         blank=True,
-        unique=True
+        unique=True,
+        max_length=MAX_LENGTH_REGISTER_NUMBER,
     )
     have_history= models.BooleanField(
         default=False,

@@ -4,10 +4,12 @@ from django.contrib.auth.base_user import AbstractBaseUser
 from .managers import AppUserManager
 
 class AppUsers(AbstractBaseUser, PermissionsMixin):
+    MAX_LENGTH_USERNAME = 25
     username = models.CharField(
         unique=True,
         null=False,
         blank=False,
+        max_length=MAX_LENGTH_USERNAME,
     )
 
     is_staff = models.BooleanField(
