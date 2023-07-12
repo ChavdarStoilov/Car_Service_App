@@ -24,7 +24,8 @@ Car service app with internal application for mechanics and receivers and offici
   <li>
     <h5>Home page: "Here the customers will have access to their garage, profile and service contacts"</h3>
     
-  ![image](https://github.com/ChavdarStoilov/Car_Service_App/assets/80538498/4e46449f-8c11-4e82-b684-b73cd391cfd0)
+  ![image](https://github.com/ChavdarStoilov/Car_Service_App/assets/80538498/11d4b598-f9b6-44bf-8be9-35bde3129f54)
+
     
   </li>
    <li>
