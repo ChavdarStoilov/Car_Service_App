@@ -2,7 +2,14 @@
 <h2 align="center">Introduction</h2>
 Car service app with internal application for mechanics and receivers and official site where customer may register, add their cars and follow the progress with their car repairing.
 
-<h1 align="center">Link to Test Env:  https://cvstoilov.pythonanywhere.com/</h1>
+<h1 align="center">Link to DEV Env:  https://cvstoilov.pythonanywhere.com/</h1>
+
+<h2 align="center">Project diagram:</h2>
+<div align="center">
+  
+![image](https://github.com/ChavdarStoilov/Car_Service_App/assets/80538498/678e8369-47b7-4a55-b278-bcc05404cdf0)
+
+</div>
 
 <h2 align="center">Screenshots:</h2>
 
