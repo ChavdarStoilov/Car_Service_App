@@ -31,7 +31,7 @@ Car service app with internal application for mechanics and receivers and offici
    <li>
     <h5>Garage page: "Here the customers will have access to their cars, to look the car repair process, history and invoices""</h3>
     
-  ![image](https://github.com/ChavdarStoilov/Car_Service_App/assets/80538498/b7a356b0-7c1e-40a7-8bbb-be3283ab2e23) 
+  ![image](https://github.com/ChavdarStoilov/Car_Service_App/assets/80538498/27d925bd-9d7c-4c72-a4d5-0e8f023622f7)
 
   ![image](https://github.com/ChavdarStoilov/Car_Service_App/assets/80538498/7b9987ca-2722-4583-b350-029aeffd0607)
 
