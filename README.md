@@ -10,7 +10,13 @@ Car service app with internal application for mechanics and receivers and offici
 ![image](https://github.com/ChavdarStoilov/Car_Service_App/assets/80538498/678e8369-47b7-4a55-b278-bcc05404cdf0)
 
 </div>
+<h2 align="center">DB Relationships:</h2>
+<div align="center">
 
+![image](https://github.com/ChavdarStoilov/Car_Service_App/assets/80538498/3ae97631-ea9a-4d68-b147-9e828ced5b25)
+
+  
+</div>
 <h2 align="center">Screenshots:</h2>
 
 <h3 align="center">Public Side</h3>
