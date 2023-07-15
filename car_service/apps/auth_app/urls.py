@@ -7,7 +7,7 @@ urlpatterns = [
     path('sing-up/', SingUpView.as_view(), name='singup page'),
     path('sing-in/', SingInView.as_view(), name='singin page'),
     path('logout/', logout_view, name='logout'),
-    
+
     path('password_change/', CustomPasswordChangeView.as_view(), name='change password page'),
     path('password_change/done/', views.PasswordChangeDoneView.as_view(), name='password_change_done'),
     path('password_reset/', views.PasswordResetView.as_view(), name='password_reset'),
