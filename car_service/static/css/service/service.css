@@ -187,10 +187,13 @@ button:hover {
 }
 .popup .content {
     max-height: 70%;
-    /* overflow: auto; */
 }
 
 .close {
+    cursor: pointer;
+}
+
+.sort {
     cursor: pointer;
 }
 

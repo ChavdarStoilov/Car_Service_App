@@ -14,11 +14,11 @@
 
             <table class="customer">
                 <tr>
-                    <th>First name</th>
-                    <th>Last name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Actions</th>
+                    <th class="sort" onclick="sortBy(0)">First name</th>
+                    <th class="sort" onclick="sortBy(0)">Last name</th>
+                    <th class="sort" onclick="sortBy(0)">Email</th>
+                    <th>Phone</i></th>
+                    <th>Actions</i></th>
 
                 </tr>
                 {% for customer in customers %}
@@ -51,6 +51,8 @@
 
 {% block script %}
 <script type="text/javascript">
+    cPrev = -1; 
+
     deleteCusotmer = (url) => {
         console.log(url)
         fetch(url, {
@@ -178,6 +180,48 @@
             display: none;
         `;
         location.reload();
+    }
+
+
+
+    function sortBy(c, row) {
+
+        rows = document.querySelector(".customer").rows.length;
+        columns = document.querySelector(".customer").rows[0].cells.length; 
+        arrTable = [...Array(rows)].map(e => Array(columns));
+        for (ro=0; ro<rows; ro++) {
+            for (co=0; co<columns; co++) {
+      
+                arrTable[ro][co] = document.querySelector(".customer").rows[ro].cells[co].innerHTML;
+            }
+        }
+
+        th = arrTable.shift();
+        
+        if (c !== cPrev) {
+            arrTable.sort(
+                function (a, b) {
+                    if (a[c] === b[c]) {
+                        return 0;
+                    } else {
+                        return (a[c] < b[c]) ? -1 : 1;
+                    }
+                }
+            );
+        } else {
+            arrTable.reverse();
+        }
+        
+        cPrev = c; 
+
+        arrTable.unshift(th);
+
+
+        for (ro=0; ro<rows; ro++) {
+            for (co=0; co<columns; co++) {
+                document.querySelector(".customer").rows[ro].cells[co].innerHTML = arrTable[ro][co];
+            }
+        }
     }
 </script>
 {% endblock  %}

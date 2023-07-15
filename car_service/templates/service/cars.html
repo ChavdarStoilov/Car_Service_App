@@ -12,9 +12,9 @@
         </div>
             <table class="cars">
                 <tr>
-                    <th>Model</th>
-                    <th>Registration Number</th>
-                    <th>VIN</th>
+                    <th class="sort" onclick="sortBy(0)" >Model</th>
+                    <th class="sort" onclick="sortBy(0)" >Registration Number</th>
+                    <th class="sort" onclick="sortBy(0)" >VIN</th>
                     <th>Actions</th>
                 </tr>
                 {% for car in cars %}
@@ -54,6 +54,8 @@
 {% endblock  %}
 {% block script %}
 <script type="text/javascript">
+    cPrev = -1; 
+
     deleteCar = (url) => {
         console.log(url)
         fetch(url, {
@@ -177,6 +179,46 @@
         popup.style.cssText = `
             display: none;
         `;
+    }
+
+    function sortBy(c, row) {
+
+        rows = document.querySelector(".cars").rows.length;
+        columns = document.querySelector(".cars").rows[0].cells.length; 
+        arrTable = [...Array(rows)].map(e => Array(columns));
+        for (ro=0; ro<rows; ro++) {
+            for (co=0; co<columns; co++) {
+      
+                arrTable[ro][co] = document.querySelector(".cars").rows[ro].cells[co].innerHTML;
+            }
+        }
+
+        th = arrTable.shift();
+        
+        if (c !== cPrev) {
+            arrTable.sort(
+                function (a, b) {
+                    if (a[c] === b[c]) {
+                        return 0;
+                    } else {
+                        return (a[c] < b[c]) ? -1 : 1;
+                    }
+                }
+            );
+        } else {
+            arrTable.reverse();
+        }
+        
+        cPrev = c; 
+
+        arrTable.unshift(th);
+
+
+        for (ro=0; ro<rows; ro++) {
+            for (co=0; co<columns; co++) {
+                document.querySelector(".cars").rows[ro].cells[co].innerHTML = arrTable[ro][co];
+            }
+        }
     }
 
 </script>
