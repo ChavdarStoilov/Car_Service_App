@@ -5,10 +5,11 @@
     {% block cover_car %}
     {% endblock  %}
     <section class="car__hisotry">
+        <h1 class='title__content__title'>Car Hisotry</h1>
+
         {% if history %}
         <div class="container">
             <table class="history__table">
-                <caption class='title__content__title'>Car Hisotry</caption>
                 <thead>
                   <tr>
                     <th scope="col">Date</th>
@@ -30,28 +31,7 @@
                   {% endfor %}
                 </tbody>
               </table>
-            {% comment %} <table class="history__table">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Invoice number</th>
-                        <th>Kilometers</th>
-                        <th>Total Price</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for row in history %}
-                        <tr>
-                            <td>{{ row.date }}</td>
-                            <td>№ {{ row.number }}</td>
-                            <td>{{ row.kilometers }} km</td>
-                            <td>{{ row.total_price }}</td>
-                            <td><a class="btn__action" onClick='genereateInvoice("{% url "history" row.number %}");'>Invoice</a>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table> {% endcomment %}
+        
         </div>
         {% endif %}
     </section>
@@ -70,6 +50,7 @@
 <script>
     const auth_content  = document.querySelector('.auth_system');
     auth_content.style.display = 'none';
+
 
     const getInvoice = (url) => 
         fetch(url)
