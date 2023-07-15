@@ -29,15 +29,12 @@ class ProfiileView(generic.edit.UpdateView):
     def get_success_url(self) -> str:
         return reverse_lazy('employee profile', kwargs={'pk': self.object.pk})
 
-class CarQueueVeiw(generic.TemplateView):
+# , generic.TemplateView
+class CarQueueVeiw( generic.ListView):
     template_name = "service/car_queue.html"
-
-    
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        context['queue'] = CarQueue.objects.all()
-        
-        return context
+    paginate_by = 8
+    context_object_name = "queue"
+    model = CarQueue
 
     def post(self, request):
         data = request.POST.get('submitter').split(",")
@@ -63,6 +60,7 @@ class CarsVeiw(generic.ListView):
     template_name = "service/cars.html"
     model = Cars
     context_object_name = "cars"
+    paginate_by = 8
     
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
@@ -87,6 +85,8 @@ class CustomersView(generic.ListView):
     template_name = "service/customers.html"
     model = CustomerProfile
     context_object_name = "customers"
+    paginate_by = 8
+
     
     def get_queryset(self):
         queryset = super().get_queryset()

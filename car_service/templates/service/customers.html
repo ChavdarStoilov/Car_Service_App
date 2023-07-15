@@ -37,6 +37,21 @@
                     
                 {% endfor %}
             </table>
+            <section class="pages">
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}&search={{ search }}"><i class="fas fa-step-backward"></i></a>
+                {% else %}
+                    <a><i class="fas fa-step-backward"></i></a>
+                {% endif %}
+    
+                {{ page_obj.number }} / {{ paginator.num_pages }}
+    
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}&search={{ search }}"><i class="fas fa-step-forward"></i></a>
+                {% else %}
+                    <a><i class="fas fa-step-forward"></i></a>
+                {% endif %}
+            </section>
     </section>
 {% else %}
     <h2>There no customer</h2>
