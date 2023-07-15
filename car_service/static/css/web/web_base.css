@@ -399,7 +399,7 @@ form, .details{
     justify-content: center;
     margin-bottom: 50px;
 }
-.content {
+.content_gallery {
     transition: 0.3s;
     width: 25%;
     border-radius: 15px;
@@ -796,6 +796,9 @@ form, .details{
 
 
 /* Invoice  */
+
+
+
 .invoice {
     border: 1px solid black;
     border-radius: 10px;

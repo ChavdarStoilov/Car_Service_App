@@ -9,7 +9,7 @@
         <section class="images" id="gallery">
             {% for picture in pictures %}
             
-                    <div class="content">
+                    <div class="content_gallery">
                         <img src="{% static 'images/gallery/' %}{{ picture.image }}" alt="{{ picture.pk }}" class="gallery_pictures">
                     </div>
             {% endfor %}
