@@ -291,7 +291,7 @@ a#button-add:hover i {
     padding: 0px 40px 20px 40px;
     position: relative;
     z-index: 99;
-    top: 100px;
+    top: 60px;
 }
 
 
@@ -500,7 +500,7 @@ form, .details{
 
 .title__content__title {
     margin-top: 0px;
-    font-size: 30px;
+    font-size: 50px;
 }
 
 
