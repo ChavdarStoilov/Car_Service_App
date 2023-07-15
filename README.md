@@ -2,7 +2,7 @@
 <h2 align="center">Introduction</h2>
 Car service app with internal application for mechanics and receivers and official site where customer may register, add their cars and follow the progress with their car repairing.
 
-<h1 align="center">Link to DEV Env:  https://cvstoilov.pythonanywhere.com/</h1>
+<h1 align="center">Link to DEV Env:  https://cvstoilov.pythonanywhere.com</h2>
 
 <h2 align="center">Project diagram:</h2>
 <div align="center">
