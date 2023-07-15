@@ -84,7 +84,7 @@
     </main>
 
         
-    {% block footer %}
+    {% block brands %}
         <section class="brands">
             <div class="items">
                 {% if cars %}
@@ -96,6 +96,12 @@
         
         </section>
     {% endblock %}
+
+    {% block footer %}
+        <footer style="position: relative; top: 300px; left: 0; right: 0; padding: 10px 20px;">
+            <span>Created by Chavdar Stoiliv <a class="github_url" href='https://github.com/ChavdarStoilov'><i class="fab fa-github"></i></a></span>
+        </footer>
+    {% endblock  %}
 
 {% block script %}
 {% endblock  %}

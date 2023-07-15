@@ -126,6 +126,9 @@ header {
     list-style: none;
 }
 
+.middle-menu {
+    padding-right: 20px;
+}
 .middle-menu__list {
     font-size: 40px;
     display: block;
@@ -160,7 +163,7 @@ header {
     position: absolute;
     width: 100%;
     height: 150%;
-    object-fit: cover;
+    object-fit: fill;
     z-index: 97;
 }
 
@@ -285,7 +288,7 @@ a#button-add:hover i {
 .gallery{
     text-align: center;
     border-radius: 5px;
-    padding: 30px 40px 60px 40px;
+    padding: 0px 40px 20px 40px;
     position: relative;
     z-index: 99;
     top: 100px;
@@ -359,8 +362,8 @@ form, .details{
     width: 100%;
     position: absolute;
     z-index: 100;
-    bottom: 29px;
-    height: 171px;
+    bottom: 60px;
+    height: 140px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -380,6 +383,14 @@ form, .details{
     animation: mymove 30s linear infinite ;
     width: 3160px;
     
+}
+.github_url {
+    text-decoration: none;
+    color: #000;
+}
+.fa-github {
+    padding-left: 5px;
+    cursor: pointer;
 }
 @keyframes mymove {
     from   {right:  -1900px;}    
