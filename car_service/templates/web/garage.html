@@ -72,7 +72,6 @@
 
         getDetails(url).then(
             data => {
-                console.log(pk)
                 models =  data.model ? data.model : "Missing Data";
                 years = data.year ? data.year : "Missing Data";
                 vins = data.VIN ? data.VIN : "Missing Data";
