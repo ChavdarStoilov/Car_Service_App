@@ -99,11 +99,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = (
-    BASE_DIR / 'static',
-)
-
+# if DEBUG == 1:
+#     STATICFILES_DIRS = (
+#         BASE_DIR / 'static',
+#     )
+# else:
 STATIC_ROOT = os.environ.get('STATIC_ROOT', BASE_DIR / 'static')
+    
 
 
 

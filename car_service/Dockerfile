@@ -1,9 +1,9 @@
 FROM python:3.10.11
 
-WORKDIR /app
-
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
+
+WORKDIR /app
 
 RUN apt-get update && apt upgrade -y && apt-get install -y postgresql-client gcc python3-dev musl-dev netcat
 
@@ -18,6 +18,7 @@ COPY . /app/
 RUN sed -i 's/\r$//g' /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
 
+RUN python ./manage.py collectstatic --noinput
 
 
 # run entrypoint.sh
