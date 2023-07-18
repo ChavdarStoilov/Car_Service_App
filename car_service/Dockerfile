@@ -18,8 +18,6 @@ COPY . /app/
 RUN sed -i 's/\r$//g' /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
 
-RUN python ./manage.py collectstatic --noinput
-
 
 # run entrypoint.sh
 ENTRYPOINT ["/bin/bash", "/app/entrypoint.sh"]
