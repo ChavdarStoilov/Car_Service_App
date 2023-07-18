@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./car_service
+    command: gunicorn car_service.wsgi:application --bind 0.0.0.0:8000
+    ports:
+      - 8000:8000
+    env_file:
+      - ./car_service/.env.prod
+    depends_on:
+      - db
+  db:    
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=qweasd__
+      - POSTGRES_DB=car_service_prod
+    volumes:
+      - ./postgresql:/var/lib/postgresql/data
+  nginx:
+    image: nginx
+    ports:
+      - 81:80
+      - 443:443
+    volumes:
+      - ./static:/home/app/web/staticfiles
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/logs:/var/log/nginx
+      - ./certbot/www:/var/www/certbot/:ro
+      - ./certbot/conf/:/etc/nginx/ssl/:ro
+    depends_on:
+      - web
