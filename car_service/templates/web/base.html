@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
 
 </head>
-<body>
+<body touchstart="">
     <img src="{% static 'images/background.png' %}" class='auth_background' alt="auth background">
     <header class="header">
         
@@ -98,7 +98,7 @@
     {% endblock %}
 
     {% block footer %}
-        <footer style="position: relative; top: 300px; left: 0; right: 0; padding: 10px 20px;">
+        <footer class="footer">
             <span>Created by Chavdar Stoiliv <a class="github_url" href='https://github.com/ChavdarStoilov'><i class="fab fa-github"></i></a></span>
         </footer>
     {% endblock  %}

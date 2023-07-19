@@ -163,7 +163,7 @@ header {
     position: absolute;
     width: 100%;
     height: 150%;
-    object-fit: fill;
+    object-fit: cover;
     z-index: 97;
 }
 
@@ -178,6 +178,15 @@ header {
     
 }
 
+.footer {
+    position: relative;
+    top: 300px;
+    left: 0;
+    right: 0;
+    padding: 10px 20px;
+    width: 332px;
+    
+}
 
 
 
@@ -466,7 +475,7 @@ form, .details{
 
 }
 
-.flip-card:hover .flip-card-inner {
+.flip-card:active .flip-card-inner {
     transform: rotateY(-180deg);
 }
 
@@ -896,9 +905,7 @@ form, .details{
     .sidebar {
         right: -4px;
     }
-    .hero > img {
-        width: 100%;
-    }
+
     .brands {
         top: 670px;
         width: 100%;
@@ -987,6 +994,25 @@ form, .details{
     .gallery_pictures {
         height: 230px;
     }
+
+    .hero {
+        overflow: hidden;
+        padding: unset;
+        height: 570px;
+    }
+
+    .hero > img {
+        object-fit: fill;
+        height: 100%;
+        width: 130%;
+    }
+
+    .footer {
+        top: 120px;
+        width: 598px;
+        text-align: right;
+        font-size: 30px;
+    }
 }
 
 @media screen and (max-width: 796px){
@@ -1001,6 +1027,17 @@ form, .details{
     .btn-submit {
         left: 62%;
       }
+
+    .content_gallery {
+        width: 60%;
+    }
+    .footer {
+        top: 100px;
+        text-align: right;
+        font-size: 15px;
+        width: 330px;
+    
+    }
 }
 
 @media screen and (max-width: 594px) {
@@ -1025,7 +1062,7 @@ form, .details{
     
 }
  
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 445px) {
     body {
         grid-template-rows: 580px;
     }
@@ -1085,7 +1122,15 @@ form, .details{
         margin-left: unset;
     }
     .hero {
+        overflow: hidden;
         padding: unset;
+        height: 570px;
+    }
+
+    .hero > img {
+        object-fit: fill;
+        height: 100%;
+        width: 152%;
     }
     .garage__page {
         display: flex;
@@ -1114,15 +1159,16 @@ form, .details{
     }
 
     .contacts {
-        gap: 34px;
+        gap: 10px;
         display: flex;
-        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        justify-content: unset;
     }
     .card {
-        padding: 43px;
+        padding: 50px;
     }
     .flip-card {
-        width: 104px;
         height: 111px;
     }
 
@@ -1151,6 +1197,26 @@ form, .details{
         left: 36%;
     }
 
+    .field, .brands-choide {
+        width: 70%;
+    }
+
+    .title__content__title {
+        margin-top: -34px;
+        font-size: 30px;
+    }
+    .profile-btn {
+        padding: 25px;
+        flex-direction: column;
+    }
+
+    .images {
+        gap: 29px;
+        margin-bottom: 12px;
+    }
+    .field, .brands-choide {
+        margin: 4px;
+    }
 }
 
 .errorlist{
