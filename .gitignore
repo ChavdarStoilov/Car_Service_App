@@ -163,4 +163,10 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 car_service/car_service/settings - Copy.py
+<<<<<<< HEAD
+car_service/static/admin
+car_service/static/rest_framework
+Service-car.pem
+=======
 car_service/car_service/settings.py
+>>>>>>> 42206ceb1108b60138f7f2e5a7538b5ab1c4b06a
