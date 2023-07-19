@@ -163,6 +163,6 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 car_service/car_service/settings - Copy.py
-car_service/docker-compose.production.yml
 car_service/static/admin
 car_service/static/rest_framework
+Service-car.pem
