@@ -4,12 +4,11 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get('SECRET_KEY', None)
+SECRET_KEY = 'django120-12-4jksflkfsa'
 
-DEBUG = int(os.environ.get('DEBUG', 1))
+DEBUG = True
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(' ')
-CSRF_TRUSTED_ORIGINS = [f'http://{x}:81' for x in os.environ.get('ALLOWED_HOSTS', '').split(' ')]
+ALLOWED_HOSTS = []
 
 
 INSTALLED_APPS = [
@@ -61,12 +60,12 @@ WSGI_APPLICATION = 'car_service.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv('DB_ENGINE', None),
-        'HOST': os.getenv('DB_HOST', None),
-        'PORT': os.getenv('DB_PORT', '5432'),
-        'NAME': os.getenv('DB_NAME', None),
-        'USER': os.getenv('DB_USER', None),
-        'PASSWORD': os.getenv('DB_PASSWORD', None),
+        'ENGINE': "django.db.backends.postgresql",
+        'HOST': 'localhost',
+        'PORT': '5432',
+        'NAME': 'car_service_prod',
+        'USER': 'root',
+        'PASSWORD': 'qweasd__',
     }
 }
 
@@ -98,14 +97,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# if DEBUG == 1:
-#     STATICFILES_DIRS = (
-#         BASE_DIR / 'static',
-#     )
-# else:
-STATIC_ROOT = os.environ.get('STATIC_ROOT', BASE_DIR / 'static')
-    
-
+STATICFILES_DIRS = (
+    BASE_DIR / 'static',
+    )
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
