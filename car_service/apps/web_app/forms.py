@@ -55,7 +55,7 @@ class AddCarFrom(forms.ModelForm):
         widget=forms.DateInput(
             attrs={
                 'class':'field',
-                'placeholder':"Example: 2000-01-01"
+                'type':'date',
             }
         ),
     )

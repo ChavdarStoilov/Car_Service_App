@@ -64,17 +64,20 @@
 
         for (index = 0; index < flip.length; index++) {
             const block = flip[index]
-
-            if (childCount !== block.childElementCount) {
-                childCount = block.childElementCount
-
-                block.addEventListener("touchend", () => {
-                    block.style.cssText = `
-                        transform: rotateY(-180deg);
-                    `
-
+                
+                block.addEventListener("touchstart", () => {
+                    if (block.style.cssText === 'transform: rotateY(-180deg);') {
+                        block.style.cssText = `
+                            unset
+                        `
+                    }
+                    else {
+                        block.style.cssText = `
+                            transform: rotateY(-180deg);
+                        `
+                    }
                 })
-            }
+            //}
 
         }
 

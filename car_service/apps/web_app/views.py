@@ -131,4 +131,4 @@ class GalleryView(generic.ListView):
     template_name = 'web/gallery.html'
     model = ServiceGallery
     context_object_name = "pictures"
-    paginate_by = 3
+    paginate_by = 2

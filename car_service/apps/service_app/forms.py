@@ -41,6 +41,15 @@ class AddCarFrom(forms.ModelForm):
       queryset=queryset, 
     )
     
+    year = forms.DateTimeField(
+        required=True,
+        widget=forms.DateInput(
+            attrs={
+                'type':'date',
+            }
+        ),
+    )
+    
     class Meta:
         model = Cars
         fields = (
@@ -82,6 +91,8 @@ class AddCustomerFrom(auth_forms.UserCreationForm):
       
       if commit:
         profile.save()
+      
+      return user
         
         
 class AddHistoryForm(forms.ModelForm):
