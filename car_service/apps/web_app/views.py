@@ -40,6 +40,8 @@ class ProfileView(LoginRequiredMixin, generic.TemplateView):
         if form.is_valid():
             form.save()
             return redirect(reverse_lazy('profile'))
+        else:
+            return render(request, self.template_name, {'form_profile': form })
         
 
 

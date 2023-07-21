@@ -1,18 +1,25 @@
 from .models import CustomerProfile
 from django import forms
 from ..service_app.models import Cars, CarBrand
-from .validators import validator_car_numbers, validator_car_kilometers, validator_car_vin
+from .validators import validator_car_numbers, validator_car_kilometers, validator_car_vin, validator_phone
+from ..auth_app.validators import validator_first_name, validator_last_name
 
 
 class ProfileForm(forms.ModelForm):
-    first_name = forms.CharField(widget=forms.TextInput
-        (attrs={'class':'field'}))
+    first_name = forms.CharField(
+        widget=forms.TextInput(attrs={'class':'field'}),
+        validators=[validator_first_name],
+    )
     last_name = forms.CharField(widget=forms.TextInput
-        (attrs={'class':'field'}))
+        (attrs={'class':'field'}),
+        validators=[validator_last_name],
+    )
     email = forms.EmailField(widget=forms.TextInput
         (attrs={'class':'field'}))
     phone = forms.CharField(widget=forms.TextInput
-        (attrs={'class':'field'}))
+        (attrs={'class':'field'}),
+        validators=[validator_phone]
+    )
     
     
     class Meta:
