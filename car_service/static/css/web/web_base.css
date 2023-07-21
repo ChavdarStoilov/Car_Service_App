@@ -892,6 +892,15 @@ form, .details{
    border-top: 2px solid black;
 }
 
+.errorlist{
+    color: red;
+    padding-right: 23px;
+    text-align: right;
+    list-style: none;
+}
+.errorlist p {
+    margin: 0;
+}
 
 
 
@@ -1001,7 +1010,7 @@ form, .details{
     .hero {
         overflow: hidden;
         padding: unset;
-        height: 570px;
+        height: 670px;
     }
 
     .hero > img {
@@ -1166,6 +1175,9 @@ form, .details{
         left: 52%;
     }
 
+    .errorlist {
+        padding-right: 55px;
+    }
     .contacts {
         gap: 10px;
         display: flex;
@@ -1227,18 +1239,6 @@ form, .details{
     }
 }
 
-.errorlist{
-    color: red;
-    margin-right: 95px;
-    width: 400px;
-    text-align: center;
-    position: relative;
-    left: 65%;
-    list-style: none;
-}
-.errorlist p {
-    margin: 0;
-}
 
 
 table {

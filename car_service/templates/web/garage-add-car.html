@@ -6,12 +6,16 @@
     <section class="content__add__car">
         <h1 class='title__content__title' >Add Car</h1>
         <form method="POST" action="{% url 'customer add car page' %}" >
+            {% if form.errors %}
+                <div>
+                {% for field in form %}
+                    {{ field.errors }}
+                {% endfor %}
+                </div>
+            {% endif %}
             {% for field in form %}
                 
             <div class="form-control">
-                {% if field.errors %}
-                   {{ field.errors }}
-                {% endif %}
                 {{ field.label_tag }} {{ field }}
             </div>
             {% endfor %}
