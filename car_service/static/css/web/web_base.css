@@ -475,9 +475,12 @@ form, .details{
 
 }
 
-.flip-card:active .flip-card-inner {
-    transform: rotateY(-180deg);
+@media screen and (min-width: 1200px) {
+    .flip-card:hover .flip-card-inner{
+        transform: rotateY(-180deg);
+    }
 }
+
 
 .flip-card-front, .flip-card-back {
     position: absolute;
@@ -1038,6 +1041,11 @@ form, .details{
         width: 330px;
     
     }
+
+    .flip-card:active .flip-card-inner{
+        transform: rotateY(-180deg);
+    }
+    
 }
 
 @media screen and (max-width: 594px) {
