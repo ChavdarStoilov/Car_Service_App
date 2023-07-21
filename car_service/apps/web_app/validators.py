@@ -38,3 +38,10 @@ def validator_car_vin(vin):
             f'Car with VIN: { vin } already exist'
         ) 
         
+        
+def validator_phone(number):
+    
+    if len(number) < 9:
+        raise ValidationError(
+            f'Please enter a valid phone number'
+        ) 

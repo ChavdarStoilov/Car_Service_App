@@ -60,9 +60,15 @@
 
                 {% else %}
                     <li >
-                        <a href="{% url 'profile' %}" class="btn auth_system__links">
-                            Profile
-                        </a>
+                        {% if user.is_customer %}
+                            <a href="{% url 'profile' %}" class="btn auth_system__links">
+                                Profile
+                            </a>
+                        {% elif not user.is_superuser %}
+                            <a href="{% url 'employee profile' user.pk %}" class="btn auth_system__links">
+                                Profile
+                            </a>
+                        {% endif %}
                     </li>
                     <li>
                         <a href="{% url 'logout' %}" class="btn auth_system__links">

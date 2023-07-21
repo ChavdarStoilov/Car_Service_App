@@ -6,10 +6,10 @@
     <div class="login-box">
         <h2>Login</h2>
         <form method="POST" action = "{% url 'singin page' %}">
+            {{ form.non_field_errors  }}
             
             {% for field in form %}
                 <div class="user-box">
-                    {{ field.errors }}
                     {{ field.label_tag }} {{ field }}
                 </div>
             {% endfor %}

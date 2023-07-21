@@ -1,6 +1,8 @@
 from django import forms
 from .models import CarQueue, Cars, CustomerProfile, RepairHistory, EmployeesProfile
 from django.contrib.auth import get_user_model, forms as auth_forms
+from ..auth_app.validators import validator_username, validator_first_name, validator_last_name
+from ..web_app.validators import validator_car_numbers, validator_car_vin, validator_car_kilometers
 
 UserModel = get_user_model()
       
@@ -50,15 +52,34 @@ class AddCarFrom(forms.ModelForm):
         ),
     )
     
+    VIN = forms.CharField(
+      validators=[validator_car_vin],
+    )
+    
+    registration_number = forms.CharField(
+      validators=[validator_car_numbers],
+    )
+    
+    kilometers = forms.CharField(
+      validators=[validator_car_kilometers],
+    )
+    
     class Meta:
         model = Cars
         fields = (
-            'brand', 'model', 'year', 'VIN', 'registration_number', 'user_id'
+            'brand', 'model', 'year', 'VIN', 'registration_number', 'kilometers','user_id'
         )
         
 class AddCustomerFrom(auth_forms.UserCreationForm):
-    first_name = forms.CharField()
-    last_name = forms.CharField()
+    username = forms.CharField(
+      validators=[validator_username]
+    )
+    first_name = forms.CharField(
+      validators=[validator_first_name]
+    )
+    last_name = forms.CharField(
+      validators=[validator_last_name]
+    )
     email = forms.EmailField()
     phone = forms.CharField()
     

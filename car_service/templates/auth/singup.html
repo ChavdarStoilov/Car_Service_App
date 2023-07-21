@@ -7,9 +7,13 @@
     <div class="register-box">
         <h2>Register</h2>
         <form method="POST" action = "{% url 'singup page' %}">
+            {% if form.errors %}
+                {% for field in form %}
+                    {{ field.errors }}
+                {% endfor %}
+            {% endif %}
             {% for field in form %}
                 <div class="user-box">
-                    {{ field.errors }}
                     {{ field.label_tag }} {{ field }}
                 </div>
             {% endfor %}
