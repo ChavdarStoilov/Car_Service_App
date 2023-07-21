@@ -122,3 +122,12 @@ body {
 
 
 
+.errorlist{
+    color: red;
+    position: relative;
+    left: -2%;
+    list-style: none;
+}
+.errorlist p {
+    margin: 0;
+}

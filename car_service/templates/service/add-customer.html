@@ -3,9 +3,13 @@
 {% block main %}
     <form class="adding__from" method="POST" action="{% url 'add customer page' %}">
         <h2>Create Customer From</h2>
+        {% if form.errors %}
+            {% for field in form %}
+                {{ field.errors }}
+            {% endfor %}
+        {% endif %}
         {% for field in form %}
             <div class="form-control">
-                {{ field.errors }}
                 {{ field.label_tag }} {{ field }}
             </div>
         {% endfor %}

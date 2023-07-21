@@ -3,14 +3,22 @@ from ..service_app.models import EmployeesProfile
 from ..web_app.models import CustomerProfile
 from django import forms
 from django.utils.translation import gettext_lazy as _
-
+from .validators import validator_username, validator_first_name, validator_last_name
 
 UserModel = get_user_model()
 
 
 class CustomerUserCreation(auth_forms.UserCreationForm):
-    first_name = forms.CharField()
-    last_name = forms.CharField()
+    username = forms.CharField(
+      validators=[validator_username]  
+    )
+    
+    first_name = forms.CharField(
+      validators=[validator_first_name]
+    )
+    last_name = forms.CharField(
+      validators=[validator_last_name]
+    )
     
     class Meta:
       model = UserModel
