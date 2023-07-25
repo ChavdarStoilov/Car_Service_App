@@ -16,8 +16,17 @@ Car service app with internal application for mechanics and receivers and offici
     <h3>Create your .env.prod file and fill it with your PROD environment variables in root directory</h3>
   </li>
   <li>
-    <h3>Run the application</h3>
-    docker compose -f docker-compose.production.yml up -d</li>
+    <h3>Run the DB and application</h3>
+    docker compose -f docker-compose.production.yml  up -d web
+  </li>
+  <li>
+    <h3>Collect all static files</h3>
+    docker compose -f docker-compose.production.yml exec web python manage.py collectstatic
+  </li>
+  <li>
+    <h3>Start the Nginx</h3>
+    docker compose -f docker-compose.production.yml up nginx -d
+  </li>
 </ol>
 <h2 align="center">Project diagram:</h2>
 <div align="center">
