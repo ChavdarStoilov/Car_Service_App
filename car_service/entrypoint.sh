@@ -17,9 +17,9 @@ then
 	sed -i '13d;14d;15d;16d;20d' ./car_service/urls.py
 fi
 
-#python manage.py flush --no-input
 python manage.py makemigrations
 python manage.py migrate
+python manage.py loaddata available-brands.json
 
 
 sed -i '13 i path("", include("apps.web_app.urls")),' ./car_service/urls.py
