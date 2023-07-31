@@ -172,3 +172,4 @@ car_service/car_service/settings.py
 >>>>>>> 42206ceb1108b60138f7f2e5a7538b5ab1c4b06a
 car_service/car_service/settings_for_prod.py
 car_service/car_service/settings.py
+car_service/car_service/settings_LOCAL.py
