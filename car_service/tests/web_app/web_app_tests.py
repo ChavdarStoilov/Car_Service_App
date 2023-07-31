@@ -1,10 +1,10 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.urls import reverse
-from .models import CustomerProfile
-from .forms import ProfileForm
-from ..auth_app.models import AppUsers
-from ..service_app.models import Cars, CarBrand
+from apps.web_app.models import CustomerProfile
+from apps.web_app.forms import ProfileForm
+from apps.auth_app.models import AppUsers
+from apps.service_app.models import Cars, CarBrand
 
 User = get_user_model()
 

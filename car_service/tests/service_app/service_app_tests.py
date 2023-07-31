@@ -1,11 +1,10 @@
 from django.test import TestCase, Client
 from django.urls import reverse
 from django.contrib.auth import get_user_model
-from .models import EmployeesProfile, CarBrand, Cars, RepairHistory, CarQueue
-from .forms import AddCarQueueFrom, AddCarFrom, AddCustomerFrom, AddHistoryForm
-from ..auth_app.models import AppUsers
+from apps.service_app.models import CarBrand, Cars, CarQueue
+from apps.service_app.forms import  AddHistoryForm
 from django.contrib.auth.models import Group, Permission
-from ..auth_app.forms import EmployeeUserCreation, CustomerUserCreation
+from apps.auth_app.forms import EmployeeUserCreation
 
 UserModel = get_user_model()
 

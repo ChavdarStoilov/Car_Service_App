@@ -1,9 +1,8 @@
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import Group
-from .models import AppUsers
-from .forms import CustomerUserCreation, EmployeeUserCreation, CustomPasswordChange
+from apps.auth_app.models import AppUsers
+from apps.auth_app.forms import CustomerUserCreation, EmployeeUserCreation, CustomPasswordChange
 
 
 
