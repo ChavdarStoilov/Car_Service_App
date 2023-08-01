@@ -43,10 +43,10 @@ header {
 
 }
 
-.header__logo > img {
+.header__logo > a > img {
     width: 280px;
     height: 124px;
-    
+    cursor: pointer;    
 }
 
 .auth_background {
@@ -934,8 +934,9 @@ form, .details{
         clip-path: polygon(0px 0px, 95% 0px, 61.67% 100.00%, 0% 100%)
     }
 
-    .header__logo > img {
+    .header__logo > a > img {
         width: 175px;
+        
     }
 
     .card {
@@ -1033,7 +1034,7 @@ form, .details{
         padding-right: 72px;
     }
 
-    .header__logo > img {
+    .header__logo > a > img {
       width: 118px;
     }
     .btn-submit {
@@ -1095,7 +1096,7 @@ form, .details{
         padding: 0px;
         background: unset;
     }
-    .header__logo > img {
+    .header__logo > a > img {
         width: unset;
         margin-left: 30px;
     }
