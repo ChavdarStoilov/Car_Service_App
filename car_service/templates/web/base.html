@@ -14,12 +14,12 @@
 
 </head>
 <body touchstart="">
-    <img src="{% static 'images/background.png' %}" class='auth_background' alt="auth background">
+    <img src="{% static 'images/background.png' %}"  class='auth_background' alt="auth background">
     <header class="header">
         
 
         <div class="header__logo">
-            <img src="{% static 'images/logo.png' %}" alt="Logo img">
+            <a href="{% url 'home page' %}"><img src="{% static 'images/logo.png' %}" alt="Logo img"></a>
         </div>
         {% block menu %}
             <nav class="middle-menu">
