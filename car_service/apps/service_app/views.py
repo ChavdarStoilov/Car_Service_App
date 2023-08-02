@@ -148,19 +148,18 @@ class AddHisotryView(IndexView):
         
         the_date = date.today()
         kilometers = form["kilometers"]
-        
-        parts = [row.split(" - ") for row in form["parts"].split(", ")]
-
         changed_parts = {
         }
         
-        for part in parts:
-            changed_parts[part[0]] = {
-                "qty": int(part[1]),
-                "price": int(part[2].replace(",", ""))
+        part_keys = [key for key in form.keys() if key.startswith('part')]
+
+        for key in part_keys:
+            part, qty, price = form[key].split(' ')
+            changed_parts[part] = {
+                "qty": int(qty),
+                "price": int(price)
             }
-        
-        
+
 
         data = {
             "car_id": car_pk,
