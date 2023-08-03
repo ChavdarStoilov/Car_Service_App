@@ -25,7 +25,7 @@
                         <td data-label="Date">{{ row.date }}</td>
                         <td data-label="Invoice number">№ {{ row.number }}</td>
                         <td data-label="Kilometers">{{ row.kilometers }} km</td>
-                        <td data-label="Total Price">{{ row.total_price }}</td>
+                        <td data-label="Total Price">{{ row.total_price }} лв.</td>
                         <td data-label="Actions"><a class="btn__action" onClick='genereateInvoice("{% url "history" row.number %}");'>Invoice</a>
                     </tr>
                   {% endfor %}

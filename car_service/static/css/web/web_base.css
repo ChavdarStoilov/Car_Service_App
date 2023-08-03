@@ -531,7 +531,7 @@ form, .details{
 .card{
     position: relative;
     width: 280px;
-    height: 390px;
+    height: 350px;
     padding: 55px;
     margin-top: 30px;
     text-align: center;
@@ -579,7 +579,7 @@ form, .details{
     width: 80px;
     height: 40px;
     border-radius: 80px;
-    font-size: 16px;
+    font-size: 12px;
     line-height: 35px;
     text-align: center;
     border: 3px solid #31658d;
@@ -1342,3 +1342,7 @@ table {
 }  
 
 
+.card_action_btn {
+    display: flex;
+    gap: 12px;
+}
