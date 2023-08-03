@@ -578,8 +578,8 @@ form, .details{
 .edit-btn, .delete-btn{
     width: 80px;
     height: 40px;
-    border-radius: 80px;
-    font-size: 12px;
+    border-radius: 15px;
+    font-size: 15px;
     line-height: 35px;
     text-align: center;
     border: 3px solid #31658d;
@@ -1344,5 +1344,5 @@ table {
 
 .card_action_btn {
     display: flex;
-    gap: 12px;
+    gap: 8px;
 }
