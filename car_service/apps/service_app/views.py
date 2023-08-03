@@ -154,7 +154,7 @@ class AddHisotryView(IndexView):
         part_keys = [key for key in form.keys() if key.startswith('part')]
 
         for key in part_keys:
-            part, qty, price = form[key].split(' ')
+            part, qty, price = form[key].split(' - ')
             changed_parts[part] = {
                 "qty": int(qty),
                 "price": int(price)

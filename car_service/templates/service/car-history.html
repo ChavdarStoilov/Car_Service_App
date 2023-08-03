@@ -72,7 +72,12 @@
                 let part = '';
             
                 for (let index = 0; index < inputs.children.length - 1; index++) {
-                    part += `${inputs.children[index].value} `;
+                    part += inputs.children[index].value
+
+                    if (index < inputs.children.length - 2) {
+                        part += ` - `;
+                    }
+
                     inputs.children[index].value = '';
                 }
 
@@ -81,7 +86,7 @@
                 if (part.trim() !== '') {
                     const newLi = document.createElement('li');
                     newLi.innerHTML = `
-                    <label for="part${partsCounter}" class='part_label'>${part.trim()}</label>
+                    <label for="part${partsCounter}" class='part_label'>${part}</label>
                     <input type="hidden" value='${part.trim()}' id='part${partsCounter}' name="part${partsCounter}" readonly="readonly" class="part_inputs"></input>
                     `;
                     partsList.appendChild(newLi);

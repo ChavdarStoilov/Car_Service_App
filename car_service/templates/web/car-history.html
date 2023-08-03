@@ -86,7 +86,8 @@
                         <th>Part</th>
                         <th></th>
                         <th>QTY</th>
-                        <th>PRICE</th>
+                        <th>PRICE without VAT</th>
+                        <th>PRICE with VAT</th>
                         <th>TOTAL</th>
                     </tr>
                     </thead>
@@ -113,6 +114,7 @@
                 <td class="td__center">${partName}</td>
                 <td></td>
                 <td class="td__center">${quantity}</td>
+                <td class="td__center">${(partPrice - (partPrice * 0.25)).toFixed(2)} лв.</td>
                 <td class="td__center">${partPrice.toFixed(2)} лв.</td>
                 <td class="td__right">${totalPartPrice.toFixed(2)} лв.</td>
             `;
@@ -120,20 +122,20 @@
 
                     
         }
-        tax = (totalPrice * 0.25);
-        subTotal = (totalPrice - tax);
+        vat = (totalPrice * 0.25);
+        subTotal = (totalPrice - vat);
 
         tableFooter.innerHTML = `
             <tr class="td__right invoice__total">
-                <td colspan="4">SUBTOTAL</td>
+                <td colspan="5">SUBTOTAL</td>
                 <td class="subtotal">${subTotal.toFixed(2)} лв.</td>
             </tr>
             <tr class="td__right">
-                <td colspan="4">TAX 25%</td>
-                <td class="tax">${tax.toFixed(2)} лв.</td>
+                <td colspan="5">VAT 25%</td>
+                <td class="tax">${vat.toFixed(2)} лв.</td>
             </tr>
             <tr class="td__right">
-                <td colspan="4" class="grand total">GRAND TOTAL</td>
+                <td colspan="5" class="grand total">GRAND TOTAL</td>
                 <td class="grand total">${totalPrice.toFixed(2)} лв.</td>
             </tr>
         `;
