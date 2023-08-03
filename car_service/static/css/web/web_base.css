@@ -745,7 +745,7 @@ form, .details{
 	position: absolute;
 	top: 100%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -0%);
 }
 
 
@@ -1251,17 +1251,6 @@ table {
     table-layout: fixed;
 }
 
-.history__table caption {
-  font-size: 1.5em;
-  margin: .5em 0 .75em;
-}
-
-.history__table tr {
-  background-color: #f8f8f8;
-  border: 1px solid #ddd;
-  padding: .35em;
-}
-
 .history__table th,
 .history__table td {
   padding: .625em;
@@ -1272,9 +1261,59 @@ table {
   font-size: .85em;
   letter-spacing: .1em;
   text-transform: uppercase;
+} 
+
+.history__table {
+    border: 0;
+
+  }
+
+.history__table caption {
+    font-size: 1.3em;
+    margin: .5em 0 .75em;
+
 }
 
-@media screen and (max-width: 600px) {
+.history__table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+.history__table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: .35em;
+}
+
+.history__table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+    padding: .625em;
+}
+
+.history__table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.history__table td:last-child {
+    border-bottom: 0;
+}
+
+@media screen and (max-width: 1350px) {
     .container{
         all: unset;
     }
@@ -1291,54 +1330,7 @@ table {
         padding: 17px 2px;
         margin-top: 60px;
     }
-
-    table {
-        table-layout: unset;
-    }
-    .history__table {
-      border: 0;
-
-    }
-
-    .history__table caption {
-      font-size: 1.3em;
-    }
-
-    .history__table thead {
-      border: none;
-      clip: rect(0 0 0 0);
-      height: 1px;
-      margin: -1px;
-      overflow: hidden;
-      padding: 0;
-      position: absolute;
-      width: 1px;
-    }
-
-    .history__table tr {
-      border-bottom: 3px solid #ddd;
-      display: block;
-      margin-bottom: .625em;
-    }
-
-    .history__table td {
-      border-bottom: 1px solid #ddd;
-      display: block;
-      font-size: .8em;
-      text-align: right;
-    }
-
-    .history__table td::before {
-
-      content: attr(data-label);
-      float: left;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
-
-    .history__table td:last-child {
-      border-bottom: 0;
-    }
+    
     .content{
         width: 70%;
     }

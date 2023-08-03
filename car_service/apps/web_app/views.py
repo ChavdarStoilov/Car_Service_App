@@ -96,7 +96,7 @@ class CarRepairProcessView(LoginRequiredMixin, generic.TemplateView):
 class CarHistoryView(LoginRequiredMixin, generic.ListView):
     template_name = 'web/car-history.html'
     model = RepairHistory
-    paginate_by = 10
+    paginate_by = 2
     
     def get_queryset(self, **kwargs):
        history = super().get_queryset(**kwargs)
