@@ -52,9 +52,7 @@ class CarQueueVeiw( generic.ListView):
         car = CarQueue.objects.get(pk=pk)
         car.status=new_status   
         car.save()
-        
-
-        
+                
     
 class CarsVeiw(generic.ListView):
     template_name = "service/cars.html"
