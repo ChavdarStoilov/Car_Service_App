@@ -14,6 +14,7 @@
 
             <table class="customer">
                 <tr>
+                    <th class="sort" onclick="sortBy(0)">Username</th>
                     <th class="sort" onclick="sortBy(0)">First name</th>
                     <th class="sort" onclick="sortBy(0)">Last name</th>
                     <th class="sort" onclick="sortBy(0)">Email</th>
@@ -23,6 +24,7 @@
                 </tr>
                 {% for customer in customers %}
                     <tr id="{{ customer.pk }}">
+                        <td>{{ customer.user_id }}</td>
                         <td>{{ customer.first_name }}</td>
                         <td>{{ customer.last_name }}</td>
                         <td>{{ customer.email }}</td>

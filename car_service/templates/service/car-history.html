@@ -5,14 +5,95 @@
         <h2>Car history From</h2>
         <div class="form-control">
             <lable for="kilometers" >Kilometers:</lable>
-            <input placeholder="100 000" id="kilometers" name="kilometers"></input>
+            <input placeholder="100 000" id="kilometers" name="kilometers" required></input>
         </div>
-        <div class="form-control">
-            <lable for="parts">Changed parts:</lable>
-            <textarea id="parts" name="parts" placeholder="Name Part 1- QTY - Price, Name Part 2- QTY - Price,"></textarea>
+        <div class="form-control part">
+            <h4 class="part_title" for="parts">Parts</h4>
+
+            <ul class="list_parts">
+            </ul>
+
+            <div class="inputs">
+                <input type="text" placeholder="Enter name" >
+                <input type="text" placeholder="Enter QTY" >
+                <input type="text" placeholder="Enter Price" >
+                <input type="button" class="add_in_list" value='Add'>
+            </div>
+            <ul class="parts_btn">
+                <li><a class="add_part_btn">Add part</a></li>
+                <li><a class="delete_part_btn">Delete part</a></li>
+            </ul>
         </div>
         {% csrf_token %}
         <button>Add history</button>
     </form>
 
 {% endblock %}
+
+{% block script %}
+    <script>
+        window.onload = () => {
+            let partsCounter = 0
+            const addBtn = document.querySelector('.add_part_btn');
+            const deleteBtn = document.querySelector('.delete_part_btn');
+            const partsList = document.querySelector('.list_parts');
+
+
+            addBtn.addEventListener('click', showInputFields);
+            deleteBtn.addEventListener('click', deletePart);
+        
+            partsList.addEventListener('click', function(event) {
+                const selectedLi = event.target;
+                if (selectedLi.className === 'part_label') {
+                    selectedLi.parentElement.classList.toggle('selected');
+                }
+            });
+            
+            
+            function showInputFields() {
+                const inputs = document.querySelector('.inputs');
+                inputs.style.display = 'flex';
+            }
+
+            function deletePart() {
+                const selectedItems = document.querySelectorAll('.selected');
+                
+                partsCounter -= selectedItems.length;
+
+                selectedItems.forEach(item => {
+                    partsList.removeChild(item);
+                }); 
+            }
+
+            document.querySelector('.add_in_list').addEventListener('click', function() {
+                const inputs = document.querySelector('.inputs');
+                const partsList = document.querySelector('.list_parts');
+            
+                let part = '';
+            
+                for (let index = 0; index < inputs.children.length - 1; index++) {
+                    part += inputs.children[index].value
+
+                    if (index < inputs.children.length - 2) {
+                        part += ` - `;
+                    }
+
+                    inputs.children[index].value = '';
+                }
+
+                partsCounter += 1
+                
+                if (part.trim() !== '') {
+                    const newLi = document.createElement('li');
+                    newLi.innerHTML = `
+                    <label for="part${partsCounter}" class='part_label'>${part}</label>
+                    <input type="hidden" value='${part.trim()}' id='part${partsCounter}' name="part${partsCounter}" readonly="readonly" class="part_inputs"></input>
+                    `;
+                    partsList.appendChild(newLi);
+                }
+                
+                inputs.style.display = 'none';
+            });
+        };
+    </script>
+{% endblock  %}

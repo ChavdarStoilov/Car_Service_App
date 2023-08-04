@@ -104,7 +104,7 @@ select, textarea */
     font-family: inherit;
     padding: 8px;
     display: block;
-    width: 95%;
+    width: 100%;
     margin-bottom: 10px;
 }
 
@@ -204,4 +204,76 @@ button:hover {
   .popup{
     width: 70%;
   }
+}
+
+.part {
+    border: 1px solid #000000;
+    border-radius: 20px;
+    padding: 20px;
+}
+.part .part_title {
+    text-align: center;
+    margin-top: 0px;
+}
+
+.parts_btn {
+    display: flex;
+    gap: 12px;
+    justify-content: space-around;
+}
+
+.inputs {
+    display: none;
+    gap: 12px;
+}
+
+.inputs input {
+    width: 35%;
+    padding: 2px 10px;
+
+}
+
+.parts_btn {
+    list-style: none;
+    margin-bottom: 0px;
+}
+
+.add_part_btn, .delete_part_btn {
+    border: 1px solid #6e6e6e;
+    background-color: #ccc;
+    padding: 2px 8px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.add_in_list {
+    background-color: #0b9b58;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.selected {
+    background-color: #05c46b;
+}
+
+.list_parts {
+    list-style: none;
+}
+.list_parts li {
+    text-align: center;
+    border: 1px solid #363837;
+    border-radius: 20px;
+    padding: 5px;
+    width: 90%;
+    margin-bottom: 6px;
+
+}
+
+.form-control .part_label {
+    margin-bottom: 0px;
+    cursor: pointer;
+}
+
+.part_inputs {
+    border: none;
 }

@@ -85,15 +85,16 @@
                     <p>Year: ${years}</p>
                     <p>VIN: ${vins}</p>
                     <p>Kilometers: ${kilometers}</p>
-                    
-                    <a class="edit-btn" onclick="BackrotateCarCard('col-md-${pk}', ${pk});">Back</a>
-                    <a class="edit-btn" href="delete/${pk}">Delete</a>
-
+                    <div class='card_action_btn'>
+                        <a class="edit-btn" onclick="BackrotateCarCard('col-md-${pk}', ${pk});">Back</a>
+                        <a class="edit-btn" href="delete/${pk}/">Delete</a>
+                    </div>
                     
                 `
                 if (data.have_history) {
-                    cardBackContent.innerHTML += `
-                        <a class="edit-btn" href="/garage/history/${pk}">History</a>
+                    car_btn = document.querySelector('.card_action_btn')
+                    car_btn.innerHTML += `
+                        <a class="edit-btn" href="/garage/history/${pk}/">History</a>
                     `
                 }
             

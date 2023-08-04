@@ -93,16 +93,20 @@ class CarRepairProcessView(LoginRequiredMixin, generic.TemplateView):
         return self.render_to_response(context)
 
     
-class CarHistoryView(LoginRequiredMixin, generic.TemplateView):
+class CarHistoryView(LoginRequiredMixin, generic.ListView):
     template_name = 'web/car-history.html'
+    model = RepairHistory
+    paginate_by = 2
     
-    
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        cars_history = RepairHistory.objects.filter(car_id = kwargs['pk'])
+    def get_queryset(self, **kwargs):
+       history = super().get_queryset(**kwargs)
+       return history.filter(car_id = self.kwargs['pk'])
+   
+    def get_context_data(self):
+        context = super().get_context_data()
         date_invoice_number = []
         
-        for row in cars_history:
+        for row in context['repairhistory_list']:
             car_history_datails = row.history
             total_price = [item["qty"] * item["price"] for item in car_history_datails['Changed parts'].values()]
             date_invoice_number.append(
