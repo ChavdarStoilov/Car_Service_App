@@ -1,5 +1,5 @@
 from django.views import generic
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render, redirect
 from .forms import ProfileForm, AddCarFrom
 from .models import CustomerProfile
@@ -75,9 +75,10 @@ class AddCar(LoginRequiredMixin, generic.CreateView):
     
 
 
-class CarRepairProcessView(LoginRequiredMixin, generic.TemplateView):
+class CarRepairProcessView(LoginRequiredMixin   , generic.TemplateView):
     template_name = 'web/car-repair-process.html'
     
+
     def get_object(self, pk):
         try:
             return CarQueue.objects.get(pk=pk)
@@ -91,12 +92,24 @@ class CarRepairProcessView(LoginRequiredMixin, generic.TemplateView):
             return redirect(reverse_lazy('garage'))
         context['car'] = self.get_object(pk)
         return self.render_to_response(context)
-
     
-class CarHistoryView(LoginRequiredMixin, generic.ListView):
+    
+class CarHistoryView(LoginRequiredMixin,UserPassesTestMixin, generic.ListView):
     template_name = 'web/car-history.html'
     model = RepairHistory
     paginate_by = 2
+    
+    def test_func(self):
+        user = RepairHistory.objects.get(pk = self.kwargs['pk'])
+        if user.car_id.user_id.pk == self.request.user.pk:
+            return self.request.user
+
+        
+    def dispatch(self, request, *args, **kwargs):
+        user_test_result = self.get_test_func()()
+        if not user_test_result:
+            return redirect(reverse_lazy('home page'))
+        return super().dispatch(request, *args, **kwargs)
     
     def get_queryset(self, **kwargs):
        history = super().get_queryset(**kwargs)
