@@ -35,6 +35,8 @@ class CarQueueVeiw( generic.ListView):
     paginate_by = 8
     context_object_name = "queue"
     model = CarQueue
+    ordering = ['pk']
+    
 
     def post(self, request):
         data = request.POST.get('submitter').split(",")
@@ -59,6 +61,8 @@ class CarsVeiw(generic.ListView):
     model = Cars
     context_object_name = "cars"
     paginate_by = 8
+    ordering = ['pk']
+    
     
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
@@ -84,6 +88,7 @@ class CustomersView(generic.ListView):
     model = CustomerProfile
     context_object_name = "customers"
     paginate_by = 8
+    ordering = ['pk']
 
     
     def get_queryset(self):

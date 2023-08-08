@@ -51,6 +51,7 @@ class GarageView(LoginRequiredMixin, generic.ListView):
     model = Cars
     context_object_name = "cars"
     
+    
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['cars'] = Cars.objects.filter(user_id = self.request.user.pk)
@@ -98,6 +99,7 @@ class CarHistoryView(LoginRequiredMixin,UserPassesTestMixin, generic.ListView):
     template_name = 'web/car-history.html'
     model = RepairHistory
     paginate_by = 2
+    ordering = ['pk']
     
     def test_func(self):
         user = RepairHistory.objects.get(pk = self.kwargs['pk'])
@@ -151,3 +153,5 @@ class GalleryView(generic.ListView):
     model = ServiceGallery
     context_object_name = "pictures"
     paginate_by = 2
+    ordering = ['pk']
+    
